@@ -19,6 +19,9 @@
 		DF298698269C9EE000EFB770 /* FBU_Final_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF298697269C9EE000EFB770 /* FBU_Final_ProjectTests.m */; };
 		DF2986A3269C9EE000EFB770 /* FBU_Final_ProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986A2269C9EE000EFB770 /* FBU_Final_ProjectUITests.m */; };
 		DF2986B2269CA81F00EFB770 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2986B1269CA81F00EFB770 /* GoogleService-Info.plist */; };
+		DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */; };
+		DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */; };
+		DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,12 @@
 		DF2986A2269C9EE000EFB770 /* FBU_Final_ProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBU_Final_ProjectUITests.m; sourceTree = "<group>"; };
 		DF2986A4269C9EE000EFB770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF2986B1269CA81F00EFB770 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF2986B3269CFD2B00EFB770 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		DF2986B6269D019400EFB770 /* EnterPhoneNumberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterPhoneNumberViewController.h; sourceTree = "<group>"; };
+		DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterPhoneNumberViewController.m; sourceTree = "<group>"; };
+		DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterVerificationCodeViewController.h; sourceTree = "<group>"; };
+		DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterVerificationCodeViewController.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +142,8 @@
 		DF29867A269C9EDF00EFB770 /* FBU Final Project */ = {
 			isa = PBXGroup;
 			children = (
+				DF2986B3269CFD2B00EFB770 /* WelcomeViewController.h */,
+				DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */,
 				DF29867B269C9EDF00EFB770 /* AppDelegate.h */,
 				DF29867C269C9EDF00EFB770 /* AppDelegate.m */,
 				DF29867E269C9EDF00EFB770 /* SceneDelegate.h */,
@@ -143,6 +154,10 @@
 				DF29868C269C9EE000EFB770 /* Info.plist */,
 				DF2986B1269CA81F00EFB770 /* GoogleService-Info.plist */,
 				DF29868D269C9EE000EFB770 /* main.m */,
+				DF2986B6269D019400EFB770 /* EnterPhoneNumberViewController.h */,
+				DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */,
+				DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */,
+				DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */,
 			);
 			path = "FBU Final Project";
 			sourceTree = "<group>";
@@ -413,7 +428,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
+				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
+				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
 			);
