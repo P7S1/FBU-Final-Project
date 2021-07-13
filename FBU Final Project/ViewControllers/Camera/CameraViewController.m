@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpView];
-    self.view.backgroundColor = UIColor.greenColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
