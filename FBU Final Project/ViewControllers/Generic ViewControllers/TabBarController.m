@@ -20,8 +20,13 @@
     [super viewDidLoad];
     
     FeedViewController* feedVc = [[FeedViewController alloc]init];
+    feedVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"house"] tag:0];
+    
     CameraViewController* cameraVc = [[CameraViewController alloc]init];
+    cameraVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"plus.app"] tag:0];
+    
     ExploreViewController* exploreVc = [[ExploreViewController alloc]init];
+    exploreVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"magnifyingglass"] tag:0];
     
     self.viewControllers = @[feedVc, cameraVc, exploreVc];
 }
