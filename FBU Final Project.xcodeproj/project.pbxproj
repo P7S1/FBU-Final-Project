@@ -26,6 +26,9 @@
 		DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */; };
 		DF3A8746269E000C008904BB /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A8745269E000B008904BB /* TabBarController.m */; };
 		DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A874F269E0B7E008904BB /* DesignHelper.m */; };
+		DF4E31E0269E4C2900745766 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31DF269E4C2900745766 /* CameraViewController.m */; };
+		DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31E5269E4C8A00745766 /* FeedViewController.m */; };
+		DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31E8269E4C9300745766 /* ExploreViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,12 @@
 		DF3A8745269E000B008904BB /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		DF3A874F269E0B7E008904BB /* DesignHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DesignHelper.m; sourceTree = "<group>"; };
 		DF3A8751269E0B89008904BB /* DesignHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignHelper.h; sourceTree = "<group>"; };
+		DF4E31DE269E4C2900745766 /* CameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		DF4E31DF269E4C2900745766 /* CameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		DF4E31E4269E4C8A00745766 /* FeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		DF4E31E5269E4C8A00745766 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		DF4E31E7269E4C9300745766 /* ExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
+		DF4E31E8269E4C9300745766 /* ExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +196,9 @@
 		DF3A8747269E080F008904BB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				DF4E31E3269E4C7700745766 /* Feed */,
+				DF4E31E1269E4C4200745766 /* Camera */,
+				DF4E31E2269E4C6F00745766 /* Explore */,
 				DF3A874B269E0857008904BB /* Generic ViewControllers */,
 				DF3A8748269E0819008904BB /* Login */,
 			);
@@ -264,6 +276,33 @@
 				DF3A874F269E0B7E008904BB /* DesignHelper.m */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DF4E31E1269E4C4200745766 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E31DE269E4C2900745766 /* CameraViewController.h */,
+				DF4E31DF269E4C2900745766 /* CameraViewController.m */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		DF4E31E2269E4C6F00745766 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E31E7269E4C9300745766 /* ExploreViewController.h */,
+				DF4E31E8269E4C9300745766 /* ExploreViewController.m */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		DF4E31E3269E4C7700745766 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E31E4269E4C8A00745766 /* FeedViewController.h */,
+				DF4E31E5269E4C8A00745766 /* FeedViewController.m */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -515,13 +554,16 @@
 			files = (
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
 				DF2986BD269DE85900EFB770 /* User.m in Sources */,
+				DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */,
 				DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */,
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
+				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
+				DF4E31E0269E4C2900745766 /* CameraViewController.m in Sources */,
 				DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
 			);

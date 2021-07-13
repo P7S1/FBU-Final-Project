@@ -6,6 +6,9 @@
 //
 
 #import "TabBarController.h"
+#import "FeedViewController.h"
+#import "CameraViewController.h"
+#import "ExploreViewController.h"
 
 @interface TabBarController ()
 
@@ -15,17 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    FeedViewController* feedVc = [[FeedViewController alloc]init];
+    CameraViewController* cameraVc = [[CameraViewController alloc]init];
+    ExploreViewController* exploreVc = [[ExploreViewController alloc]init];
+    
+    self.viewControllers = @[feedVc, cameraVc, exploreVc];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
