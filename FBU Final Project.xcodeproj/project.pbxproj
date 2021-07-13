@@ -12,7 +12,6 @@
 		C56BA5663FC6805F88378168 /* Pods_FBU_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A8394468BAEED0D4F64982 /* Pods_FBU_Final_Project.framework */; };
 		DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867C269C9EDF00EFB770 /* AppDelegate.m */; };
 		DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867F269C9EDF00EFB770 /* SceneDelegate.m */; };
-		DF298686269C9EDF00EFB770 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF298684269C9EDF00EFB770 /* Main.storyboard */; };
 		DF298688269C9EE000EFB770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF298687269C9EE000EFB770 /* Assets.xcassets */; };
 		DF29868B269C9EE000EFB770 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF298689269C9EE000EFB770 /* LaunchScreen.storyboard */; };
 		DF29868E269C9EE000EFB770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29868D269C9EE000EFB770 /* main.m */; };
@@ -59,7 +58,6 @@
 		DF29867C269C9EDF00EFB770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DF29867E269C9EDF00EFB770 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		DF29867F269C9EDF00EFB770 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		DF298685269C9EDF00EFB770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF298687269C9EE000EFB770 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF29868A269C9EE000EFB770 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF29868C269C9EE000EFB770 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,30 +152,13 @@
 		DF29867A269C9EDF00EFB770 /* FBU Final Project */ = {
 			isa = PBXGroup;
 			children = (
-				DF2986B3269CFD2B00EFB770 /* WelcomeViewController.h */,
-				DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */,
-				DF29867B269C9EDF00EFB770 /* AppDelegate.h */,
-				DF29867C269C9EDF00EFB770 /* AppDelegate.m */,
-				DF29867E269C9EDF00EFB770 /* SceneDelegate.h */,
-				DF29867F269C9EDF00EFB770 /* SceneDelegate.m */,
-				DF298684269C9EDF00EFB770 /* Main.storyboard */,
+				DF3A874D269E0878008904BB /* Core */,
+				DF3A8749269E0836008904BB /* Model */,
+				DF3A874C269E0871008904BB /* View */,
+				DF3A8747269E080F008904BB /* ViewControllers */,
 				DF298687269C9EE000EFB770 /* Assets.xcassets */,
-				DF298689269C9EE000EFB770 /* LaunchScreen.storyboard */,
 				DF29868C269C9EE000EFB770 /* Info.plist */,
 				DF2986B1269CA81F00EFB770 /* GoogleService-Info.plist */,
-				DF29868D269C9EE000EFB770 /* main.m */,
-				DF2986B6269D019400EFB770 /* EnterPhoneNumberViewController.h */,
-				DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */,
-				DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */,
-				DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */,
-				DF2986BE269DE86100EFB770 /* User.h */,
-				DF2986BC269DE85900EFB770 /* User.m */,
-				DF2986C0269DF08900EFB770 /* UsernameViewController.h */,
-				DF2986C1269DF08900EFB770 /* UsernameViewController.m */,
-				DF2986C5269DFC4600EFB770 /* FirestoreObject.h */,
-				DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */,
-				DF3A8744269E000B008904BB /* TabBarController.h */,
-				DF3A8745269E000B008904BB /* TabBarController.m */,
 			);
 			path = "FBU Final Project";
 			sourceTree = "<group>";
@@ -198,6 +179,78 @@
 				DF2986A4269C9EE000EFB770 /* Info.plist */,
 			);
 			path = "FBU Final ProjectUITests";
+			sourceTree = "<group>";
+		};
+		DF3A8747269E080F008904BB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF3A874B269E0857008904BB /* Generic ViewControllers */,
+				DF3A8748269E0819008904BB /* Login */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DF3A8748269E0819008904BB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DF2986B3269CFD2B00EFB770 /* WelcomeViewController.h */,
+				DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */,
+				DF2986B6269D019400EFB770 /* EnterPhoneNumberViewController.h */,
+				DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */,
+				DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */,
+				DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */,
+				DF2986C0269DF08900EFB770 /* UsernameViewController.h */,
+				DF2986C1269DF08900EFB770 /* UsernameViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DF3A8749269E0836008904BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF3A874A269E083D008904BB /* Firestore Models */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF3A874A269E083D008904BB /* Firestore Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF2986C5269DFC4600EFB770 /* FirestoreObject.h */,
+				DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */,
+				DF2986BE269DE86100EFB770 /* User.h */,
+				DF2986BC269DE85900EFB770 /* User.m */,
+			);
+			path = "Firestore Models";
+			sourceTree = "<group>";
+		};
+		DF3A874B269E0857008904BB /* Generic ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF3A8744269E000B008904BB /* TabBarController.h */,
+				DF3A8745269E000B008904BB /* TabBarController.m */,
+			);
+			path = "Generic ViewControllers";
+			sourceTree = "<group>";
+		};
+		DF3A874C269E0871008904BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DF3A874D269E0878008904BB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DF29868D269C9EE000EFB770 /* main.m */,
+				DF298689269C9EE000EFB770 /* LaunchScreen.storyboard */,
+				DF29867B269C9EDF00EFB770 /* AppDelegate.h */,
+				DF29867C269C9EDF00EFB770 /* AppDelegate.m */,
+				DF29867E269C9EDF00EFB770 /* SceneDelegate.h */,
+				DF29867F269C9EDF00EFB770 /* SceneDelegate.m */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -320,7 +373,6 @@
 				DF29868B269C9EE000EFB770 /* LaunchScreen.storyboard in Resources */,
 				DF2986B2269CA81F00EFB770 /* GoogleService-Info.plist in Resources */,
 				DF298688269C9EE000EFB770 /* Assets.xcassets in Resources */,
-				DF298686269C9EDF00EFB770 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,14 +545,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		DF298684269C9EDF00EFB770 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DF298685269C9EDF00EFB770 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DF298689269C9EE000EFB770 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
