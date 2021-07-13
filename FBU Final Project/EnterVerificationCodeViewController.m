@@ -6,11 +6,15 @@
 //
 
 #import <FirebaseAuth/FirebaseAuth.h>
+#import <FirebaseFirestore/FirebaseFirestore.h>
 #import "EnterVerificationCodeViewController.h"
+#import "UsernameViewController.h"
 
 @interface EnterVerificationCodeViewController ()
 
+@property (nonatomic, readonly) FIRFirestore *db;
 @property (nonatomic, strong) UITextField *textField;
+
 
 @end
 
@@ -64,7 +68,28 @@
 }
 
 - (void) signInWithCredential: (FIRAuthCredential*)credential{
-    
+    [[FIRAuth auth] signInWithCredential:credential completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+        if (error == nil){
+            NSLog(@"Signing in with auth credential error");
+            NSLog(@"%@", error.localizedDescription);
+        }else{
+            //Sign in was successful :)
+            NSString *documentPath = [@"users/" stringByAppendingString:[FIRAuth auth].currentUser.uid];
+            [[self.db documentWithPath:documentPath] getDocumentWithCompletion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
+                
+                if (error == nil){
+                    NSLog(@"getting document error");
+                    NSLog(@"%@", [error localizedDescription]);
+                }else if (snapshot.exists){
+                    
+                }else{
+                    UsernameViewController *vc = [[UsernameViewController alloc]init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                
+            }];
+        }
+    }];
 }
 
 

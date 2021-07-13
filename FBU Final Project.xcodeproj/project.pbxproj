@@ -22,6 +22,9 @@
 		DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986B4269CFD2B00EFB770 /* WelcomeViewController.m */; };
 		DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */; };
 		DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */; };
+		DF2986BD269DE85900EFB770 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986BC269DE85900EFB770 /* User.m */; };
+		DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C1269DF08900EFB770 /* UsernameViewController.m */; };
+		DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,12 @@
 		DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterPhoneNumberViewController.m; sourceTree = "<group>"; };
 		DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnterVerificationCodeViewController.h; sourceTree = "<group>"; };
 		DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnterVerificationCodeViewController.m; sourceTree = "<group>"; };
+		DF2986BC269DE85900EFB770 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DF2986BE269DE86100EFB770 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DF2986C0269DF08900EFB770 /* UsernameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UsernameViewController.h; sourceTree = "<group>"; };
+		DF2986C1269DF08900EFB770 /* UsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsernameViewController.m; sourceTree = "<group>"; };
+		DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirestoreObject.m; sourceTree = "<group>"; };
+		DF2986C5269DFC4600EFB770 /* FirestoreObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirestoreObject.h; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +167,12 @@
 				DF2986B7269D019400EFB770 /* EnterPhoneNumberViewController.m */,
 				DF2986B9269D05B400EFB770 /* EnterVerificationCodeViewController.h */,
 				DF2986BA269D05B400EFB770 /* EnterVerificationCodeViewController.m */,
+				DF2986BE269DE86100EFB770 /* User.h */,
+				DF2986BC269DE85900EFB770 /* User.m */,
+				DF2986C0269DF08900EFB770 /* UsernameViewController.h */,
+				DF2986C1269DF08900EFB770 /* UsernameViewController.m */,
+				DF2986C5269DFC4600EFB770 /* FirestoreObject.h */,
+				DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */,
 			);
 			path = "FBU Final Project";
 			sourceTree = "<group>";
@@ -429,8 +444,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
+				DF2986BD269DE85900EFB770 /* User.m in Sources */,
+				DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */,
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
+				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
