@@ -25,6 +25,7 @@
 		DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C1269DF08900EFB770 /* UsernameViewController.m */; };
 		DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */; };
 		DF3A8746269E000C008904BB /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A8745269E000B008904BB /* TabBarController.m */; };
+		DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A874F269E0B7E008904BB /* DesignHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		DF2986C5269DFC4600EFB770 /* FirestoreObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirestoreObject.h; sourceTree = "<group>"; };
 		DF3A8744269E000B008904BB /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		DF3A8745269E000B008904BB /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		DF3A874F269E0B7E008904BB /* DesignHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DesignHelper.m; sourceTree = "<group>"; };
+		DF3A8751269E0B89008904BB /* DesignHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DesignHelper.h; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -208,6 +211,7 @@
 		DF3A8749269E0836008904BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DF3A874E269E0B65008904BB /* Helpers */,
 				DF3A874A269E083D008904BB /* Firestore Models */,
 			);
 			path = Model;
@@ -251,6 +255,15 @@
 				DF29867F269C9EDF00EFB770 /* SceneDelegate.m */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		DF3A874E269E0B65008904BB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DF3A8751269E0B89008904BB /* DesignHelper.h */,
+				DF3A874F269E0B7E008904BB /* DesignHelper.m */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -509,6 +522,7 @@
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
+				DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

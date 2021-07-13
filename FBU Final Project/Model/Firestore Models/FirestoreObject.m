@@ -11,8 +11,6 @@
 
 @interface FirestoreObject ()
 
-@property (nonatomic, readonly) FIRFirestore *db;
-
 @end
 
 @implementation FirestoreObject
@@ -38,7 +36,7 @@
 }
 
 - (void) saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
-    FIRDocumentReference* docRef = [self.db documentWithPath:path];
+    FIRDocumentReference* docRef = [[FIRFirestore firestore] documentWithPath:path];
     [docRef setData:self.toDictionary merge:YES completion:completion];
 }
 

@@ -11,10 +11,11 @@
 #import "UsernameViewController.h"
 #import "TabBarController.h"
 #import "User.h"
+#import "DesignHelper.h"
 
 @interface EnterVerificationCodeViewController ()
 
-@property (nonatomic, readonly) FIRFirestore *db;
+@property (nonatomic, readwrite) FIRFirestore *db;
 @property (nonatomic, strong) UITextField *textField;
 
 @end
@@ -24,10 +25,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+    self.db = [FIRFirestore firestore];
+    self.navigationItem.title = @"Enter Verification Code";
 }
 
 - (void) setUpUI{
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+    
     self.textField = [[UITextField alloc]init];
+    self.textField.backgroundColor = UIColor.secondarySystemBackgroundColor;
     self.textField.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.textField];
@@ -41,12 +47,15 @@
     
     UIButton *continueButton = [[UIButton alloc]init];
     continueButton.translatesAutoresizingMaskIntoConstraints = NO;
+    continueButton.backgroundColor = [DesignHelper buttonBackgroundColor];
+    [continueButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];
+    [continueButton setTitle:@"Continue" forState:UIControlStateNormal];
     
     [self.view addSubview:continueButton];
     [continueButton addTarget:self action:@selector(continueButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     [NSLayoutConstraint activateConstraints: @[
-        [continueButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:16],
+        [continueButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-16],
         [continueButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:16],
         [continueButton.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16],
         [continueButton.heightAnchor constraintEqualToConstant:50]
@@ -70,7 +79,7 @@
 
 - (void) signInWithCredential: (FIRAuthCredential*)credential{
     [[FIRAuth auth] signInWithCredential:credential completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
-        if (error == nil){
+        if (error != nil){
             NSLog(@"Signing in with auth credential error");
             NSLog(@"%@", error.localizedDescription);
         }else{
@@ -78,7 +87,7 @@
             NSString *documentPath = [@"users/" stringByAppendingString:[FIRAuth auth].currentUser.uid];
             [[self.db documentWithPath:documentPath] getDocumentWithCompletion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
                 
-                if (error == nil || snapshot.data == nil){
+                if (error != nil){
                     NSLog(@"getting document error");
                     NSLog(@"%@", [error localizedDescription]);
                 }else if (snapshot.exists){
