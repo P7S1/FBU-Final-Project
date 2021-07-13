@@ -25,6 +25,7 @@
 		DF2986BD269DE85900EFB770 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986BC269DE85900EFB770 /* User.m */; };
 		DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C1269DF08900EFB770 /* UsernameViewController.m */; };
 		DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */; };
+		DF3A8746269E000C008904BB /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A8745269E000B008904BB /* TabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		DF2986C1269DF08900EFB770 /* UsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UsernameViewController.m; sourceTree = "<group>"; };
 		DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirestoreObject.m; sourceTree = "<group>"; };
 		DF2986C5269DFC4600EFB770 /* FirestoreObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirestoreObject.h; sourceTree = "<group>"; };
+		DF3A8744269E000B008904BB /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		DF3A8745269E000B008904BB /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +176,8 @@
 				DF2986C1269DF08900EFB770 /* UsernameViewController.m */,
 				DF2986C5269DFC4600EFB770 /* FirestoreObject.h */,
 				DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */,
+				DF3A8744269E000B008904BB /* TabBarController.h */,
+				DF3A8745269E000B008904BB /* TabBarController.m */,
 			);
 			path = "FBU Final Project";
 			sourceTree = "<group>";
@@ -450,6 +455,7 @@
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
 				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
+				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
 			);

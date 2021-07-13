@@ -8,6 +8,7 @@
 #import <FirebaseFirestore/FirebaseFirestore.h>
 #import <FirebaseAuth/FirebaseAuth.h>
 #import "UsernameViewController.h"
+#import "TabBarController.h"
 #import "User.h"
 
 @interface UsernameViewController ()
@@ -57,9 +58,12 @@
     User* user = [[User alloc]init];
     user.uid = [FIRAuth auth].currentUser.uid;
     user.username = self.textField.text;
-    
-    
-    
+    [user saveInBackgroundAtDefaultDirectoryWithCompletion:^(NSError * _Nullable error) {
+        [User setSharedInstance:user];
+        TabBarController *tabBarController = [[TabBarController alloc]init];
+        tabBarController.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self presentViewController:tabBarController animated:YES completion:nil];
+    }];
 }
 
 

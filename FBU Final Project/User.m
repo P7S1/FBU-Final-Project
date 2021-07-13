@@ -19,6 +19,10 @@ static User * _Nullable sharedInstance = nil;
     return sharedInstance;
 }
 
+- (NSString *)getDefaultFirestoreDirectory{
+    return [@"users/" stringByAppendingString:self.uid];
+}
+
 + (void)resetSharedInstance {
     sharedInstance = nil;
 }

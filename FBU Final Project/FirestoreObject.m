@@ -6,7 +6,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FirebaseFirestore/FirebaseFirestore.h>
 #import "FirestoreObject.h"
+
+@interface FirestoreObject ()
+
+@property (nonatomic, readonly) FIRFirestore *db;
+
+@end
 
 @implementation FirestoreObject
 
@@ -16,13 +23,27 @@
     return self;
 }
 
+- (NSString *)getDefaultFirestoreDirectory {
+    return @"unknown";
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
         [self setValuesForKeysWithDictionary:dictionary];
     }
+    
     return self;
+}
+
+- (void) saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
+    FIRDocumentReference* docRef = [self.db documentWithPath:path];
+    [docRef setData:self.toDictionary merge:YES completion:completion];
+}
+
+- (void) saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion{
+    [self saveInBackgroundAtDirectory:[self getDefaultFirestoreDirectory] withCompletion:completion];
 }
 
 @end

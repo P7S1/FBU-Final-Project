@@ -9,12 +9,13 @@
 #import <FirebaseFirestore/FirebaseFirestore.h>
 #import "EnterVerificationCodeViewController.h"
 #import "UsernameViewController.h"
+#import "TabBarController.h"
+#import "User.h"
 
 @interface EnterVerificationCodeViewController ()
 
 @property (nonatomic, readonly) FIRFirestore *db;
 @property (nonatomic, strong) UITextField *textField;
-
 
 @end
 
@@ -77,11 +78,16 @@
             NSString *documentPath = [@"users/" stringByAppendingString:[FIRAuth auth].currentUser.uid];
             [[self.db documentWithPath:documentPath] getDocumentWithCompletion:^(FIRDocumentSnapshot * _Nullable snapshot, NSError * _Nullable error) {
                 
-                if (error == nil){
+                if (error == nil || snapshot.data == nil){
                     NSLog(@"getting document error");
                     NSLog(@"%@", [error localizedDescription]);
                 }else if (snapshot.exists){
+                    User* user = [[User alloc]initWithDictionary:snapshot.data];
+                    [User setSharedInstance:user];
                     
+                    TabBarController* tabBarController = [[TabBarController alloc]init];
+                    tabBarController.modalPresentationStyle = UIModalPresentationFullScreen;
+                    [self presentViewController:tabBarController animated:YES completion:nil];
                 }else{
                     UsernameViewController *vc = [[UsernameViewController alloc]init];
                     [self.navigationController pushViewController:vc animated:YES];
