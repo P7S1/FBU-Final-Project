@@ -6,10 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PanelButtonPosition.h"
+#import "ButtonsDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ButtonsViewController : UIViewController
+
+@property (nonatomic, weak) id <ButtonsDelegate> delegate;
+
+- (void) animateButtonsWithOffset: (CGFloat)offset;
 
 @end
 

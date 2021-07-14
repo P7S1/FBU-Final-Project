@@ -31,6 +31,7 @@
 		DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31E8269E4C9300745766 /* ExploreViewController.m */; };
 		DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31F2269E6D7D00745766 /* ScrollViewHelper.m */; };
 		DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31F6269E80A200745766 /* ButtonsViewController.m */; };
+		DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31FE269E944A00745766 /* ViewControllerHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,9 @@
 		DF4E31F5269E80A200745766 /* ButtonsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsViewController.h; sourceTree = "<group>"; };
 		DF4E31F6269E80A200745766 /* ButtonsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ButtonsViewController.m; sourceTree = "<group>"; };
 		DF4E31FB269E826000745766 /* PanelButtonPosition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelButtonPosition.h; sourceTree = "<group>"; };
+		DF4E31FD269E872B00745766 /* ButtonsDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ButtonsDelegate.h; sourceTree = "<group>"; };
+		DF4E31FE269E944A00745766 /* ViewControllerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerHelper.m; sourceTree = "<group>"; };
+		DF4E3200269E945400745766 /* ViewControllerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerHelper.h; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +235,7 @@
 		DF3A8749269E0836008904BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DF4E31FC269E871C00745766 /* Protocols */,
 				DF4E31F9269E823700745766 /* Enums */,
 				DF3A874E269E0B65008904BB /* Helpers */,
 				DF3A874A269E083D008904BB /* Firestore Models */,
@@ -287,6 +292,8 @@
 				DF3A874F269E0B7E008904BB /* DesignHelper.m */,
 				DF4E31F4269E6D8600745766 /* ScrollViewHelper.h */,
 				DF4E31F2269E6D7D00745766 /* ScrollViewHelper.m */,
+				DF4E3200269E945400745766 /* ViewControllerHelper.h */,
+				DF4E31FE269E944A00745766 /* ViewControllerHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -331,6 +338,14 @@
 				DF4E31FB269E826000745766 /* PanelButtonPosition.h */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		DF4E31FC269E871C00745766 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF4E31FD269E872B00745766 /* ButtonsDelegate.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -587,6 +602,7 @@
 				DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */,
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
+				DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */,
 				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
 				DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */,

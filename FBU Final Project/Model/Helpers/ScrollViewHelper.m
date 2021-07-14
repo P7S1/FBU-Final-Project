@@ -52,12 +52,12 @@
 
 + (UIButton*) makeUIButtonWithSide: (PanelButtonPosition)side {
     
-    CGFloat centralButtonHeight = 60;
-    CGFloat sideButtonHeight = 42;
+    CGFloat const centralButtonHeight = 60;
+    CGFloat const sideButtonHeight = 42;
     
     UIButton* button = [[UIButton alloc]init];
     button.layer.borderWidth = 1;
-    button.layer.borderColor = UIColor.blueColor.CGColor;
+    button.layer.borderColor = UIColor.blackColor.CGColor;
     button.layer.cornerRadius = sideButtonHeight/2;
     
     CGFloat buttonHeight;

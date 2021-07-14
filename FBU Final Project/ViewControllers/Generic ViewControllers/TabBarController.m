@@ -10,8 +10,12 @@
 #import "CameraViewController.h"
 #import "ExploreViewController.h"
 #import "ScrollViewHelper.h"
+#import "ButtonsDelegate.h"
+#import "PanelButtonPosition.h"
+#import "ButtonsViewController.h"
+#import "ViewControllerHelper.h"
 
-@interface TabBarController () <UIScrollViewDelegate>
+@interface TabBarController () <ButtonsDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* buttonsContainerView;
@@ -21,6 +25,9 @@
 
 @property (nonatomic, strong) UIColor* const leftPanelColor;
 @property (nonatomic, strong) UIColor* const rightPanelColor;
+
+@property (nonatomic, strong) ButtonsViewController* buttonsController;
+@property (nonatomic) BOOL shouldAnimate;
 
 @end
 
@@ -34,6 +41,7 @@
         self.distanceFromBottom = -30;
         self.leftPanelColor = UIColor.blueColor;
         self.rightPanelColor = UIColor.redColor;
+        self.shouldAnimate = NO;
     }
     return self;
 }
@@ -41,6 +49,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+    [self setUpButtonContainerView];
 }
 
 -(void) setUpUI{
@@ -51,6 +60,7 @@
     NSArray<UIViewController*>* viewControllers = @[feedVc, cameraVc, exploreVc];
     
     self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
+    self.scrollView.delegate = self;
     
     [self.view addSubview:self.scrollView];
     
@@ -80,7 +90,40 @@
         [self.buttonsContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:bottomDistance]
     ]];
     
+    self.buttonsController = [[ButtonsViewController alloc]init];
+    self.buttonsController.delegate = self;
+    [ViewControllerHelper addChildVcToParentVc:self childVc:self.buttonsController containerView:self.buttonsContainerView];
+}
+
+//MARK:- Buttons Delegate
+- (void)backToCamerea {
     
 }
 
+- (void)scrollToPosition:(PanelButtonPosition)posiiton {
+    
+    self.shouldAnimate = self.scrollView.contentOffset.x == UIScreen.mainScreen.bounds.size.width || posiiton == center;
+    
+    switch (posiiton) {
+        case left:
+            [self.scrollView setContentOffset:CGPointZero animated:YES];
+        case right:
+            [self.scrollView setContentOffset:CGPointMake(UIScreen.mainScreen.bounds.size.width * 2, 0) animated:YES];
+        case center:
+            [self.scrollView setContentOffset:CGPointMake(UIScreen.mainScreen.bounds.size.width, 0) animated:YES];
+        default:
+            break;
+    }
+}
+
+//MARK:- UIScrollViewDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    self.shouldAnimate = YES;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.shouldAnimate) { return; }
+    CGFloat offset = (scrollView.contentOffset.x / self.view.frame.size.width) - 1;
+    [self.buttonsController animateButtonsWithOffset:offset];
+}
 @end
