@@ -9,7 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ScrollViewHelper : NSObject
 
-+ (UIScrollView*)make;
++ (UIScrollView*)makeScrollView;
 + (UIScrollView*)makeHorizontalScrollViewWithViewControllers: (NSArray<UIViewController*>*) horizontalControllers withParentViewController: (UIViewController*)parent;
 
 @end

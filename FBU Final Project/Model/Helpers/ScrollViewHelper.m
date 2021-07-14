@@ -7,10 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ScrollViewHelper.h"
+#import "PanelButtonPosition.h"
 
 @implementation ScrollViewHelper
 
-+ (UIScrollView*)make{
++ (UIScrollView*)makeScrollView{
     UIScrollView* scrollView = [[UIScrollView alloc]init];
     scrollView.backgroundColor = UIColor.clearColor;
     scrollView.pagingEnabled = YES;
@@ -21,7 +22,7 @@
 }
 
 + (UIScrollView*)makeHorizontalScrollViewWithViewControllers: (NSArray<UIViewController*>*) horizontalControllers withParentViewController: (UIViewController*)parent{
-    UIScrollView* scrollView = [ScrollViewHelper make];
+    UIScrollView* scrollView = [ScrollViewHelper makeScrollView];
     
     CGFloat width = UIScreen.mainScreen.bounds.size.width;
     CGFloat height = UIScreen.mainScreen.bounds.size.height;
@@ -47,6 +48,39 @@
     [scrollView setContentOffset:CGPointMake(UIScreen.mainScreen.bounds.size.width, 0)];
     
     return scrollView;
+}
+
++ (UIButton*) makeUIButtonWithSide: (PanelButtonPosition)side {
+    
+    CGFloat centralButtonHeight = 60;
+    CGFloat sideButtonHeight = 42;
+    
+    UIButton* button = [[UIButton alloc]init];
+    button.layer.borderWidth = 1;
+    button.layer.borderColor = UIColor.blueColor.CGColor;
+    button.layer.cornerRadius = sideButtonHeight/2;
+    
+    CGFloat buttonHeight;
+    
+    switch (side) {
+        case center:
+            //Center button
+            button.layer.cornerRadius = centralButtonHeight/2;
+            buttonHeight = centralButtonHeight;
+        default:
+            //one of the side buttons
+            button.layer.cornerRadius = sideButtonHeight/2;
+            buttonHeight = sideButtonHeight;
+    }
+    
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [button.heightAnchor constraintEqualToConstant:buttonHeight],
+        [button.widthAnchor constraintEqualToConstant:buttonHeight]
+    ]];
+    
+    return button;
 }
 
 

@@ -71,6 +71,15 @@
     [self.view insertSubview:self.buttonsContainerView aboveSubview:self.scrollView];
     
     self.buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false;
+    CGFloat bottomDistance = self.distanceFromBottom;
+    
+    [NSLayoutConstraint activateConstraints: @[
+        [self.buttonsContainerView.widthAnchor constraintEqualToAnchor:self.view.widthAnchor],
+        [self.buttonsContainerView.heightAnchor constraintEqualToConstant:self.buttonContainerHeight],
+        [self.buttonsContainerView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.buttonsContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:bottomDistance]
+    ]];
+    
     
 }
 
