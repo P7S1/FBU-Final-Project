@@ -38,6 +38,7 @@
 - (void) saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     FIRDocumentReference* docRef = [[FIRFirestore firestore] documentWithPath:path];
     [docRef setData:self.toDictionary merge:YES completion:completion];
+    
 }
 
 - (void) saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion{

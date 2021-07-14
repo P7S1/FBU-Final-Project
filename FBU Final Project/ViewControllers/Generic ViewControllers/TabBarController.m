@@ -9,8 +9,11 @@
 #import "FeedViewController.h"
 #import "CameraViewController.h"
 #import "ExploreViewController.h"
+#import "ScrollViewHelper.h"
 
-@interface TabBarController ()
+@interface TabBarController () <UIScrollViewDelegate>
+
+@property (nonatomic, strong) UIScrollView* scrollView;
 
 @end
 
@@ -18,17 +21,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self setUpUI];
+}
+
+-(void) setUpUI{
     FeedViewController* feedVc = [[FeedViewController alloc]init];
-    feedVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"house"] tag:0];
-    
     CameraViewController* cameraVc = [[CameraViewController alloc]init];
-    cameraVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"plus.app"] tag:0];
-    
     ExploreViewController* exploreVc = [[ExploreViewController alloc]init];
-    exploreVc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"" image:[UIImage systemImageNamed:@"magnifyingglass"] tag:0];
     
-    self.viewControllers = @[feedVc, cameraVc, exploreVc];
+    NSArray<UIViewController*>* viewControllers = @[feedVc, cameraVc, exploreVc];
+    
+    self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
+    
+    [self.view addSubview:self.scrollView];
+    
+    self.scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.scrollView.scrollEnabled = YES;
+    [NSLayoutConstraint activateConstraints: @[
+        [self.scrollView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.scrollView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.scrollView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
+        [self.scrollView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
+    ]];
+    
+    self.scrollView.delegate = self;
 }
 
 @end

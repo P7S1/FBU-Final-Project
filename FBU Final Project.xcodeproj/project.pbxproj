@@ -29,6 +29,7 @@
 		DF4E31E0269E4C2900745766 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31DF269E4C2900745766 /* CameraViewController.m */; };
 		DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31E5269E4C8A00745766 /* FeedViewController.m */; };
 		DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31E8269E4C9300745766 /* ExploreViewController.m */; };
+		DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31F2269E6D7D00745766 /* ScrollViewHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,8 @@
 		DF4E31E5269E4C8A00745766 /* FeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		DF4E31E7269E4C9300745766 /* ExploreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreViewController.h; sourceTree = "<group>"; };
 		DF4E31E8269E4C9300745766 /* ExploreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreViewController.m; sourceTree = "<group>"; };
+		DF4E31F2269E6D7D00745766 /* ScrollViewHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewHelper.m; sourceTree = "<group>"; };
+		DF4E31F4269E6D8600745766 /* ScrollViewHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewHelper.h; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				DF3A874D269E0878008904BB /* Core */,
+				DF4E31EA269E5E8F00745766 /* Extensions */,
 				DF3A8749269E0836008904BB /* Model */,
 				DF3A874C269E0871008904BB /* View */,
 				DF3A8747269E080F008904BB /* ViewControllers */,
@@ -274,6 +278,8 @@
 			children = (
 				DF3A8751269E0B89008904BB /* DesignHelper.h */,
 				DF3A874F269E0B7E008904BB /* DesignHelper.m */,
+				DF4E31F4269E6D8600745766 /* ScrollViewHelper.h */,
+				DF4E31F2269E6D7D00745766 /* ScrollViewHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -303,6 +309,13 @@
 				DF4E31E5269E4C8A00745766 /* FeedViewController.m */,
 			);
 			path = Feed;
+			sourceTree = "<group>";
+		};
+		DF4E31EA269E5E8F00745766 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -560,6 +573,7 @@
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
 				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
+				DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
