@@ -7,6 +7,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "CameraViewController.h"
+#import "CreateListingViewController.h"
 
 @interface CameraViewController () <AVCapturePhotoCaptureDelegate>
 
@@ -28,6 +29,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear: animated];
     [self setUpAVSession];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 //MARK:- Customising visual view elements
@@ -104,7 +106,12 @@
     NSData *imageData = photo.fileDataRepresentation;
     if (imageData) {
         UIImage *image = [UIImage imageWithData:imageData];
-
+        
+        CreateListingViewController *vc = [[CreateListingViewController alloc]init];
+        vc.image = image;
+        
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 
