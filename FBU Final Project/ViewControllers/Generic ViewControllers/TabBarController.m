@@ -14,10 +14,29 @@
 @interface TabBarController () <UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIScrollView* scrollView;
+@property (nonatomic, strong) UIView* buttonsContainerView;
+
+@property (nonatomic) CGFloat const buttonContainerHeight;
+@property (nonatomic) CGFloat const distanceFromBottom;
+
+@property (nonatomic, strong) UIColor* const leftPanelColor;
+@property (nonatomic, strong) UIColor* const rightPanelColor;
 
 @end
 
 @implementation TabBarController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.buttonContainerHeight = 80;
+        self.distanceFromBottom = -30;
+        self.leftPanelColor = UIColor.blueColor;
+        self.rightPanelColor = UIColor.redColor;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +64,14 @@
     ]];
     
     self.scrollView.delegate = self;
+}
+
+- (void) setUpButtonContainerView{
+    self.buttonsContainerView = [[UIView alloc]init];
+    [self.view insertSubview:self.buttonsContainerView aboveSubview:self.scrollView];
+    
+    self.buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false;
+    
 }
 
 @end
