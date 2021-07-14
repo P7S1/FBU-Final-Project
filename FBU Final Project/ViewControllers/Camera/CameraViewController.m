@@ -8,7 +8,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CameraViewController.h"
 
-@interface CameraViewController ()
+@interface CameraViewController () <AVCapturePhotoCaptureDelegate>
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
@@ -32,7 +32,8 @@
 
 //MARK:- Customising visual view elements
 - (void) captureButtonPressed{
-    
+    AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
+    [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
 }
 
 -(void) setUpCamera{
@@ -94,6 +95,16 @@
             });
             
         });
+    }
+}
+
+//MARK:- AVCapturePhotoCaptureDelegate
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
+    
+    NSData *imageData = photo.fileDataRepresentation;
+    if (imageData) {
+        UIImage *image = [UIImage imageWithData:imageData];
+
     }
 }
 
