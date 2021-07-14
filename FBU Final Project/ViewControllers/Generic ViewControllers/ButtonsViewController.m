@@ -74,10 +74,13 @@
     switch (sender.tag) {
         case left:
             [self.delegate scrollToPosition:left];
+            break;
         case center:
             [self.delegate scrollToPosition:center];
+            break;
         case right:
             [self.delegate scrollToPosition:right];
+            break;
         default:
             break;
     }

@@ -56,8 +56,8 @@
     CGFloat const sideButtonHeight = 42;
     
     UIButton* button = [[UIButton alloc]init];
-    button.layer.borderWidth = 1;
-    button.layer.borderColor = UIColor.blackColor.CGColor;
+    button.layer.borderWidth = 3;
+    button.layer.borderColor = UIColor.whiteColor.CGColor;
     button.layer.cornerRadius = sideButtonHeight/2;
     
     CGFloat buttonHeight;

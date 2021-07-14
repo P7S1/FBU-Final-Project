@@ -107,10 +107,13 @@
     switch (posiiton) {
         case left:
             [self.scrollView setContentOffset:CGPointZero animated:YES];
+            break;
         case right:
             [self.scrollView setContentOffset:CGPointMake(UIScreen.mainScreen.bounds.size.width * 2, 0) animated:YES];
+            break;
         case center:
             [self.scrollView setContentOffset:CGPointMake(UIScreen.mainScreen.bounds.size.width, 0) animated:YES];
+            break;
         default:
             break;
     }
@@ -122,7 +125,7 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    if (self.shouldAnimate) { return; }
+    if (!self.shouldAnimate) { return; }
     CGFloat offset = (scrollView.contentOffset.x / self.view.frame.size.width) - 1;
     [self.buttonsController animateButtonsWithOffset:offset];
 }
