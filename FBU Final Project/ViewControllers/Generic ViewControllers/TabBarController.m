@@ -56,6 +56,16 @@
     [self setUpButtonContainerView];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self animateTabBarItems:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [self animateTabBarItems:YES];
+}
+
 -(void) setUpUI{
     self.feedVc = [[FeedViewController alloc]init];
     self.cameraVc = [[CameraViewController alloc]init];
@@ -100,6 +110,12 @@
     self.buttonsController = [[ButtonsViewController alloc]init];
     self.buttonsController.delegate = self;
     [ViewControllerHelper addChildVcToParentVc:self childVc:self.buttonsController containerView:self.buttonsContainerView];
+}
+
+- (void) animateTabBarItems: (BOOL)hidden{
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.buttonsContainerView setHidden:hidden];
+    }];
 }
 
 //MARK:- Buttons Delegate

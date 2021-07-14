@@ -16,9 +16,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUI];
+    
+    self.navigationItem.title = @"Create A Listing";
 }
 
 - (void) setUpUI{
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
     
 }
 

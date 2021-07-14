@@ -110,7 +110,7 @@
         CreateListingViewController *vc = [[CreateListingViewController alloc]init];
         vc.image = image;
         
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
