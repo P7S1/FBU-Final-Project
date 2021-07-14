@@ -61,7 +61,10 @@
     self.cameraVc = [[CameraViewController alloc]init];
     self.exploreVc = [[ExploreViewController alloc]init];
     
-    NSArray<UIViewController*>* viewControllers = @[self.feedVc, self.cameraVc, self.exploreVc];
+    NSArray<UIViewController*>* viewControllers = @[
+        [[UINavigationController alloc]initWithRootViewController:self.feedVc],
+        [[UINavigationController alloc]initWithRootViewController:self.cameraVc],
+        [[UINavigationController alloc]initWithRootViewController:self.exploreVc]];
     
     self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
     self.scrollView.delegate = self;
