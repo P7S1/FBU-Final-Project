@@ -37,7 +37,7 @@
 {
     self = [super init];
     if (self) {
-        self.buttonContainerHeight = 80;
+        self.buttonContainerHeight = 90;
         self.distanceFromBottom = -30;
         self.leftPanelColor = UIColor.blueColor;
         self.rightPanelColor = UIColor.redColor;

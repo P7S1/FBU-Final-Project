@@ -52,7 +52,7 @@
 
 + (UIButton*) makeUIButtonWithSide: (PanelButtonPosition)side {
     
-    CGFloat const centralButtonHeight = 60;
+    CGFloat const centralButtonHeight = 70;
     CGFloat const sideButtonHeight = 42;
     
     UIButton* button = [[UIButton alloc]init];
@@ -67,10 +67,12 @@
             //Center button
             button.layer.cornerRadius = centralButtonHeight/2;
             buttonHeight = centralButtonHeight;
+            break;
         default:
             //one of the side buttons
             button.layer.cornerRadius = sideButtonHeight/2;
             buttonHeight = sideButtonHeight;
+            break;
     }
     
     button.translatesAutoresizingMaskIntoConstraints = NO;

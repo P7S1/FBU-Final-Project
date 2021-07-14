@@ -90,7 +90,7 @@
     
     CGFloat const sideButtonMargin =  32;
     CGFloat const distanceFromYCenter = 10;
-    CGFloat const centralButtonHeight = 60;
+    CGFloat const centralButtonHeight = 70;
     CGFloat const sideButtonHeight = 42;
     
     CGFloat buttonsSpacing = UIScreen.mainScreen.bounds.size.width / 2 - centralButtonHeight / 2 - sideButtonMargin * 2 - sideButtonHeight / 2;

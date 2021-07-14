@@ -15,13 +15,14 @@
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) UIView *previewView;
 
+@property (nonatomic, strong) UIButton* captureButton;
+
 @end
 
 @implementation CameraViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpView];
+    [self setUpCamera];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -30,7 +31,11 @@
 }
 
 //MARK:- Customising visual view elements
--(void) setUpView{
+- (void) captureButtonPressed{
+    
+}
+
+-(void) setUpCamera{
     self.previewView = [[UIView alloc]init];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
     
