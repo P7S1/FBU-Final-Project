@@ -60,6 +60,10 @@
     button.layer.borderColor = UIColor.whiteColor.CGColor;
     button.layer.cornerRadius = sideButtonHeight/2;
     
+    [button.layer setShadowOffset:CGSizeMake(5, 5)];
+    [button.layer setShadowColor:[[UIColor blackColor] CGColor]];
+    [button.layer setShadowOpacity:0.5];
+    
     CGFloat buttonHeight;
     
     switch (side) {
