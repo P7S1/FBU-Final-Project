@@ -76,19 +76,17 @@
     CGFloat const ringViewDistanceFromEdges = 4;
     
     self.centerButton.backgroundColor = UIColor.whiteColor;
-    UIView* ringView = [[UIView alloc]init];
-    ringView.translatesAutoresizingMaskIntoConstraints = NO;
-    ringView.layer.borderWidth = 2;
-    ringView.layer.borderColor = UIColor.blackColor.CGColor;
-    ringView.layer.cornerRadius = (centralButtonHeight - (ringViewDistanceFromEdges * 2)) / 2;
-    [self.centerButton addSubview:ringView];
     
-    [NSLayoutConstraint activateConstraints:@[
-        [ringView.topAnchor constraintEqualToAnchor:self.centerButton.topAnchor constant:ringViewDistanceFromEdges],
-        [ringView.bottomAnchor constraintEqualToAnchor:self.centerButton.bottomAnchor constant:-ringViewDistanceFromEdges],
-        [ringView.leftAnchor constraintEqualToAnchor:self.centerButton.leftAnchor constant:ringViewDistanceFromEdges],
-        [ringView.rightAnchor constraintEqualToAnchor:self.centerButton.rightAnchor constant:-ringViewDistanceFromEdges]
-    ]];
+    CGSize ringViewSize = CGSizeMake(centralButtonHeight - (ringViewDistanceFromEdges * 2), centralButtonHeight - (ringViewDistanceFromEdges * 2));
+    CGPoint ringViewPoint = CGPointMake(ringViewDistanceFromEdges, ringViewDistanceFromEdges);
+    
+    CALayer *maskLayer = [CAShapeLayer layer];
+    maskLayer.borderColor = UIColor.blackColor.CGColor;
+    maskLayer.borderWidth = 2;
+    maskLayer.cornerRadius = (centralButtonHeight - (ringViewDistanceFromEdges * 2)) / 2;
+    maskLayer.frame = (CGRect){ringViewPoint, ringViewSize};
+
+    [self.centerButton.layer addSublayer:maskLayer];
 }
 
 - (void) changePanel: (UIButton*) sender{
