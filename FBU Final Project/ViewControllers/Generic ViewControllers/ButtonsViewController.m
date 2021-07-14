@@ -97,8 +97,12 @@
             self.currentViewControllerPosition = left;
             break;
         case center:
-            [self.delegate scrollToPosition:center];
-            self.currentViewControllerPosition = center;
+            if (self.currentViewControllerPosition == center){
+                [self.delegate captuerButtonPressed];
+            }else{
+                [self.delegate scrollToPosition:center];
+                self.currentViewControllerPosition = center;
+            }
             break;
         case right:
             [self.delegate scrollToPosition:right];

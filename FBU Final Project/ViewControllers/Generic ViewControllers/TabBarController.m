@@ -17,6 +17,10 @@
 
 @interface TabBarController () <ButtonsDelegate, UIScrollViewDelegate>
 
+@property (nonatomic, strong) FeedViewController* feedVc;
+@property (nonatomic, strong) CameraViewController* cameraVc;
+@property (nonatomic, strong) ExploreViewController* exploreVc;
+
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* buttonsContainerView;
 @property (nonatomic, strong) ButtonsViewController* buttonsController;
@@ -53,11 +57,11 @@
 }
 
 -(void) setUpUI{
-    FeedViewController* feedVc = [[FeedViewController alloc]init];
-    CameraViewController* cameraVc = [[CameraViewController alloc]init];
-    ExploreViewController* exploreVc = [[ExploreViewController alloc]init];
+    self.feedVc = [[FeedViewController alloc]init];
+    self.cameraVc = [[CameraViewController alloc]init];
+    self.exploreVc = [[ExploreViewController alloc]init];
     
-    NSArray<UIViewController*>* viewControllers = @[feedVc, cameraVc, exploreVc];
+    NSArray<UIViewController*>* viewControllers = @[self.feedVc, self.cameraVc, self.exploreVc];
     
     self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
     self.scrollView.delegate = self;
@@ -96,12 +100,15 @@
 }
 
 //MARK:- Buttons Delegate
+- (void)captuerButtonPressed{
+    [self.cameraVc captureButtonPressed];
+}
+
 - (void)backToCamerea {
     
 }
 
 - (void)scrollToPosition:(PanelButtonPosition)posiiton {
-    
     self.shouldAnimate = self.scrollView.contentOffset.x == UIScreen.mainScreen.bounds.size.width || posiiton == center;
     
     switch (posiiton) {
