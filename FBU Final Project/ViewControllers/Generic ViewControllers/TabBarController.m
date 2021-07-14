@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* buttonsContainerView;
+@property (nonatomic, strong) ButtonsViewController* buttonsController;
 
 @property (nonatomic) CGFloat const buttonContainerHeight;
 @property (nonatomic) CGFloat const distanceFromBottom;
@@ -127,5 +128,15 @@
     if (!self.shouldAnimate) { return; }
     CGFloat offset = (scrollView.contentOffset.x / self.view.frame.size.width) - 1;
     [self.buttonsController animateButtonsWithOffset:offset];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (scrollView.contentOffset.x <= 0){
+        self.buttonsController.currentViewControllerPosition = left;
+    }else if (scrollView.contentOffset.x <= UIScreen.mainScreen.bounds.size.width){
+        self.buttonsController.currentViewControllerPosition = center;
+    }else{
+        self.buttonsController.currentViewControllerPosition = right;
+    }
 }
 @end

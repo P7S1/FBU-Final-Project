@@ -26,6 +26,7 @@
         self.leftButton = [ScrollViewHelper makeUIButtonWithSide:left];
         self.rightButton = [ScrollViewHelper makeUIButtonWithSide:right];
         self.centerButton = [ScrollViewHelper makeUIButtonWithSide:center];
+        self.currentViewControllerPosition = center;
     }
     return self;
 }
@@ -93,12 +94,15 @@
     switch (sender.tag) {
         case left:
             [self.delegate scrollToPosition:left];
+            self.currentViewControllerPosition = left;
             break;
         case center:
             [self.delegate scrollToPosition:center];
+            self.currentViewControllerPosition = center;
             break;
         case right:
             [self.delegate scrollToPosition:right];
+            self.currentViewControllerPosition = right;
             break;
         default:
             break;

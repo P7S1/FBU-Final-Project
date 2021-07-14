@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ButtonsViewController : UIViewController
 
 @property (nonatomic, weak) id <ButtonsDelegate> delegate;
+@property (nonatomic) PanelButtonPosition currentViewControllerPosition;
 
 - (void) animateButtonsWithOffset: (CGFloat)offset;
 
