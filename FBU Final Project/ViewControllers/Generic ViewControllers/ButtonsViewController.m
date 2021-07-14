@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpUi];
+    [self configureCenterButton];
 }
 
 - (void) setUpUi{
@@ -67,6 +68,26 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.rightButton.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor constant:distanceFromYCenter],
         [self.rightButton.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor constant:UIScreen.mainScreen.bounds.size.width / 2 - sideButtonMargin]
+    ]];
+}
+
+- (void) configureCenterButton{
+    CGFloat const centralButtonHeight = 70;
+    CGFloat const ringViewDistanceFromEdges = 4;
+    
+    self.centerButton.backgroundColor = UIColor.whiteColor;
+    UIView* ringView = [[UIView alloc]init];
+    ringView.translatesAutoresizingMaskIntoConstraints = NO;
+    ringView.layer.borderWidth = 2;
+    ringView.layer.borderColor = UIColor.blackColor.CGColor;
+    ringView.layer.cornerRadius = (centralButtonHeight - (ringViewDistanceFromEdges * 2)) / 2;
+    [self.centerButton addSubview:ringView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [ringView.topAnchor constraintEqualToAnchor:self.centerButton.topAnchor constant:ringViewDistanceFromEdges],
+        [ringView.bottomAnchor constraintEqualToAnchor:self.centerButton.bottomAnchor constant:-ringViewDistanceFromEdges],
+        [ringView.leftAnchor constraintEqualToAnchor:self.centerButton.leftAnchor constant:ringViewDistanceFromEdges],
+        [ringView.rightAnchor constraintEqualToAnchor:self.centerButton.rightAnchor constant:-ringViewDistanceFromEdges]
     ]];
 }
 

@@ -26,7 +26,6 @@
 @property (nonatomic, strong) UIColor* const leftPanelColor;
 @property (nonatomic, strong) UIColor* const rightPanelColor;
 
-@property (nonatomic, strong) ButtonsViewController* buttonsController;
 @property (nonatomic) BOOL shouldAnimate;
 
 @end
