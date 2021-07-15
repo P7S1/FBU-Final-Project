@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FirebaseStorageHelper : NSObject
 
-typedef void(^StorageCompletionBlock)(NSError * _Nullable url, NSError * _Nullable error);
-+ (void) saveImageAtStorageReferenceString: (NSString*)referenceString image: (UIImage*)image;
+typedef void(^StorageCompletionBlock)(NSURL * _Nullable url, NSError * _Nullable error);
++ (void) saveImageAtStorageReferenceString: (NSString*)referenceString image: (UIImage*)image completionHandler: (StorageCompletionBlock)completion;
 
 @end
 

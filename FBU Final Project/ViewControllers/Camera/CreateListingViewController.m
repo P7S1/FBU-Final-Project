@@ -11,6 +11,7 @@
 #import "ListingImageViewTableViewCell.h"
 #import "XLForm/XLForm.h"
 #import "ItemListing.h"
+#import "FirebaseStorageHelper.h"
 
 @interface CreateListingViewController ()
 
@@ -42,12 +43,21 @@
     ItemListing * const item = [[ItemListing alloc]initWithDict:dict];
     
     [SVProgressHUD show];
-    [item saveInBackgroundAtDefaultDirectoryWithCompletion:^(NSError * _Nullable error) {
-        [SVProgressHUD dismiss];
-        if (error){
-            NSLog(@"Error saving listing object %@", error.localizedDescription);
+    
+    [FirebaseStorageHelper saveImageAtStorageReferenceString:[[@"listings/" stringByAppendingString:item.uid] stringByAppendingString:@".jpg"] image:self.listingImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
+        if (error == nil){
+            [item saveInBackgroundAtDefaultDirectoryWithCompletion:^(NSError * _Nullable error) {
+                if (error){
+                    [SVProgressHUD showErrorWithStatus:@"Error"];
+                    NSLog(@"Error saving listing object: %@", error.localizedDescription);
+                }else{
+                    [SVProgressHUD dismiss];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                }
+            }];
         }else{
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [SVProgressHUD showErrorWithStatus:@"Error"];
+            NSLog(@"Error saving listing image to Firebase: %@", [error localizedDescription]);
         }
     }];
 }
