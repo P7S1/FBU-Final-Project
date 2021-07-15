@@ -11,6 +11,7 @@
 #import "TabBarController.h"
 #import "User.h"
 #import "DesignHelper.h"
+#import "BasicButton.h"
 
 @interface UsernameViewController ()
 
@@ -42,7 +43,7 @@
         [self.textField.heightAnchor constraintEqualToConstant:50]
     ]];
     
-    UIButton *finishButton = [[UIButton alloc]init];
+    BasicButton *finishButton = [[BasicButton alloc]init];
     finishButton.translatesAutoresizingMaskIntoConstraints = NO;
     finishButton.backgroundColor = [DesignHelper buttonBackgroundColor];
     [finishButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];
@@ -72,6 +73,5 @@
         [self presentViewController:tabBarController animated:YES completion:nil];
     }];
 }
-
 
 @end

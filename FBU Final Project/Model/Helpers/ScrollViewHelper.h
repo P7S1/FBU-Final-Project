@@ -6,6 +6,7 @@
 //
 
 #import "PanelButtonPosition.h"
+#import "BasicButton.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -13,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIScrollView*)makeScrollView;
 + (UIScrollView*)makeHorizontalScrollViewWithViewControllers: (NSArray<UIViewController*>*) horizontalControllers withParentViewController: (UIViewController*)parent;
-+ (UIButton*)makeUIButtonWithSide: (PanelButtonPosition)side;
++ (BasicButton*)makeUIButtonWithSide: (PanelButtonPosition)side;
 
 @end
 

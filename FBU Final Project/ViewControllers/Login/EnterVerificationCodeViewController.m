@@ -12,6 +12,7 @@
 #import "TabBarController.h"
 #import "User.h"
 #import "DesignHelper.h"
+#import "BasicButton.h"
 
 @interface EnterVerificationCodeViewController ()
 
@@ -45,7 +46,7 @@
         [self.textField.heightAnchor constraintEqualToConstant:50]
     ]];
     
-    UIButton *continueButton = [[UIButton alloc]init];
+    BasicButton *continueButton = [[BasicButton alloc]init];
     continueButton.translatesAutoresizingMaskIntoConstraints = NO;
     continueButton.backgroundColor = [DesignHelper buttonBackgroundColor];
     [continueButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];

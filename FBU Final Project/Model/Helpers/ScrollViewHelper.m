@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "ScrollViewHelper.h"
 #import "PanelButtonPosition.h"
+#import "BasicButton.h"
 
 @implementation ScrollViewHelper
 
@@ -50,12 +51,12 @@
     return scrollView;
 }
 
-+ (UIButton*)makeUIButtonWithSide: (PanelButtonPosition)side {
++ (BasicButton*)makeUIButtonWithSide: (PanelButtonPosition)side {
     
     CGFloat const centralButtonHeight = 70;
     CGFloat const sideButtonHeight = 42;
     
-    UIButton* button = [[UIButton alloc]init];
+    BasicButton* button = [[BasicButton alloc]init];
     button.layer.borderWidth = 3;
     button.layer.borderColor = UIColor.whiteColor.CGColor;
     button.layer.cornerRadius = sideButtonHeight/2;

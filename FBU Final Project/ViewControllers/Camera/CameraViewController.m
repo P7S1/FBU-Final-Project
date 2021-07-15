@@ -8,6 +8,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CameraViewController.h"
 #import "CreateListingViewController.h"
+#import "BasicButton.h"
 
 @interface CameraViewController () <AVCapturePhotoCaptureDelegate>
 
@@ -16,7 +17,7 @@
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) UIView *previewView;
 
-@property (nonatomic, strong) UIButton* captureButton;
+@property (nonatomic, strong) BasicButton* captureButton;
 
 @end
 

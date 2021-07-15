@@ -8,6 +8,7 @@
 #import "WelcomeViewController.h"
 #import "EnterPhoneNumberViewController.h"
 #import "DesignHelper.h"
+#import "BasicButton.h"
 
 @interface WelcomeViewController ()
 
@@ -23,7 +24,7 @@
 - (void)setUpUI{
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     
-    UIButton* continueWithPhoneNumberButton = [[UIButton alloc]init];
+    BasicButton* continueWithPhoneNumberButton = [[BasicButton alloc]init];
     continueWithPhoneNumberButton.translatesAutoresizingMaskIntoConstraints = NO;
     [continueWithPhoneNumberButton setTitle:@"Continue With Phone" forState:UIControlStateNormal];
     continueWithPhoneNumberButton.backgroundColor = [DesignHelper buttonBackgroundColor];

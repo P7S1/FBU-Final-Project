@@ -9,6 +9,7 @@
 #import "EnterPhoneNumberViewController.h"
 #import "EnterVerificationCodeViewController.h"
 #import "DesignHelper.h"
+#import "BasicButton.h"
 
 @interface EnterPhoneNumberViewController ()
 
@@ -42,7 +43,7 @@
         [self.textField.heightAnchor constraintEqualToConstant:50]
     ]];
     
-    UIButton *continueButton = [[UIButton alloc]init];
+    BasicButton *continueButton = [[BasicButton alloc]init];
     continueButton.translatesAutoresizingMaskIntoConstraints = NO;
     continueButton.backgroundColor = [DesignHelper buttonBackgroundColor];
     [continueButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];

@@ -11,9 +11,9 @@
 
 @interface ButtonsViewController ()
 
-@property (nonatomic, strong) UIButton* leftButton;
-@property (nonatomic, strong) UIButton* centerButton;
-@property (nonatomic, strong) UIButton* rightButton;
+@property (nonatomic, strong) BasicButton* leftButton;
+@property (nonatomic, strong) BasicButton* centerButton;
+@property (nonatomic, strong) BasicButton* rightButton;
 
 @end
 
@@ -89,7 +89,7 @@
     [self.centerButton.layer addSublayer:maskLayer];
 }
 
-- (void)changePanel: (UIButton*) sender{
+- (void)changePanel: (BasicButton*) sender{
     switch (sender.tag) {
         case left:
             [self.delegate scrollToPosition:left];
