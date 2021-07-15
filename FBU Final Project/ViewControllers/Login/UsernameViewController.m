@@ -20,13 +20,13 @@
 
 @implementation UsernameViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpUI];
     self.navigationItem.title = @"Create a username";
 }
 
-- (void) setUpUI{
+- (void)setUpUI{
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     
     self.textField = [[UITextField alloc]init];
@@ -59,7 +59,7 @@
     ]];
 }
 
-- (void) finishButtonPressed{
+- (void)finishButtonPressed{
     if (self.textField.text == nil) { return; }
     
     User* user = [[User alloc]init];

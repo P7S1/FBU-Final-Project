@@ -24,6 +24,9 @@
     
     CGFloat const width = UIScreen.mainScreen.bounds.size.width - 32;
     CGSize const imageViewSize = CGSizeMake(width, width * (4/3));
+    CGPoint const imageViewPoint = CGPointMake(UIScreen.mainScreen.bounds.size.width/2 - (imageViewSize.width / 2), UIScreen.mainScreen.bounds.size.height/2 - (imageViewSize.height / 2));
+    
+    self.cellImageView.frame = (CGRect){imageViewPoint, imageViewSize};
 }
 
 - (void)update{

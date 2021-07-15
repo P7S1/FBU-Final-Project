@@ -66,10 +66,12 @@
 
 - (void)tabBarDidAppear{
     [self animateTabBarItems:NO];
+    [self.scrollView setScrollEnabled:YES];
 }
 
 - (void)tabBarWillDisappear{
     [self animateTabBarItems:YES];
+    [self.scrollView setScrollEnabled:NO];
 }
 
 - (void)setUpUI{

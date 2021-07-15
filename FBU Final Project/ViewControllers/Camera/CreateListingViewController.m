@@ -18,6 +18,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self initializeForm];
+    self.navigationItem.title = @"Create A Listing";
     
 }
 
