@@ -17,6 +17,8 @@
 
 - (instancetype)init{
     self = [super init];
+    FIRDocumentReference* dummyDoc = [[FIRFirestore firestore] documentWithPath:@"dummy"];
+    self.uid = dummyDoc.documentID;
     return self;
 }
 

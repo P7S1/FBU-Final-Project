@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ItemListing: FirestoreObject
+@property (nonatomic, strong) NSString* creatorUid;
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* description;

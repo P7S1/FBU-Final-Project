@@ -27,6 +27,9 @@
         self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:welcomeVc];;
     }
     
+    //Doing this so SVProgresHUD doesn't crash
+    UIApplication.sharedApplication.delegate.self.window = self.window;
+    
     [self.window makeKeyAndVisible];
 }
 

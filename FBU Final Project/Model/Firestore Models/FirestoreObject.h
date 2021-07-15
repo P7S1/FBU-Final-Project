@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FirestoreObject : JSONModel
 
+@property (nonatomic, strong) NSString* uid;
+
 - (instancetype)initWithDict:(NSDictionary *)dictionary;
 - (NSString *)getDefaultFirestoreDirectory;
 

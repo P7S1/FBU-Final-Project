@@ -6,6 +6,7 @@
 //
 
 #import <FirebaseFirestore/FirebaseFirestore.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #import "CreateListingViewController.h"
 #import "ListingImageViewTableViewCell.h"
 #import "XLForm/XLForm.h"
@@ -39,9 +40,9 @@
     [dict removeObjectForKey:@"endsInNSDate"];
     
     ItemListing * const item = [[ItemListing alloc]initWithDict:dict];
-    
-    
-    
+    if (item){
+        
+    }
 }
 
 - (void)initializeForm{
