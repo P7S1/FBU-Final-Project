@@ -91,7 +91,7 @@
                     NSLog(@"getting document error");
                     NSLog(@"%@", [error localizedDescription]);
                 }else if (snapshot.exists){
-                    User* user = [[User alloc]initWithDictionary:snapshot.data];
+                    User* user = [[User alloc]initWithDict:snapshot.data];
                     [User setSharedInstance:user];
                     
                     TabBarController* tabBarController = [[TabBarController alloc]init];

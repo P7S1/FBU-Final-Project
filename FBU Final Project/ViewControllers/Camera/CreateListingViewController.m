@@ -5,9 +5,11 @@
 //  Created by Keng Fontem on 7/14/21.
 //
 
+#import <FirebaseFirestore/FirebaseFirestore.h>
 #import "CreateListingViewController.h"
 #import "ListingImageViewTableViewCell.h"
 #import "XLForm/XLForm.h"
+#import "ItemListing.h"
 
 @interface CreateListingViewController ()
 
@@ -18,6 +20,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self initializeForm];
+    [self createPostButton];
     self.navigationItem.title = @"Create A Listing";
 }
 
@@ -27,6 +30,17 @@
 }
 
 - (void)createButtonPressed{
+    NSMutableDictionary *const dict = [[NSMutableDictionary alloc]initWithDictionary:self.formValues];;
+    
+    NSDate *const endsInNSDate = [dict valueForKey:@"endsInNSDate"];
+    FIRTimestamp *const endsInTimestamp = [FIRTimestamp timestampWithDate:endsInNSDate];
+    
+    [dict setValue:endsInTimestamp forKey:@"endsInTimestamp"];
+    [dict removeObjectForKey:@"endsInNSDate"];
+    
+    ItemListing * const item = [[ItemListing alloc]initWithDict:dict];
+    
+    
     
 }
 

@@ -10,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FirestoreObject : JSONModel
 
-- (instancetype)initWithDictionary: (NSDictionary *)dictionary;
+- (instancetype)initWithDict:(NSDictionary *)dictionary;
 - (NSString *)getDefaultFirestoreDirectory;
 
 

@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) CGFloat price;
 
 @property (nonatomic) NSInteger quantity;
-@property (nonatomic) FIRTimestamp* endsInDate;
+@property (nonatomic) FIRTimestamp* endsInTimestamp;
+@property (nonatomic, strong) NSString* location;
 
 @end
 

@@ -24,7 +24,7 @@
     return @"unknown";
 }
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithDict:(NSDictionary *)dictionary
 {
     self = [super init];
     if (self) {
