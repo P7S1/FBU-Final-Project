@@ -24,7 +24,8 @@
 }
 
 - (NSString *)getDefaultFirestoreDirectory{
-    return @"unknown";
+    [NSException raise:@"Firestore Directiory Method not implemetned" format:@"the 'getDefaultFirestoreDirectory' method is not implemented"];
+    return @"";
 }
 
 - (instancetype)initWithDict:(NSDictionary *)dictionary{
