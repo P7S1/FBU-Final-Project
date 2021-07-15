@@ -40,9 +40,16 @@
     [dict removeObjectForKey:@"endsInNSDate"];
     
     ItemListing * const item = [[ItemListing alloc]initWithDict:dict];
-    if (item){
-        
-    }
+    
+    [SVProgressHUD show];
+    [item saveInBackgroundAtDefaultDirectoryWithCompletion:^(NSError * _Nullable error) {
+        [SVProgressHUD dismiss];
+        if (error){
+            NSLog(@"Error saving listing object %@", error.localizedDescription);
+        }else{
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }];
 }
 
 - (void)initializeForm{

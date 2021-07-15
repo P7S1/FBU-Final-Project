@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion;
 - (void)saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion;
 
++ (NSDictionary*)dictionaryWithPropertiesOfObject:(id)obj;
+
 @end
 
 NS_ASSUME_NONNULL_END

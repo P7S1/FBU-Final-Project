@@ -10,4 +10,8 @@
 
 @implementation ItemListing
 
+- (NSString *)getDefaultFirestoreDirectory{
+    return [@"listings/" stringByAppendingString:self.uid];
+}
+
 @end
