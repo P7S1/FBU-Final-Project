@@ -22,7 +22,7 @@
 
 @implementation EnterVerificationCodeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpUI];
     self.db = [FIRFirestore firestore];

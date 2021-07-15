@@ -12,7 +12,7 @@
 
 static User * _Nullable sharedInstance = nil;
 
-+ (User *)sharedInstance {
++ (User *)sharedInstance{
     if (sharedInstance == nil) {
         sharedInstance = [[User alloc] init];
     }
@@ -23,7 +23,7 @@ static User * _Nullable sharedInstance = nil;
     return [@"users/" stringByAppendingString:self.uid];
 }
 
-+ (void)resetSharedInstance {
++ (void)resetSharedInstance{
     sharedInstance = nil;
 }
 

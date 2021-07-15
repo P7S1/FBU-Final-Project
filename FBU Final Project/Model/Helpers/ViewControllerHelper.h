@@ -9,7 +9,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ViewControllerHelper : NSObject
 
-+ (void) addChildVcToParentVc: (UIViewController*)parent childVc: (UIViewController*)childVc containerView: (UIView*)containerView;
++ (void)addChildVcToParentVc: (UIViewController*)parent childVc: (UIViewController*)childVc containerView: (UIView*)containerView;
 
 @end
 

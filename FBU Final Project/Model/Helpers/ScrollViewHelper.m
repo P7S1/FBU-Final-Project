@@ -50,7 +50,7 @@
     return scrollView;
 }
 
-+ (UIButton*) makeUIButtonWithSide: (PanelButtonPosition)side {
++ (UIButton*)makeUIButtonWithSide: (PanelButtonPosition)side {
     
     CGFloat const centralButtonHeight = 70;
     CGFloat const sideButtonHeight = 42;

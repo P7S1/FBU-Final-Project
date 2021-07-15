@@ -21,7 +21,7 @@
     
 }
 
-- (void)initializeForm {
+- (void)initializeForm{
     self.tableView.rowHeight = 44;
     [[XLFormViewController cellClassesForRowDescriptorTypes] setObject:[ListingImageViewTableViewCell class] forKey:@"imageView"];
     

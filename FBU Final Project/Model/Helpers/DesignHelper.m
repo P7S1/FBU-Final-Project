@@ -10,11 +10,11 @@
 
 @implementation DesignHelper
 
-+ (UIColor*) buttonBackgroundColor{
++ (UIColor*)buttonBackgroundColor{
     return UIColor.systemBlueColor;
 }
 
-+ (UIColor*) buttonTitleLabelColor{
++ (UIColor*)buttonTitleLabelColor{
     return UIColor.whiteColor;
 }
 

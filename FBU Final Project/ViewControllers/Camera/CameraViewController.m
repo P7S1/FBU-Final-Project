@@ -35,7 +35,7 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.captureSession stopRunning];
 }
@@ -88,7 +88,7 @@
     }
 }
 
-- (void)setupLivePreview {
+- (void)setupLivePreview{
     self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
     if (self.videoPreviewLayer) {
         
@@ -109,7 +109,7 @@
 }
 
 //MARK:- AVCapturePhotoCaptureDelegate
-- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error {
+- (void)captureOutput:(AVCapturePhotoOutput *)output didFinishProcessingPhoto:(AVCapturePhoto *)photo error:(nullable NSError *)error{
     
     NSData *imageData = photo.fileDataRepresentation;
     if (imageData) {

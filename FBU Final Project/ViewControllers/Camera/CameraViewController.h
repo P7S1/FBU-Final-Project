@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CameraViewController : RootViewController
 
-- (void) captureButtonPressed;
+- (void)captureButtonPressed;
 
 @end
 

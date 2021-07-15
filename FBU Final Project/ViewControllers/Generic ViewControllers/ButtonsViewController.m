@@ -19,8 +19,7 @@
 
 @implementation ButtonsViewController
 
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     if (self) {
         self.leftButton = [ScrollViewHelper makeUIButtonWithSide:left];
@@ -37,7 +36,7 @@
     [self configureCenterButton];
 }
 
-- (void) setUpUi{
+- (void)setUpUi{
     CGFloat const sideButtonMargin =  32;
     CGFloat const distanceFromYCenter = 10;
     
@@ -72,7 +71,7 @@
     ]];
 }
 
-- (void) configureCenterButton{
+- (void)configureCenterButton{
     CGFloat const centralButtonHeight = 70;
     CGFloat const ringViewDistanceFromEdges = 4;
     
@@ -90,7 +89,7 @@
     [self.centerButton.layer addSublayer:maskLayer];
 }
 
-- (void) changePanel: (UIButton*) sender{
+- (void)changePanel: (UIButton*) sender{
     switch (sender.tag) {
         case left:
             [self.delegate scrollToPosition:left];
@@ -113,7 +112,7 @@
     }
 }
 
-- (void) animateButtonsWithOffset: (CGFloat)offset{
+- (void)animateButtonsWithOffset: (CGFloat)offset{
     
     CGFloat const sideButtonMargin =  32;
     CGFloat const distanceFromYCenter = 10;

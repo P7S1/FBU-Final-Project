@@ -11,9 +11,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol ButtonsDelegate <NSObject>
 
-- (void) scrollToPosition: (PanelButtonPosition)posiiton;
-- (void) backToCamerea;
-- (void) captuerButtonPressed;
+- (void)scrollToPosition: (PanelButtonPosition)posiiton;
+- (void)backToCamerea;
+- (void)captuerButtonPressed;
 
 @end
 

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIScrollView*)makeScrollView;
 + (UIScrollView*)makeHorizontalScrollViewWithViewControllers: (NSArray<UIViewController*>*) horizontalControllers withParentViewController: (UIViewController*)parent;
-+ (UIButton*) makeUIButtonWithSide: (PanelButtonPosition)side;
++ (UIButton*)makeUIButtonWithSide: (PanelButtonPosition)side;
 
 @end
 

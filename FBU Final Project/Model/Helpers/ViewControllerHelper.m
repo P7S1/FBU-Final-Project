@@ -10,7 +10,7 @@
 
 @implementation ViewControllerHelper
 
-+ (void) addChildVcToParentVc: (UIViewController*)parent childVc: (UIViewController*)childVc containerView: (UIView*)containerView{
++ (void)addChildVcToParentVc: (UIViewController*)parent childVc: (UIViewController*)childVc containerView: (UIView*)containerView{
     if (childVc.view == nil) { return; }
     [parent addChildViewController:childVc];
     [containerView addSubview:childVc.view];

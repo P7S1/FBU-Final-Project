@@ -22,8 +22,8 @@
     self.cellImageView.image = [self.rowDescriptor.cellConfigAtConfigure valueForKey:@"imageView.image"];
     [self.contentView addSubview:self.cellImageView];
     
-    CGFloat width = UIScreen.mainScreen.bounds.size.width - 32;
-    CGSize imageViewSize = CGSizeMake(width, width * (4/3));
+    CGFloat const width = UIScreen.mainScreen.bounds.size.width - 32;
+    CGSize const imageViewSize = CGSizeMake(width, width * (4/3));
 }
 
 - (void)update{

@@ -18,7 +18,7 @@
 
 @implementation EnterPhoneNumberViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpUI];
     self.navigationItem.title = @"Enter Phone Number";

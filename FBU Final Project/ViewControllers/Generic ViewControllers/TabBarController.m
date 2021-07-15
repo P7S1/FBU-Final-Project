@@ -37,8 +37,7 @@
 
 @implementation TabBarController
 
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     if (self) {
         self.buttonContainerHeight = 90;
@@ -59,21 +58,21 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpUI];
     [self setUpButtonContainerView];
 }
 
-- (void) tabBarDidAppear{
+- (void)tabBarDidAppear{
     [self animateTabBarItems:NO];
 }
 
-- (void) tabBarWillDisappear{
+- (void)tabBarWillDisappear{
     [self animateTabBarItems:YES];
 }
 
--(void) setUpUI{
+- (void)setUpUI{
     self.feedVc = [[FeedViewController alloc]init];
     self.cameraVc = [[CameraViewController alloc]init];
     self.exploreVc = [[ExploreViewController alloc]init];
@@ -131,11 +130,11 @@
     [self.cameraVc captureButtonPressed];
 }
 
-- (void)backToCamerea {
+- (void)backToCamerea{
     
 }
 
-- (void)scrollToPosition:(PanelButtonPosition)posiiton {
+- (void)scrollToPosition: (PanelButtonPosition)posiiton {
     self.shouldAnimate = self.scrollView.contentOffset.x == UIScreen.mainScreen.bounds.size.width || posiiton == center;
     
     switch (posiiton) {

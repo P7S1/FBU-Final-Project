@@ -11,10 +11,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface User : FirestoreObject
 
 //User Singleton
-+ (User*) sharedInstance;
++ (User*)sharedInstance;
 
-+ (void) resetSharedInstance;
-+ (void) setSharedInstance: (User*) user;
++ (void)resetSharedInstance;
++ (void)setSharedInstance: (User*) user;
 
 @property (nonatomic, strong) NSString* username;
 @property (nonatomic, strong) NSString* uid;

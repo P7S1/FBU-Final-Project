@@ -9,8 +9,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DesignHelper : NSObject
 
-+ (UIColor*) buttonBackgroundColor;
-+ (UIColor*) buttonTitleLabelColor;
++ (UIColor*)buttonBackgroundColor;
++ (UIColor*)buttonTitleLabelColor;
 
 @end
 

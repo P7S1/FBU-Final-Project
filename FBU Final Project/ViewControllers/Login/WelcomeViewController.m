@@ -15,7 +15,7 @@
 
 @implementation WelcomeViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpUI];
 }
@@ -41,7 +41,7 @@
     [continueWithPhoneNumberButton addTarget:self action:@selector(continueWithPhoneNumberButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
--(void)continueWithPhoneNumberButtonPressed{
+- (void)continueWithPhoneNumberButtonPressed{
     EnterPhoneNumberViewController *vc = [[EnterPhoneNumberViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }

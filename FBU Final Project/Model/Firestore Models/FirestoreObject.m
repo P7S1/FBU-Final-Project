@@ -15,8 +15,7 @@
 
 @implementation FirestoreObject
 
-- (instancetype)init
-{
+- (instancetype)init{
     self = [super init];
     return self;
 }
@@ -35,13 +34,13 @@
     return self;
 }
 
-- (void) saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
+- (void)saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     FIRDocumentReference* docRef = [[FIRFirestore firestore] documentWithPath:path];
     [docRef setData:self.toDictionary merge:YES completion:completion];
     
 }
 
-- (void) saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion{
+- (void)saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     [self saveInBackgroundAtDirectory:[self getDefaultFirestoreDirectory] withCompletion:completion];
 }
 
