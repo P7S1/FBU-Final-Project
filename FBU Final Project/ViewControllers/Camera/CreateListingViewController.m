@@ -6,6 +6,7 @@
 //
 
 #import "CreateListingViewController.h"
+#import "ListingImageViewTableViewCell.h"
 #import "XLForm/XLForm.h"
 
 @interface CreateListingViewController ()
@@ -14,23 +15,16 @@
 
 @implementation CreateListingViewController
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self){
-        [self initializeForm];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    self = [super initWithCoder:aDecoder];
-    if (self){
-        [self initializeForm];
-    }
-    return self;
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    [self initializeForm];
+    
 }
 
 - (void)initializeForm {
+    self.tableView.rowHeight = 44;
+    [[XLFormViewController cellClassesForRowDescriptorTypes] setObject:[ListingImageViewTableViewCell class] forKey:@"imageView"];
+    
     XLFormDescriptor * form;
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -38,6 +32,15 @@
     form = [XLFormDescriptor formDescriptorWithTitle:@"Create A Listing"];
 
     // First section
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    
+    // ImageView
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"imageView" rowType:@"imageView"];
+    [row.cellConfigAtConfigure setObject:self.listingImage forKey:@"imageView.image"];
+    [section addFormRow:row];
+    
+    // Second section
     section = [XLFormSectionDescriptor formSection];
     section.title = @"Tell us more about your item";
     [form addFormSection:section];
@@ -53,12 +56,12 @@
     [section addFormRow:row];
     
     
-    //Price
+    // Price
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"price" rowType:XLFormRowDescriptorTypeDecimal title:@"Price"];
     [row.cellConfigAtConfigure setObject:@"$2.99" forKey:@"textField.placeholder"];
     [section addFormRow:row];
 
-    // Second Section
+    // Third Section
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
@@ -66,6 +69,11 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"quantity" rowType:XLFormRowDescriptorTypeInteger title:@"Quantity"];
     [row.cellConfigAtConfigure setObject:@"0" forKey:@"textField.placeholder"];
     [section addFormRow:row];
+    
+    // Location
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"location" rowType:XLFormRowDescriptorTypeText title:@"Location"];
+      [row.cellConfigAtConfigure setObject:@"Item Location" forKey:@"textField.placeholder"];
+      [section addFormRow:row];
 
     // Starts
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ending" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];

@@ -116,7 +116,7 @@
         UIImage *image = [UIImage imageWithData:imageData];
         
         CreateListingViewController *vc = [[CreateListingViewController alloc]init];
-        vc.image = image;
+        vc.listingImage = image;
         
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [self.navigationController pushViewController:vc animated:YES];

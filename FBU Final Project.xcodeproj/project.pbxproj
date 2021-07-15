@@ -34,6 +34,7 @@
 		DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31FE269E944A00745766 /* ViewControllerHelper.m */; };
 		DF4E3205269F8CCB00745766 /* CreateListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3204269F8CCB00745766 /* CreateListingViewController.m */; };
 		DF4E3208269FD1F800745766 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3207269FD1F800745766 /* RootViewController.m */; };
+		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,8 @@
 		DF4E3204269F8CCB00745766 /* CreateListingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateListingViewController.m; sourceTree = "<group>"; };
 		DF4E3206269FD1F800745766 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DF4E3207269FD1F800745766 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
+		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +279,8 @@
 		DF3A874C269E0871008904BB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */,
+				DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -622,6 +627,7 @@
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
 				DF4E31E0269E4C2900745766 /* CameraViewController.m in Sources */,
+				DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */,
 				DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */,
 				DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */,
 			);
