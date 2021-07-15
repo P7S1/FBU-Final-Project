@@ -21,6 +21,7 @@
 @end
 
 @implementation CameraViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpCamera];
