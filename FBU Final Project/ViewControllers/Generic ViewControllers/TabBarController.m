@@ -46,6 +46,15 @@
         self.leftPanelColor = UIColor.blueColor;
         self.rightPanelColor = UIColor.redColor;
         self.shouldAnimate = NO;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(tabBarDidAppear)
+                name:@"tabBarDidAppear"
+                object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                selector:@selector(tabBarDidDisappear)
+                name:@"tabBarDidDisappear"
+                object:nil];
     }
     return self;
 }
@@ -56,14 +65,12 @@
     [self setUpButtonContainerView];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self animateTabBarItems:NO];
+- (void) tabBarDidAppear{
+    
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self animateTabBarItems:YES];
+- (void) tabBarDidDisappear{
+    
 }
 
 -(void) setUpUI{
@@ -74,7 +81,8 @@
     NSArray<UIViewController*>* viewControllers = @[
         [[UINavigationController alloc]initWithRootViewController:self.feedVc],
         [[UINavigationController alloc]initWithRootViewController:self.cameraVc],
-        [[UINavigationController alloc]initWithRootViewController:self.exploreVc]];
+        [[UINavigationController alloc]initWithRootViewController:self.exploreVc]
+    ];
     
     self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
     self.scrollView.delegate = self;
@@ -114,7 +122,7 @@
 
 - (void) animateTabBarItems: (BOOL)hidden{
     [UIView animateWithDuration:0.2 animations:^{
-        [self.buttonsContainerView setHidden:hidden];
+        self.buttonsContainerView.alpha = hidden ? 0 : 1;
     }];
 }
 

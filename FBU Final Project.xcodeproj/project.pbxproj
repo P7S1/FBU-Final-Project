@@ -33,6 +33,7 @@
 		DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31F6269E80A200745766 /* ButtonsViewController.m */; };
 		DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31FE269E944A00745766 /* ViewControllerHelper.m */; };
 		DF4E3205269F8CCB00745766 /* CreateListingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3204269F8CCB00745766 /* CreateListingViewController.m */; };
+		DF4E3208269FD1F800745766 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3207269FD1F800745766 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,8 @@
 		DF4E3200269E945400745766 /* ViewControllerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerHelper.h; sourceTree = "<group>"; };
 		DF4E3203269F8CCB00745766 /* CreateListingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateListingViewController.h; sourceTree = "<group>"; };
 		DF4E3204269F8CCB00745766 /* CreateListingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateListingViewController.m; sourceTree = "<group>"; };
+		DF4E3206269FD1F800745766 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		DF4E3207269FD1F800745766 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,6 +267,8 @@
 				DF3A8745269E000B008904BB /* TabBarController.m */,
 				DF4E31F5269E80A200745766 /* ButtonsViewController.h */,
 				DF4E31F6269E80A200745766 /* ButtonsViewController.m */,
+				DF4E3206269FD1F800745766 /* RootViewController.h */,
+				DF4E3207269FD1F800745766 /* RootViewController.m */,
 			);
 			path = "Generic ViewControllers";
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
+				DF4E3208269FD1F800745766 /* RootViewController.m in Sources */,
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
 				DF2986BD269DE85900EFB770 /* User.m in Sources */,
 				DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */,
