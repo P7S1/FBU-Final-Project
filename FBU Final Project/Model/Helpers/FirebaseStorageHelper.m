@@ -9,7 +9,11 @@
 
 @implementation FirebaseStorageHelper
 
-+ (void)saveImageAtStorageReferenceString:(NSString *)referenceString image:(UIImage *)image{
++ (void)saveImageAtStorageReferenceString: (NSString *)referenceString image: (UIImage*)image{
+    FIRStorageReference * const storageRef = [[FIRStorage storage] reference];
+    FIRStorageReference *imageRef = [storageRef child:referenceString];
+    
+    NSData *data = NSData* data = UIImageJPEGRepresentation(image, 0.6);
     
 }
 
