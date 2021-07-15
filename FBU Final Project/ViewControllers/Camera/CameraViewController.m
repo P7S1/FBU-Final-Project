@@ -29,7 +29,15 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear: animated];
     [self setUpAVSession];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.captureSession stopRunning];
 }
 
 //MARK:- Customising visual view elements
