@@ -52,8 +52,8 @@
                 name:@"tabBarDidAppear"
                 object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self
-                selector:@selector(tabBarDidDisappear)
-                name:@"tabBarDidDisappear"
+                selector:@selector(tabBarWillDisappear)
+                name:@"tabBarWillDisappear"
                 object:nil];
     }
     return self;
@@ -66,11 +66,11 @@
 }
 
 - (void) tabBarDidAppear{
-    
+    [self animateTabBarItems:NO];
 }
 
-- (void) tabBarDidDisappear{
-    
+- (void) tabBarWillDisappear{
+    [self animateTabBarItems:YES];
 }
 
 -(void) setUpUI{
