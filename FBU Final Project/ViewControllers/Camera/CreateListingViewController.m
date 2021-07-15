@@ -19,6 +19,14 @@
     [super viewDidLoad];
     [self initializeForm];
     self.navigationItem.title = @"Create A Listing";
+}
+
+- (void)createPostButton{
+    UIBarButtonItem* const createBarButtonItem = [[UIBarButtonItem alloc]initWithTitle: @"Finish" style: UIBarButtonItemStyleDone target: self action: @selector(createButtonPressed)];
+    self.navigationItem.rightBarButtonItem = createBarButtonItem;
+}
+
+- (void)createButtonPressed{
     
 }
 
@@ -77,7 +85,7 @@
       [section addFormRow:row];
 
     // Starts
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"ending" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"endsInNSDate" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
     row.value = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
     [section addFormRow:row];
 
