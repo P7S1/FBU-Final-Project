@@ -10,6 +10,7 @@
 		46758F6AC973672C3682ED76 /* Pods_FBU_Final_Project_FBU_Final_ProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E4231B415B584643EA7B946 /* Pods_FBU_Final_Project_FBU_Final_ProjectUITests.framework */; };
 		A5977033910398E15DD4F7C0 /* Pods_FBU_Final_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE047636298072029964732 /* Pods_FBU_Final_ProjectTests.framework */; };
 		C56BA5663FC6805F88378168 /* Pods_FBU_Final_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A8394468BAEED0D4F64982 /* Pods_FBU_Final_Project.framework */; };
+		DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA3F26A0B3AF00EE488E /* ItemListing.m */; };
 		DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867C269C9EDF00EFB770 /* AppDelegate.m */; };
 		DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867F269C9EDF00EFB770 /* SceneDelegate.m */; };
 		DF298688269C9EE000EFB770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF298687269C9EE000EFB770 /* Assets.xcassets */; };
@@ -63,6 +64,8 @@
 		7E4231B415B584643EA7B946 /* Pods_FBU_Final_Project_FBU_Final_ProjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBU_Final_Project_FBU_Final_ProjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B866495E2657D696E83E33B1 /* Pods-FBU Final Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final Project.release.xcconfig"; path = "Target Support Files/Pods-FBU Final Project/Pods-FBU Final Project.release.xcconfig"; sourceTree = "<group>"; };
 		BBE047636298072029964732 /* Pods_FBU_Final_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FBU_Final_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF1DEA3F26A0B3AF00EE488E /* ItemListing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemListing.m; sourceTree = "<group>"; };
+		DF1DEA4126A0B3BB00EE488E /* ItemListing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemListing.h; sourceTree = "<group>"; };
 		DF298678269C9EDF00EFB770 /* FBU Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FBU Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF29867B269C9EDF00EFB770 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DF29867C269C9EDF00EFB770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */,
 				DF2986BE269DE86100EFB770 /* User.h */,
 				DF2986BC269DE85900EFB770 /* User.m */,
+				DF1DEA4126A0B3BB00EE488E /* ItemListing.h */,
+				DF1DEA3F26A0B3AF00EE488E /* ItemListing.m */,
 			);
 			path = "Firestore Models";
 			sourceTree = "<group>";
@@ -612,6 +617,7 @@
 			files = (
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
 				DF4E3208269FD1F800745766 /* RootViewController.m in Sources */,
+				DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */,
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
 				DF2986BD269DE85900EFB770 /* User.m in Sources */,
 				DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */,
