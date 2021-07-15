@@ -49,29 +49,27 @@
     [self saveInBackgroundAtDirectory:[self getDefaultFirestoreDirectory] withCompletion:completion];
 }
 
-+ (NSDictionary *)dictionaryWithPropertiesOfObject:(id)obj{
++ (NSDictionary *)dictionaryWithPropertiesOfObject: (id)obj{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
-      unsigned count;
-      objc_property_t *properties = class_copyPropertyList([obj class], &count);
+    unsigned count;
+    objc_property_t *properties = class_copyPropertyList([obj class], &count);
 
-      for (int i = 0; i < count; i++) {
-          NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
-          Class classObject = NSClassFromString([key capitalizedString]);
-          if (classObject) {
+    for (int i = 0; i < count; i++){
+        NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
+        Class classObject = NSClassFromString([key capitalizedString]);
+        if (classObject) {
             id subObj = [self dictionaryWithPropertiesOfObject:[obj valueForKey:key]];
             [dict setObject:subObj forKey:key];
-          }
-          else
-          {
+        }else{
             id value = [obj valueForKey:key];
             if(value) [dict setObject:value forKey:key];
-          }
-       }
+        }
+     }
 
-       free(properties);
+    free(properties);
 
-       return [NSDictionary dictionaryWithDictionary:dict];
+    return [NSDictionary dictionaryWithDictionary:dict];
 }
 
 @end

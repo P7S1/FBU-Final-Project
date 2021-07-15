@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* description;
+@property (nonatomic, strong) NSString* imageUrl;
 @property (nonatomic) CGFloat price;
 
 @property (nonatomic) NSInteger quantity;
