@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipableViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol SwipableViewDelegate;
 
 @interface SwipableCardViewCard : UIView
+
+@property (nonatomic, weak, nullable) id<SwipableViewDelegate> delegate;
 
 @end
 

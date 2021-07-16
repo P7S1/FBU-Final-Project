@@ -15,6 +15,7 @@
 		DF1DEA4926A0E62400EE488E /* FirebaseStorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4826A0E62400EE488E /* FirebaseStorageHelper.m */; };
 		DF1DEA4C26A1135F00EE488E /* SwipeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4B26A1135F00EE488E /* SwipeCollectionViewCell.m */; };
 		DF1DEA5026A1BB8E00EE488E /* SwipableCardViewCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */; };
+		DF1DEA5326A1C32E00EE488E /* SwipableCardViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */; };
 		DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867C269C9EDF00EFB770 /* AppDelegate.m */; };
 		DF298680269C9EDF00EFB770 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867F269C9EDF00EFB770 /* SceneDelegate.m */; };
 		DF298688269C9EE000EFB770 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF298687269C9EE000EFB770 /* Assets.xcassets */; };
@@ -79,6 +80,9 @@
 		DF1DEA4D26A1BB1200EE488E /* SwipeableCardViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeableCardViewDataSource.h; sourceTree = "<group>"; };
 		DF1DEA4E26A1BB8E00EE488E /* SwipableCardViewCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipableCardViewCard.h; sourceTree = "<group>"; };
 		DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipableCardViewCard.m; sourceTree = "<group>"; };
+		DF1DEA5126A1C32E00EE488E /* SwipableCardViewContainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipableCardViewContainer.h; sourceTree = "<group>"; };
+		DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipableCardViewContainer.m; sourceTree = "<group>"; };
+		DF1DEA5426A1C3F800EE488E /* SwipableViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipableViewDelegate.h; sourceTree = "<group>"; };
 		DF298678269C9EDF00EFB770 /* FBU Final Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FBU Final Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF29867B269C9EDF00EFB770 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DF29867C269C9EDF00EFB770 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 				DF1DEA4B26A1135F00EE488E /* SwipeCollectionViewCell.m */,
 				DF1DEA4E26A1BB8E00EE488E /* SwipableCardViewCard.h */,
 				DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */,
+				DF1DEA5126A1C32E00EE488E /* SwipableCardViewContainer.h */,
+				DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 			children = (
 				DF4E31FD269E872B00745766 /* ButtonsDelegate.h */,
 				DF1DEA4D26A1BB1200EE488E /* SwipeableCardViewDataSource.h */,
+				DF1DEA5426A1C3F800EE488E /* SwipableViewDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -662,6 +669,7 @@
 				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF4E3205269F8CCB00745766 /* CreateListingViewController.m in Sources */,
 				DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */,
+				DF1DEA5326A1C32E00EE488E /* SwipableCardViewContainer.m in Sources */,
 				DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,

@@ -8,22 +8,10 @@
 #import "SwipableCardViewCard.h"
 #import "SwipeableCardViewDataSource.h"
 
-@interface SwipableCardViewCard ()<SwipeableCardViewDataSource>
+@interface SwipableCardViewCard ()
 
 @end
 
 @implementation SwipableCardViewCard
-
-- (SwipableCardViewCard*)cardForItemAtIndex:(NSInteger)index {
-    
-}
-
-- (NSInteger)numberOfCards {
-    return 20;
-}
-
-- (UIView *)viewForEmptyCards{
-    return nil;
-}
 
 @end

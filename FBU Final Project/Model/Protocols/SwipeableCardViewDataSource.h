@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class SwipableCardViewCard;
 @protocol SwipeableCardViewDataSource <NSObject>
 
 - (NSInteger)numberOfCards;
-- (SwipableCardViewCard*)cardForItemAtIndex: (NSInteger)index;
+- (SwipableCardViewCard * _Nullable)cardForItemAtIndex: (NSInteger)index;
 - (UIView * _Nullable)viewForEmptyCards;
 
 @end
