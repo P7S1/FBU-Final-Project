@@ -13,7 +13,6 @@
 		DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA3F26A0B3AF00EE488E /* ItemListing.m */; };
 		DF1DEA4626A0DA6E00EE488E /* BasicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4526A0DA6E00EE488E /* BasicButton.m */; };
 		DF1DEA4926A0E62400EE488E /* FirebaseStorageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4826A0E62400EE488E /* FirebaseStorageHelper.m */; };
-		DF1DEA4C26A1135F00EE488E /* SwipeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4B26A1135F00EE488E /* SwipeCollectionViewCell.m */; };
 		DF1DEA5026A1BB8E00EE488E /* SwipableCardViewCard.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */; };
 		DF1DEA5326A1C32E00EE488E /* SwipableCardViewContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */; };
 		DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF29867C269C9EDF00EFB770 /* AppDelegate.m */; };
@@ -42,6 +41,7 @@
 		DF4E3208269FD1F800745766 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E3207269FD1F800745766 /* RootViewController.m */; };
 		DF82E76026A203A900EE9853 /* CGAffineTransformHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E75F26A203A900EE9853 /* CGAffineTransformHelper.m */; };
 		DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E76226A224FA00EE9853 /* NavigationController.m */; };
+		DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77026A2394000EE9853 /* BasicLabel.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +77,6 @@
 		DF1DEA4526A0DA6E00EE488E /* BasicButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicButton.m; sourceTree = "<group>"; };
 		DF1DEA4726A0E62400EE488E /* FirebaseStorageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseStorageHelper.h; sourceTree = "<group>"; };
 		DF1DEA4826A0E62400EE488E /* FirebaseStorageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseStorageHelper.m; sourceTree = "<group>"; };
-		DF1DEA4A26A1135F00EE488E /* SwipeCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeCollectionViewCell.h; sourceTree = "<group>"; };
-		DF1DEA4B26A1135F00EE488E /* SwipeCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipeCollectionViewCell.m; sourceTree = "<group>"; };
 		DF1DEA4D26A1BB1200EE488E /* SwipeableCardViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipeableCardViewDataSource.h; sourceTree = "<group>"; };
 		DF1DEA4E26A1BB8E00EE488E /* SwipableCardViewCard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipableCardViewCard.h; sourceTree = "<group>"; };
 		DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SwipableCardViewCard.m; sourceTree = "<group>"; };
@@ -140,6 +138,8 @@
 		DF82E75F26A203A900EE9853 /* CGAffineTransformHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CGAffineTransformHelper.m; sourceTree = "<group>"; };
 		DF82E76126A224FA00EE9853 /* NavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		DF82E76226A224FA00EE9853 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		DF82E76F26A2394000EE9853 /* BasicLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicLabel.h; sourceTree = "<group>"; };
+		DF82E77026A2394000EE9853 /* BasicLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicLabel.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +193,8 @@
 				DF1DEA4526A0DA6E00EE488E /* BasicButton.m */,
 				DF82E76126A224FA00EE9853 /* NavigationController.h */,
 				DF82E76226A224FA00EE9853 /* NavigationController.m */,
+				DF82E76F26A2394000EE9853 /* BasicLabel.h */,
+				DF82E77026A2394000EE9853 /* BasicLabel.m */,
 			);
 			path = "UIKit Subclasses";
 			sourceTree = "<group>";
@@ -282,7 +284,6 @@
 		DF3A8749269E0836008904BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DF1DEA4226A0DA4900EE488E /* UIKit Subclasses */,
 				DF4E31FC269E871C00745766 /* Protocols */,
 				DF4E31F9269E823700745766 /* Enums */,
 				DF3A874E269E0B65008904BB /* Helpers */,
@@ -320,14 +321,9 @@
 		DF3A874C269E0871008904BB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */,
-				DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */,
-				DF1DEA4A26A1135F00EE488E /* SwipeCollectionViewCell.h */,
-				DF1DEA4B26A1135F00EE488E /* SwipeCollectionViewCell.m */,
-				DF1DEA4E26A1BB8E00EE488E /* SwipableCardViewCard.h */,
-				DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */,
-				DF1DEA5126A1C32E00EE488E /* SwipableCardViewContainer.h */,
-				DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */,
+				DF1DEA4226A0DA4900EE488E /* UIKit Subclasses */,
+				DF82E76826A22F8700EE9853 /* XLForm */,
+				DF82E76726A22F5600EE9853 /* SwipableCard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +411,26 @@
 				DF82E75D26A1DA3F00EE9853 /* SwipableCardViewDelegate.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DF82E76726A22F5600EE9853 /* SwipableCard */ = {
+			isa = PBXGroup;
+			children = (
+				DF1DEA4E26A1BB8E00EE488E /* SwipableCardViewCard.h */,
+				DF1DEA4F26A1BB8E00EE488E /* SwipableCardViewCard.m */,
+				DF1DEA5126A1C32E00EE488E /* SwipableCardViewContainer.h */,
+				DF1DEA5226A1C32E00EE488E /* SwipableCardViewContainer.m */,
+			);
+			path = SwipableCard;
+			sourceTree = "<group>";
+		};
+		DF82E76826A22F8700EE9853 /* XLForm */ = {
+			isa = PBXGroup;
+			children = (
+				DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */,
+				DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */,
+			);
+			path = XLForm;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -669,6 +685,7 @@
 				DF1DEA4926A0E62400EE488E /* FirebaseStorageHelper.m in Sources */,
 				DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */,
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
+				DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */,
 				DF2986BD269DE85900EFB770 /* User.m in Sources */,
 				DF82E76026A203A900EE9853 /* CGAffineTransformHelper.m in Sources */,
 				DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */,
@@ -678,7 +695,6 @@
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
 				DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */,
-				DF1DEA4C26A1135F00EE488E /* SwipeCollectionViewCell.m in Sources */,
 				DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */,
 				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF4E3205269F8CCB00745766 /* CreateListingViewController.m in Sources */,

@@ -6,7 +6,6 @@
 //
 
 #import "FeedViewController.h"
-#import "SwipeCollectionViewCell.h"
 #import "SwipableCardViewContainer.h"
 #import "SwipeableCardViewDataSource.h"
 #import "SwipableCardViewCard.h"
@@ -54,38 +53,11 @@
 
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
     SwipableCardViewCard* card = [self.cardContainerView dequeueReusableCardView];
-    
-    NSInteger const remainder = index % 5;
-    UIColor *color;
-    
-    switch (remainder) {
-        case 0:
-            color = UIColor.systemRedColor;
-            break;
-        case 1:
-            color = UIColor.systemOrangeColor;
-            break;
-        case 2:
-            color = UIColor.systemYellowColor;
-            break;
-        case 3:
-            color = UIColor.systemGreenColor;
-            break;
-        case 4:
-            color = UIColor.systemBlueColor;
-            break;
-        default:
-            color = UIColor.systemPurpleColor;
-            break;
-    }
-    
-    card.backgroundColor = color;
-    
     return card;
 }
 
 - (NSInteger)numberOfCards {
-    return 20;
+    return 10;
 }
 
 - (UIView * _Nullable)viewForEmptyCards {

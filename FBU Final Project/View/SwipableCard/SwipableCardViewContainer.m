@@ -39,15 +39,23 @@
         
         self.remainingCards = 0;
         
-        self.backgroundColor = UIColor.clearColor;
         self.translatesAutoresizingMaskIntoConstraints = NO;
         
         self.reusableCardViews = [[NSArray alloc]init];
         for (int i = 0; i <= self.numberOfVisibleCards; i++){
             self.reusableCardViews = [self.reusableCardViews arrayByAddingObject:[[SwipableCardViewCard alloc]init]];
         }
+        [self setUpUI];
     }
     return self;
+}
+
+- (void)setUpUI{
+    self.backgroundColor = UIColor.clearColor;
+    self.layer.shadowColor = UIColor.lightGrayColor.CGColor;
+    self.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.layer.shadowRadius = 8.0;
+    self.layer.shadowOpacity = 0.6;
 }
 
 - (void)reloadData{
@@ -92,6 +100,18 @@
     cardViewFrame.origin.y += verticalInset;
     
     cardView.frame = cardViewFrame;
+    
+    switch (index) {
+        case 0:
+            cardView.shadowLayer.opacity = 0.0;
+            break;
+        case 1:
+            cardView.shadowLayer.opacity = 0.125;
+            break;
+        default:
+            cardView.shadowLayer.opacity = 0.25;
+            break;
+    }
 }
 
 - (void)removeAllCardViews{

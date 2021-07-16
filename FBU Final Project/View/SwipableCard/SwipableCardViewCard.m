@@ -35,6 +35,10 @@
 @property (nonatomic) CGFloat const cardViewResetAnimationSpringSpeed;
 @property (nonatomic) CGFloat const cardViewResetAnimationDuration;
 
+//Decision Labels
+@property (nonatomic, strong) UILabel* yesDecisionLabel;
+@property (nonatomic, strong) UILabel* noDecisionLabel;
+    
 @end
 
 @implementation SwipableCardViewCard
@@ -56,7 +60,11 @@
         self.cardViewResetAnimationSpringSpeed = 20.0;
         self.cardViewResetAnimationDuration = 0.2;
         
+        self.yesDecisionLabel = [self getDecisionLabelWithColor:UIColor.systemGreenColor withText:@"ADD TO CART"];
+        self.noDecisionLabel = [self getDecisionLabelWithColor:UIColor.redColor withText:@"MAYBE LATER"];
+        
         [self setUpGestureRecognizers];
+        [self setUpUI];
     }
     return self;
 }
@@ -69,8 +77,47 @@
     [self addGestureRecognizer:self.tapGestureRecognizer];
 }
 
+- (void) setUpUI{
+    //UI customization
+    self.clipsToBounds = YES;
+    self.layer.masksToBounds = YES;
+    self.layer.cornerRadius = 20;
+    
+    self.shadowLayer = [[CALayer alloc]init];
+    self.shadowLayer.backgroundColor = UIColor.blackColor.CGColor;
+    self.shadowLayer.opacity = 0.0;
+    [self.layer insertSublayer:self.shadowLayer atIndex:0];
+    
+    self.backgroundColor = UIColor.systemBackgroundColor;
+}
+
+- (UILabel*) getDecisionLabelWithColor:(UIColor*)color withText:(NSString*)text{
+    UILabel* label = [[UILabel alloc]init];
+    label.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
+    label.text = text;
+    label.textColor = color;
+    label.layer.cornerRadius = 10;
+    label.layer.borderColor = color.CGColor;
+    label.layer.borderWidth = 8;
+    
+    [self addSubview:label];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [label.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
+        [label.centerXAnchor constraintEqualToAnchor:self.centerXAnchor]
+    ]];
+    
+    return label;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.shadowLayer.frame = self.layer.bounds;
+}
+
 //MARK:- Pan Gesture Recognizer
-- (void)panGestureRecognized: (UIPanGestureRecognizer*)gestureRecognizer{
+- (void)panGestureRecognized:(UIPanGestureRecognizer*)gestureRecognizer{
     self.panGestureTranslation = [gestureRecognizer translationInView:self];
     switch ([gestureRecognizer state]){
         case UIGestureRecognizerStateBegan:
@@ -88,7 +135,7 @@
     }
 }
 
-- (void)handlePanGestureStateBegan: (UIPanGestureRecognizer*)gestureRecognizer{
+- (void)handlePanGestureStateBegan:(UIPanGestureRecognizer*)gestureRecognizer{
     [self layoutIfNeeded];
     
     self.initialXPosition = [gestureRecognizer locationInView:nil].x;
@@ -100,7 +147,7 @@
     [self.delegate didBeginSwipeOnView:self];
 }
 
-- (void)handlePanGestureStateChanged: (UIPanGestureRecognizer*)gestureRecognizer{
+- (void)handlePanGestureStateChanged:(UIPanGestureRecognizer*)gestureRecognizer{
     CGFloat const rotationStrength = MIN(self.panGestureTranslation.x / self.frame.size.width, self.maximumRotation);
     CGFloat const rotationAngle = self.animationDirectionY * self.rotationAngle * rotationStrength;
     
@@ -110,7 +157,7 @@
     self.layer.transform = transform;
 }
 
-- (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
+- (void)handlePanGestureStateEnded:(UIPanGestureRecognizer*)gestureRecognizer{
     [self layoutIfNeeded];
     CGFloat const locationInView = [gestureRecognizer locationInView:nil].x;
     CGFloat const absoluteDistance = fabs(locationInView - self.initialXPosition);
@@ -127,12 +174,12 @@
     self.layer.shouldRasterize = NO;
 }
 
-- (void)handlePanGestureStateDefault: (UIPanGestureRecognizer*)gestureRecognizer{
+- (void)handlePanGestureStateDefault:(UIPanGestureRecognizer*)gestureRecognizer{
     [self resetCardViewPosition];
     self.layer.shouldRasterize = NO;
 }
 
-- (void)endPanAnimationTowardsDirection: (PanelButtonPosition)direction{
+- (void)endPanAnimationTowardsDirection:(PanelButtonPosition)direction{
     CGFloat const xPosition = direction == left ? -UIScreen.mainScreen.bounds.size.height : UIScreen.mainScreen.bounds.size.height;
     CGRect const toRect = CGRectMake(xPosition, UIScreen.mainScreen.bounds.size.height - self.frame.size.width, self.frame.size.height, self.frame.size.width);
     
