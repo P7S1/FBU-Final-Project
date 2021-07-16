@@ -22,6 +22,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpCardContainerView];
+    self.navigationItem.title = @"For You";
     self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
 

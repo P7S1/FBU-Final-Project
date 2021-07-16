@@ -32,6 +32,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.coverLayer.frame = self.bounds;
+    self.coverLayer.cornerRadius = self.layer.cornerRadius;
 }
 
 - (void)buttonPress{
