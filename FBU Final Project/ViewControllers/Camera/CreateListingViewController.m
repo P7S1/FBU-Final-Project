@@ -96,7 +96,6 @@
     [row.cellConfigAtConfigure setObject:@"Describe your item" forKey:@"textField.placeholder"];
     [section addFormRow:row];
     
-    
     // Price
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"price" rowType:XLFormRowDescriptorTypeDecimal title:@"Price"];
     [row.cellConfigAtConfigure setObject:@"$2.99" forKey:@"textField.placeholder"];

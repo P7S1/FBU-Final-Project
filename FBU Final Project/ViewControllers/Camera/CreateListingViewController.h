@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CreateListingViewController : XLFormViewController
 
-@property (nonatomic, strong) UIImage* listingImage;
+@property (nonatomic, strong) UIImage *listingImage;
 
 @end
 
