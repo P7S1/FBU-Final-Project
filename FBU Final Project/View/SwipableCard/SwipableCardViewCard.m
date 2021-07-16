@@ -11,6 +11,7 @@
 #import "SwipeableCardViewDataSource.h"
 #import "CGAffineTransformHelper.h"
 #import "PanelButtonPosition.h"
+#import "BasicLabel.h"
 
 @interface SwipableCardViewCard ()
 
@@ -36,8 +37,8 @@
 @property (nonatomic) CGFloat const cardViewResetAnimationDuration;
 
 //Decision Labels
-@property (nonatomic, strong) UILabel* yesDecisionLabel;
-@property (nonatomic, strong) UILabel* noDecisionLabel;
+@property (nonatomic, strong) BasicLabel* yesDecisionLabel;
+@property (nonatomic, strong) BasicLabel* noDecisionLabel;
     
 @end
 
@@ -62,6 +63,10 @@
         
         self.yesDecisionLabel = [self getDecisionLabelWithColor:UIColor.systemGreenColor withText:@"ADD TO CART"];
         self.noDecisionLabel = [self getDecisionLabelWithColor:UIColor.redColor withText:@"MAYBE LATER"];
+        
+        CGFloat const rotationAngle = M_PI / 4;
+        self.yesDecisionLabel.transform = CGAffineTransformMakeRotation(rotationAngle);
+        self.noDecisionLabel.transform = CGAffineTransformMakeRotation(-rotationAngle);
         
         [self setUpGestureRecognizers];
         [self setUpUI];
@@ -91,15 +96,15 @@
     self.backgroundColor = UIColor.systemBackgroundColor;
 }
 
-- (UILabel*) getDecisionLabelWithColor:(UIColor*)color withText:(NSString*)text{
-    UILabel* label = [[UILabel alloc]init];
-    label.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
+- (BasicLabel*) getDecisionLabelWithColor:(UIColor*)color withText:(NSString*)text{
+    BasicLabel* label = [[BasicLabel alloc]init];
+    label.font = [UIFont systemFontOfSize:30.0 weight:UIFontWeightBold];
     label.text = text;
     label.textColor = color;
-    label.layer.cornerRadius = 10;
+    label.layer.cornerRadius = 10.0;
     label.layer.borderColor = color.CGColor;
-    label.layer.borderWidth = 8;
-    
+    label.layer.borderWidth = 8.0;
+    label.alpha = 0.0;
     [self addSubview:label];
     label.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -107,6 +112,13 @@
         [label.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
         [label.centerXAnchor constraintEqualToAnchor:self.centerXAnchor]
     ]];
+    
+    CGFloat const inset = 16.0;
+    
+    label.topInset = inset;
+    label.leftInset = inset;
+    label.rightInset = inset;
+    label.bottomInset = inset;
     
     return label;
 }
@@ -155,6 +167,21 @@
     transform = CATransform3DRotate(transform, rotationAngle, 0, 0, 1);
     transform = CATransform3DTranslate(transform, self.panGestureTranslation.x, self.panGestureTranslation.y, 0);
     self.layer.transform = transform;
+    
+    CGFloat const fullLabelAlphaThreshold = self.animationCompletionThreshold;
+    CGFloat const locationInView = [gestureRecognizer locationInView:nil].x;
+    CGFloat const relativeDistance = fabs(locationInView - self.initialXPosition);
+    
+    CGFloat const progress = MIN(fabs(relativeDistance) /  fullLabelAlphaThreshold, 1.0);
+    
+    if (locationInView > self.initialXPosition){
+        self.yesDecisionLabel.alpha = progress;
+        self.noDecisionLabel.alpha = 0.0;
+    }else{
+        self.yesDecisionLabel.alpha = 0.0;
+        self.noDecisionLabel.alpha = progress;
+    }
+    
 }
 
 - (void)handlePanGestureStateEnded:(UIPanGestureRecognizer*)gestureRecognizer{
@@ -190,6 +217,8 @@
             [self removeAnimations];
             self.layer.transform = CATransform3DIdentity;
             self.transform = CGAffineTransformIdentity;
+            self.yesDecisionLabel.alpha = 0.0;
+            self.noDecisionLabel.alpha = 0.0;
     }];
     
     [self.delegate didSwipeAwayView:self towardsDirection:direction];
@@ -199,6 +228,8 @@
     [self removeAnimations];
     [UIView animateWithDuration:0.2 animations:^{
         self.layer.transform = CATransform3DIdentity;
+        self.yesDecisionLabel.alpha = 0.0;
+        self.noDecisionLabel.alpha = 0.0;
     }];
 }
 

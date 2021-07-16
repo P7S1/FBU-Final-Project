@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BasicLabel : UILabel
 
+@property CGFloat topInset;
+@property CGFloat bottomInset;
+@property CGFloat leftInset;
+@property CGFloat rightInset;
+
 @end
 
 NS_ASSUME_NONNULL_END
