@@ -77,6 +77,12 @@
     cardView.frame = cardViewFrame;
 }
 
+- (void)updateCardViewFrame{
+    for (int i = 0; i < self.cardViews.count; i++){
+        [self setFrameForCardView:self.cardViews[i] atIndex:i];
+    }
+}
+
 - (void)removeAllCardViews{
     for (SwipableCardViewCard* card in self.cardViews){
         [card removeFromSuperview];
@@ -115,11 +121,14 @@
 }
 
 - (void)didSwipeAwayView:(SwipableCardViewCard *)view{
-    //view.transform = CGAffineTransformIdentity;
-    //view.layer.transform = CATransform3DIdentity;
+    view.transform = CGAffineTransformIdentity;
+    view.layer.transform = CATransform3DIdentity;
+    [view removeFromSuperview];
     
+    [self.cardViews removeObjectAtIndex:0];
     
-    
+    NSInteger const newIndex = [self.dataSource numberOfCards] - self.remainingCards;
+    [self addCardView:[self.dataSource cardForItemAtIndex:newIndex] atIndex:2];
 }
 
 - (void)didTapView:(nonnull SwipableCardViewCard *)view {
