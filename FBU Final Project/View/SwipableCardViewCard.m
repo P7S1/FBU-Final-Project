@@ -110,9 +110,7 @@
 }
 
 - (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
-    //[self endedPanAnimation];
-    //TODO:- endedPanAnimation
-    [self resetCardViewPosition];
+    [self endedPanAnimation];
     self.layer.shouldRasterize = NO;
 }
 
@@ -122,7 +120,8 @@
 }
 
 - (void)endedPanAnimation{
-    
+    //TODO:- endedPanAnimation
+    [self resetCardViewPosition];
 }
 
 - (void)resetCardViewPosition{

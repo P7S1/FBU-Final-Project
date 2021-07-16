@@ -133,6 +133,7 @@
 		DF4E3204269F8CCB00745766 /* CreateListingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateListingViewController.m; sourceTree = "<group>"; };
 		DF4E3206269FD1F800745766 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DF4E3207269FD1F800745766 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		DF82E75D26A1DA3F00EE9853 /* SwipableCardViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwipableCardViewDelegate.h; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -401,6 +402,7 @@
 				DF4E31FD269E872B00745766 /* ButtonsDelegate.h */,
 				DF1DEA4D26A1BB1200EE488E /* SwipeableCardViewDataSource.h */,
 				DF1DEA5426A1C3F800EE488E /* SwipableViewDelegate.h */,
+				DF82E75D26A1DA3F00EE9853 /* SwipableCardViewDelegate.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
