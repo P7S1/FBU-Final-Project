@@ -48,8 +48,40 @@
         self.cardViewResetAnimationSpringBounciness = 10.0;
         self.cardViewResetAnimationSpringSpeed = 20.0;
         self.cardViewResetAnimationDuration = 0.2;
+        
+        [self setUpGestureRecognizers];
     }
     return self;
+}
+
+- (void)setUpGestureRecognizers{
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureRecognized:)];
+    [self addGestureRecognizer:self.panGestureRecognizer];
+    
+    self.tapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGestureRecognized:)];
+    [self addGestureRecognizer:self.tapGestureRecognizer];
+}
+
+//MARK:- Pan Gesture Recognizer
+- (void)panGestureRecognized: (UIPanGestureRecognizer*)gestureRecognizer{
+    self.panGestureTranslation = [gestureRecognizer translationInView:self];
+    
+    switch ([gestureRecognizer state]) {
+        case UIGestureRecognizerStateBegan:
+            break;
+        case UIGestureRecognizerStateChanged:
+            break;
+        case UIGestureRecognizerStateEnded:
+            break;
+        default:
+            break;
+    }
+}
+
+
+//MARK:- Tap Gesture Recognizer
+- (void) tapGestureRecognized: (UITapGestureRecognizer*)recognizer{
+    [self.delegate didTapView:self];
 }
 
 @end

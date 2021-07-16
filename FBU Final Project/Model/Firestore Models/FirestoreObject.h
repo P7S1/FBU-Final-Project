@@ -4,11 +4,10 @@
 //
 //  Created by Keng Fontem on 7/13/21.
 //
-#import <JSONModel/JSONModel.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FirestoreObject : JSONModel
+@interface FirestoreObject : NSObject
 
 @property (nonatomic, strong) NSString* uid;
 
