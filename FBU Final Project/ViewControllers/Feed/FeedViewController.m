@@ -8,7 +8,7 @@
 #import "FeedViewController.h"
 #import "SwipeCollectionViewCell.h"
 
-@interface FeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface FeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
@@ -16,6 +16,7 @@
 
 @implementation FeedViewController
 
+//MARK:- UIViewController LifeCycle Methods
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpCollectionView];
@@ -23,8 +24,12 @@
 }
 
 - (void)setUpCollectionView{
-    self.collectionView = [[UICollectionView alloc]init];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[self getCollectionViewLayout]];
+    self.collectionView.backgroundColor = UIColor.systemBackgroundColor;
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     
     [self.collectionView registerClass:[SwipeCollectionViewCell class] forCellWithReuseIdentifier:@"SwipeCollectionViewCell"];
     [self.view addSubview:self.collectionView];
@@ -37,6 +42,12 @@
     ]];
 }
 
+- (UICollectionViewLayout*)getCollectionViewLayout{
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+    return layout;
+}
+
+//MARK:- UICollectionViewDelegate + UICollectionViewDataSource + UICollectionViewDelegateFlowLayout
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 50;
 }
@@ -71,6 +82,18 @@
     cell.contentView.backgroundColor = cellBackgroundColor;
     
     return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(200, 600);
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 4;
+}
+
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 4;
 }
 
 @end
