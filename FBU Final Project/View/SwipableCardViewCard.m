@@ -140,6 +140,9 @@
             self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
+            [self removeAnimations];
+            self.layer.transform = CATransform3DIdentity;
+            self.transform = CGAffineTransformIdentity;
     }];
     
     [self.delegate didSwipeAwayView:self towardsDirection:direction];
