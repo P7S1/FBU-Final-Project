@@ -5,6 +5,8 @@
 //  Created by Keng Fontem on 7/16/21.
 //
 
+#import <UIKit/UIKit.h>
+#import <pop/POP.h>
 #import "SwipableCardViewCard.h"
 #import "SwipeableCardViewDataSource.h"
 
@@ -65,22 +67,53 @@
 //MARK:- Pan Gesture Recognizer
 - (void)panGestureRecognized: (UIPanGestureRecognizer*)gestureRecognizer{
     self.panGestureTranslation = [gestureRecognizer translationInView:self];
-    
-    switch ([gestureRecognizer state]) {
+    switch ([gestureRecognizer state]){
         case UIGestureRecognizerStateBegan:
+            [self handlePanGestureStateBegan:gestureRecognizer];
             break;
         case UIGestureRecognizerStateChanged:
+            [self handlePanGestureStateChanged:gestureRecognizer];
             break;
         case UIGestureRecognizerStateEnded:
+            [self handlePanGestureStateEnded:gestureRecognizer];
             break;
         default:
+            [self handlePanGestureStateEnded:gestureRecognizer];
             break;
     }
 }
 
+- (void)handlePanGestureStateBegan: (UIPanGestureRecognizer*)gestureRecognizer{
+    CGPoint const initialTouchPoint = [gestureRecognizer locationInView:self];
+    CGPoint const newAnchorPoint = CGPointMake(initialTouchPoint.x / self.bounds.size.width, initialTouchPoint.y / self.bounds.size.height);
+    CGPoint const oldPosition = CGPointMake(self.bounds.size.width * self.layer.anchorPoint.x, self.bounds.size.height * self.layer.anchorPoint.y);
+    CGPoint const newPosition = CGPointMake(self.bounds.size.width * newAnchorPoint.x, self.bounds.size.width * newAnchorPoint.y);
+    
+    self.layer.anchorPoint = newAnchorPoint;
+    self.layer.position = CGPointMake(self.layer.position.x - oldPosition.x + newPosition.x, self.layer.position.y - oldPosition.y + newPosition.y);
+    
+    [self removeAnimations];
+    self.layer.rasterizationScale = UIScreen.mainScreen.scale;
+    self.layer.shouldRasterize = YES;
+    
+    [self.delegate didBeginSwipeOnView:self];
+}
+
+- (void)handlePanGestureStateChanged: (UIPanGestureRecognizer*)gestureRecognizer{
+    
+}
+
+- (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
+    
+}
+
+- (void)removeAnimations{
+    [POPAnimator pop_removeAllAnimations];
+    [self.layer pop_removeAllAnimations];
+}
 
 //MARK:- Tap Gesture Recognizer
-- (void) tapGestureRecognized: (UITapGestureRecognizer*)recognizer{
+- (void)tapGestureRecognized: (UITapGestureRecognizer*)recognizer{
     [self.delegate didTapView:self];
 }
 
