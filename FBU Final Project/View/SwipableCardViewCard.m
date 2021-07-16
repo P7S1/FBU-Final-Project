@@ -110,7 +110,9 @@
 }
 
 - (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
-    [self endedPanAnimation];
+    //[self endedPanAnimation];
+    //TODO:- endedPanAnimation
+    [self resetCardViewPosition];
     self.layer.shouldRasterize = NO;
 }
 
@@ -124,7 +126,26 @@
 }
 
 - (void)resetCardViewPosition{
+    [self removeAnimations];
     
+    POPSpringAnimation *resetSpringAnimation = [POPSpringAnimation animationWithPropertyNamed:@"kPOPLayerTranslationXY"];
+    resetSpringAnimation.fromValue = [NSValue valueWithCGPoint:POPLayerGetTranslationXY(self.layer)];
+    resetSpringAnimation.toValue = [NSValue valueWithCGPoint:CGPointZero];
+    resetSpringAnimation.springBounciness = self.cardViewResetAnimationSpringBounciness;
+    resetSpringAnimation.springSpeed = self.cardViewResetAnimationSpringSpeed;
+    resetSpringAnimation.completionBlock =  ^(POPAnimation *anim, BOOL finished){
+        self.layer.transform = CATransform3DIdentity;
+    };
+    
+    [self.layer pop_addAnimation:resetSpringAnimation forKey:@"resetPositionAnimation"];
+    
+    //Reset Rotation
+    POPBasicAnimation *resetRotationAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerRotation];
+    resetRotationAnimation.fromValue = @(POPLayerGetRotationZ(self.layer));
+    resetRotationAnimation.toValue = @(0.0);
+    resetRotationAnimation.duration = self.cardViewResetAnimationDuration;
+    
+    [self.layer pop_addAnimation:resetRotationAnimation forKey:@"resetRotationAnimation"];
 }
 
 - (void)removeAnimations{
