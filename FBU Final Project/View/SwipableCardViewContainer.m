@@ -15,7 +15,7 @@
 @property (nonatomic) NSInteger const horizontalInset;
 @property (nonatomic) NSInteger const verticalInset;
 
-@property (nonatomic, strong) NSArray<SwipableCardViewCard*>* cardViews;
+@property (nonatomic, strong) NSMutableArray<SwipableCardViewCard*>* cardViews;
 @property (nonatomic, strong) NSArray<SwipableCardViewCard*>* visibleCardViews;
 
 @property (nonatomic) NSInteger remainingCards;
@@ -31,7 +31,7 @@
         self.horizontalInset = 12;
         self.verticalInset = 12;
         
-        self.cardViews = [[NSArray alloc]init];
+        self.cardViews = [[NSMutableArray alloc]init];
         self.visibleCardViews = [[NSArray alloc]init];
         
         self.remainingCards = 0;
@@ -59,7 +59,7 @@
 - (void)addCardView:(SwipableCardViewCard*)cardView atIndex:(NSInteger)index{
     cardView.delegate = self;
     [self setFrameForCardView:cardView atIndex:index];
-    self.cardViews = [self.cardViews arrayByAddingObject:cardView];
+    [self.cardViews addObject:cardView];
     [self insertSubview:cardView atIndex:0];
     self.remainingCards -= 1;
 }
@@ -75,14 +75,13 @@
     cardViewFrame.origin.y += verticalInset;
     
     cardView.frame = cardViewFrame;
-    
 }
 
 - (void)removeAllCardViews{
     for (SwipableCardViewCard* card in self.cardViews){
         [card removeFromSuperview];
     }
-    self.cardViews = [[NSArray alloc]init];
+    [self.cardViews removeAllObjects];
 }
 
 - (NSInteger)numberOfCards {
@@ -113,6 +112,14 @@
             }];
         }
     }
+}
+
+- (void)didSwipeAwayView:(SwipableCardViewCard *)view{
+    //view.transform = CGAffineTransformIdentity;
+    //view.layer.transform = CATransform3DIdentity;
+    
+    
+    
 }
 
 - (void)didTapView:(nonnull SwipableCardViewCard *)view {

@@ -9,6 +9,8 @@
 #import <pop/POP.h>
 #import "SwipableCardViewCard.h"
 #import "SwipeableCardViewDataSource.h"
+#import "CGAffineTransformHelper.h"
+#import "PanelButtonPosition.h"
 
 @interface SwipableCardViewCard ()
 
@@ -22,6 +24,7 @@
 @property (nonatomic) CGFloat const rotationAngle;
 @property (nonatomic) CGFloat const animationDirectionY;
 @property (nonatomic) CGFloat const swipePercentageMargin;
+@property (nonatomic) CGFloat const animationCompletionThreshold;
 
 //Card Finalise Swipe Animation
 @property (nonatomic) NSTimeInterval const finalizeSwipeActionAnimationDuration;
@@ -44,6 +47,7 @@
         self.rotationAngle = M_PI / 10.0;
         self.animationDirectionY = 1.0;
         self.swipePercentageMargin = 0.6;
+        self.animationCompletionThreshold = 90;
         
         self.finalizeSwipeActionAnimationDuration = 0.8;
         
@@ -111,7 +115,20 @@
 }
 
 - (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
-    [self endedPanAnimation];
+    [self layoutIfNeeded];
+    CGFloat const midPoint = UIScreen.mainScreen.bounds.size.width/2;
+    CGFloat const locationInView = [gestureRecognizer locationInView:nil].x;
+    CGFloat const absoluteDistance = fabs(locationInView - midPoint);
+    
+    if (absoluteDistance <= self.animationCompletionThreshold){
+        [self resetCardViewPosition];
+        return;
+    }
+    if (locationInView > midPoint){
+        [self endPanAnimationTowardsDirection:right];
+    }else{
+        [self endPanAnimationTowardsDirection:left];
+    }
     self.layer.shouldRasterize = NO;
 }
 
@@ -120,33 +137,22 @@
     self.layer.shouldRasterize = NO;
 }
 
-- (void)endedPanAnimation{
+- (void)endPanAnimationTowardsDirection: (PanelButtonPosition)direction{
+    CGFloat const xPosition = direction == left ? -UIScreen.mainScreen.bounds.size.height : UIScreen.mainScreen.bounds.size.height;
+    CGRect const toRect = CGRectMake(xPosition, UIScreen.mainScreen.bounds.size.height - self.frame.size.width, self.frame.size.height, self.frame.size.width);
+    
     [UIView animateWithDuration:0.2 animations:^{
-        
+        self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
+        } completion:^(BOOL finished) {
+            [self.delegate didSwipeAwayView:self];
     }];
 }
 
 - (void)resetCardViewPosition{
     [self removeAnimations];
-    
-    POPSpringAnimation *resetSpringAnimation = [POPSpringAnimation animationWithPropertyNamed:@"kPOPLayerTranslationXY"];
-    resetSpringAnimation.fromValue = [NSValue valueWithCGPoint:POPLayerGetTranslationXY(self.layer)];
-    resetSpringAnimation.toValue = [NSValue valueWithCGPoint:CGPointZero];
-    resetSpringAnimation.springBounciness = self.cardViewResetAnimationSpringBounciness;
-    resetSpringAnimation.springSpeed = self.cardViewResetAnimationSpringSpeed;
-    resetSpringAnimation.completionBlock =  ^(POPAnimation *anim, BOOL finished){
+    [UIView animateWithDuration:0.2 animations:^{
         self.layer.transform = CATransform3DIdentity;
-    };
-    
-    [self.layer pop_addAnimation:resetSpringAnimation forKey:@"resetPositionAnimation"];
-    
-    //Reset Rotation
-    POPBasicAnimation *resetRotationAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerRotation];
-    resetRotationAnimation.fromValue = @(POPLayerGetRotationZ(self.layer));
-    resetRotationAnimation.toValue = @(0.0);
-    resetRotationAnimation.duration = self.cardViewResetAnimationDuration;
-    
-    [self.layer pop_addAnimation:resetRotationAnimation forKey:@"resetRotationAnimation"];
+    }];
 }
 
 - (void)removeAnimations{

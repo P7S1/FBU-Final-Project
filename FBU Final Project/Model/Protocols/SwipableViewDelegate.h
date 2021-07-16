@@ -14,9 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol SwipableViewDelegate <NSObject>
 
-- (void)didTapView: (SwipableCardViewCard*)view;
-- (void)didBeginSwipeOnView: (SwipableCardViewCard*)view;
-- (void)didEndSwipeOnView: (SwipableCardViewCard*)view;
+- (void)didTapView:(SwipableCardViewCard*)view;
+- (void)didBeginSwipeOnView:(SwipableCardViewCard*)view;
+- (void)didEndSwipeOnView:(SwipableCardViewCard*)view;
+- (void)didSwipeAwayView:(SwipableCardViewCard*)view;
 
 @end
 
