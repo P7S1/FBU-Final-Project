@@ -57,7 +57,6 @@
 }
 
 - (void)addCardView:(SwipableCardViewCard*)cardView atIndex:(NSInteger)index{
-    NSInteger index1 = index;
     cardView.delegate = self;
     [self setFrameForCardView:cardView atIndex:index];
     [self.cardViews addObject:cardView];

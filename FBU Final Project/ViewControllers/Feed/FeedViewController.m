@@ -34,11 +34,13 @@
     
     [self.view addSubview:self.cardContainerView];
     
+    CGFloat const width = UIScreen.mainScreen.bounds.size.width - 32;
+    
     [NSLayoutConstraint activateConstraints:@[
         [self.cardContainerView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
         [self.cardContainerView.centerXAnchor constraintEqualToAnchor: self.view.centerXAnchor],
-        [self.cardContainerView.heightAnchor constraintEqualToConstant:400],
-        [self.cardContainerView.widthAnchor constraintEqualToConstant:200]
+        [self.cardContainerView.heightAnchor constraintEqualToConstant:width * 1.33],
+        [self.cardContainerView.widthAnchor constraintEqualToConstant:width]
     ]];
     
     [self.cardContainerView reloadData];

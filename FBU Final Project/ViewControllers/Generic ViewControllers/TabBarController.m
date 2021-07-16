@@ -14,6 +14,7 @@
 #import "PanelButtonPosition.h"
 #import "ButtonsViewController.h"
 #import "ViewControllerHelper.h"
+#import "NavigationController.h"
 
 @interface TabBarController () <ButtonsDelegate, UIScrollViewDelegate>
 
@@ -80,12 +81,12 @@
     self.exploreVc = [[ExploreViewController alloc]init];
     
     NSArray<UIViewController*>* viewControllers = @[
-        [[UINavigationController alloc]initWithRootViewController:self.feedVc],
-        [[UINavigationController alloc]initWithRootViewController:self.cameraVc],
-        [[UINavigationController alloc]initWithRootViewController:self.exploreVc]
+        [[NavigationController alloc]initWithRootViewController:self.feedVc],
+        [[NavigationController alloc]initWithRootViewController:self.cameraVc],
+        [[NavigationController alloc]initWithRootViewController:self.exploreVc]
     ];
     
-    self.scrollView = [ScrollViewHelper   makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
+    self.scrollView = [ScrollViewHelper makeHorizontalScrollViewWithViewControllers:viewControllers withParentViewController:self];
     self.scrollView.delegate = self;
     
     [self.view addSubview:self.scrollView];
@@ -138,7 +139,6 @@
 
 - (void)scrollToPosition: (PanelButtonPosition)posiiton {
     self.shouldAnimate = self.scrollView.contentOffset.x == UIScreen.mainScreen.bounds.size.width || posiiton == center;
-    
     switch (posiiton) {
         case left:
             [self.scrollView setContentOffset:CGPointZero animated:YES];
