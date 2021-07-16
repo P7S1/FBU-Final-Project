@@ -13,8 +13,4 @@
 
 @implementation NavigationController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
 @end
