@@ -65,6 +65,7 @@
 }
 
 - (void)setFrameForCardView:(SwipableCardViewCard*)cardView atIndex:(NSInteger)index{
+    [self layoutIfNeeded];
     CGRect cardViewFrame = self.bounds;
     CGFloat const horizontalInset = (CGFloat)index * self.horizontalInset;
     CGFloat const verticalInset = (CGFloat)index * self.verticalInset;
@@ -74,6 +75,7 @@
     cardViewFrame.origin.y += verticalInset;
     
     cardView.frame = cardViewFrame;
+    
 }
 
 - (SwipableCardViewCard*)cardForItemAtIndex:(NSInteger)index {

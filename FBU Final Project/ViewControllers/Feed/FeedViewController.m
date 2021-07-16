@@ -7,93 +7,82 @@
 
 #import "FeedViewController.h"
 #import "SwipeCollectionViewCell.h"
+#import "SwipableCardViewContainer.h"
+#import "SwipeableCardViewDataSource.h"
+#import "SwipableCardViewCard.h"
 
-@interface FeedViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource>
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) SwipableCardViewContainer *cardContainerView;
 
 @end
 
 @implementation FeedViewController
 
-//MARK:- UIViewController LifeCycle Methods
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self setUpCollectionView];
-    self.view.backgroundColor = UIColor.redColor;
+    [self setUpCardContainerView];
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
 
-- (void)setUpCollectionView{
-    self.collectionView = [[UICollectionView alloc]initWithFrame:self.view.frame collectionViewLayout:[self getCollectionViewLayout]];
-    self.collectionView.backgroundColor = UIColor.systemBackgroundColor;
-    self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+- (void)setUpCardContainerView{
+    self.cardContainerView = [[SwipableCardViewContainer alloc]init];
+    self.cardContainerView.delegate = self;
+    self.cardContainerView.dataSource = self;
     
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
+    self.cardContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
-    [self.collectionView registerClass:[SwipeCollectionViewCell class] forCellWithReuseIdentifier:@"SwipeCollectionViewCell"];
-    [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.cardContainerView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [self.collectionView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
-        [self.collectionView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
-        [self.collectionView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
-        [self.collectionView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
+        [self.cardContainerView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
+        [self.cardContainerView.centerXAnchor constraintEqualToAnchor: self.view.centerXAnchor],
+        [self.cardContainerView.heightAnchor constraintEqualToConstant:400],
+        [self.cardContainerView.widthAnchor constraintEqualToConstant:200]
     ]];
-}
-
-- (UICollectionViewLayout*)getCollectionViewLayout{
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-    return layout;
-}
-
-//MARK:- UICollectionViewDelegate + UICollectionViewDataSource + UICollectionViewDelegateFlowLayout
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 50;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    SwipeCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SwipeCollectionViewCell" forIndexPath:indexPath];
     
-    UIColor *cellBackgroundColor;
-    NSInteger cellRemainder = indexPath.row % 5;
+    [self.cardContainerView reloadData];
+}
+
+- (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {}
+
+- (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
+    SwipableCardViewCard* card = [[SwipableCardViewCard alloc]init];
     
-    switch (cellRemainder) {
+    NSInteger const remainder = index % 5;
+    UIColor *color;
+    
+    switch (remainder) {
         case 0:
-            cellBackgroundColor = UIColor.systemRedColor;
+            color = UIColor.systemRedColor;
             break;
         case 1:
-            cellBackgroundColor = UIColor.systemOrangeColor;
+            color = UIColor.systemOrangeColor;
             break;
         case 2:
-            cellBackgroundColor = UIColor.systemYellowColor;
+            color = UIColor.systemYellowColor;
             break;
         case 3:
-            cellBackgroundColor = UIColor.systemGreenColor;
+            color = UIColor.systemGreenColor;
             break;
         case 4:
-            cellBackgroundColor = UIColor.systemBlueColor;
+            color = UIColor.systemBlueColor;
             break;
         default:
-            cellBackgroundColor = UIColor.systemPurpleColor;
+            color = UIColor.systemPurpleColor;
             break;
     }
     
-    cell.contentView.backgroundColor = cellBackgroundColor;
+    card.backgroundColor = color;
     
-    return cell;
+    return card;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake(100, 200);
+- (NSInteger)numberOfCards {
+    return 20;
 }
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 4;
+- (UIView * _Nullable)viewForEmptyCards {
+    return nil;
 }
-
-- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
-    return 4;
-}
-
 @end
