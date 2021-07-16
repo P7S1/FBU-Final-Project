@@ -25,6 +25,7 @@
 @property (nonatomic) CGFloat const animationDirectionY;
 @property (nonatomic) CGFloat const swipePercentageMargin;
 @property (nonatomic) CGFloat const animationCompletionThreshold;
+@property (nonatomic) CGFloat initialXPosition;
 
 //Card Finalise Swipe Animation
 @property (nonatomic) NSTimeInterval const finalizeSwipeActionAnimationDuration;
@@ -73,7 +74,7 @@
     self.panGestureTranslation = [gestureRecognizer translationInView:self];
     switch ([gestureRecognizer state]){
         case UIGestureRecognizerStateBegan:
-            //[self handlePanGestureStateBegan:gestureRecognizer];
+            [self handlePanGestureStateBegan:gestureRecognizer];
             break;
         case UIGestureRecognizerStateChanged:
             [self handlePanGestureStateChanged:gestureRecognizer];
@@ -89,14 +90,9 @@
 
 - (void)handlePanGestureStateBegan: (UIPanGestureRecognizer*)gestureRecognizer{
     [self layoutIfNeeded];
-    CGPoint const initialTouchPoint = [gestureRecognizer locationInView:self];
-    CGPoint const newAnchorPoint = CGPointMake(initialTouchPoint.x / self.bounds.size.width, initialTouchPoint.y / self.bounds.size.height);
-    CGPoint const oldPosition = CGPointMake(self.bounds.size.width * self.layer.anchorPoint.x, self.bounds.size.height * self.layer.anchorPoint.y);
-    CGPoint const newPosition = CGPointMake(self.bounds.size.width * newAnchorPoint.x, self.bounds.size.width * newAnchorPoint.y);
     
-    self.layer.anchorPoint = newAnchorPoint;
-    self.layer.position = CGPointMake(self.layer.position.x - oldPosition.x + newPosition.x, self.layer.position.y - oldPosition.y + newPosition.y);
-    
+    self.initialXPosition = [gestureRecognizer locationInView:nil].x;
+
     [self removeAnimations];
     self.layer.rasterizationScale = UIScreen.mainScreen.scale;
     self.layer.shouldRasterize = YES;
@@ -116,15 +112,14 @@
 
 - (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
     [self layoutIfNeeded];
-    CGFloat const midPoint = UIScreen.mainScreen.bounds.size.width/2;
     CGFloat const locationInView = [gestureRecognizer locationInView:nil].x;
-    CGFloat const absoluteDistance = fabs(locationInView - midPoint);
+    CGFloat const absoluteDistance = fabs(locationInView - self.initialXPosition);
     
     if (absoluteDistance <= self.animationCompletionThreshold){
         [self resetCardViewPosition];
         return;
     }
-    if (locationInView > midPoint){
+    if (locationInView > self.initialXPosition){
         [self endPanAnimationTowardsDirection:right];
     }else{
         [self endPanAnimationTowardsDirection:left];
@@ -141,7 +136,7 @@
     CGFloat const xPosition = direction == left ? -UIScreen.mainScreen.bounds.size.height : UIScreen.mainScreen.bounds.size.height;
     CGRect const toRect = CGRectMake(xPosition, UIScreen.mainScreen.bounds.size.height - self.frame.size.width, self.frame.size.height, self.frame.size.width);
     
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
