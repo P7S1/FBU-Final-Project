@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SwipableCardViewCard.h"
+#import "PanelButtonPosition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol SwipableCardViewDelegate <NSObject>
 
 - (void)didSelectCard:(SwipableCardViewCard*)card atIndex:(NSInteger)index;
+- (void)didSwipeAwayView:(SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction;
 
 @end
 

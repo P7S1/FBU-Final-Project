@@ -141,11 +141,13 @@
     CGFloat const xPosition = direction == left ? -UIScreen.mainScreen.bounds.size.height : UIScreen.mainScreen.bounds.size.height;
     CGRect const toRect = CGRectMake(xPosition, UIScreen.mainScreen.bounds.size.height - self.frame.size.width, self.frame.size.height, self.frame.size.width);
     
-    [UIView animateWithDuration:0.2 animations:^{
-        self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
+    [UIView animateWithDuration:0.3 animations:^{
+            self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
         } completion:^(BOOL finished) {
-            [self.delegate didSwipeAwayView:self];
+            [self removeFromSuperview];
     }];
+    
+    [self.delegate didSwipeAwayView:self towardsDirection:direction];
 }
 
 - (void)resetCardViewPosition{

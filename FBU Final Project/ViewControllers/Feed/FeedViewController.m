@@ -46,6 +46,9 @@
 
 - (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {}
 
+- (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction {}
+
+
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
     SwipableCardViewCard* card = [[SwipableCardViewCard alloc]init];
     
@@ -85,4 +88,5 @@
 - (UIView * _Nullable)viewForEmptyCards {
     return nil;
 }
+
 @end

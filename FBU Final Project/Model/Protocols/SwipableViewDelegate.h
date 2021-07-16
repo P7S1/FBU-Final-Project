@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SwipableCardViewCard.h"
+#import "PanelButtonPosition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didTapView:(SwipableCardViewCard*)view;
 - (void)didBeginSwipeOnView:(SwipableCardViewCard*)view;
 - (void)didEndSwipeOnView:(SwipableCardViewCard*)view;
-- (void)didSwipeAwayView:(SwipableCardViewCard*)view;
+- (void)didSwipeAwayView:(SwipableCardViewCard*)view towardsDirection: (PanelButtonPosition)direction;
 
 @end
 
