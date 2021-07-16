@@ -57,6 +57,7 @@
 }
 
 - (void)addCardView:(SwipableCardViewCard*)cardView atIndex:(NSInteger)index{
+    NSInteger index1 = index;
     cardView.delegate = self;
     [self setFrameForCardView:cardView atIndex:index];
     [self.cardViews addObject:cardView];
@@ -95,31 +96,15 @@
 //MARK:- SwipableViewDelegate
 - (void)didBeginSwipeOnView:(nonnull SwipableCardViewCard *)view {}
 
-- (void)didEndSwipeOnView:(nonnull SwipableCardViewCard *)view {
-    [view removeFromSuperview];
-    
-    if (self.remainingCards > 0){
-        NSInteger const newIndex = [self.dataSource numberOfCards] - self.remainingCards;
-        
-        [self addCardView:[self.dataSource cardForItemAtIndex:newIndex] atIndex:2];
-        
-        for (int cardIndex = 1; cardIndex <= self.visibleCardViews.count; cardIndex++){
-            SwipableCardViewCard *const cardView = self.visibleCardViews[self.visibleCardViews.count - cardIndex];
-            [UIView animateWithDuration:0.2 animations:^{
-                cardView.center = self.center;
-                [self setFrameForCardView:cardView atIndex:cardIndex - 1];
-                [self layoutIfNeeded];
-            }];
-        }
-    }
-}
+- (void)didEndSwipeOnView:(nonnull SwipableCardViewCard *)view {}
 
 - (void)didSwipeAwayView:(SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction{
     [self.cardViews removeObjectAtIndex:0];
     
     NSInteger const newIndex = [self.dataSource numberOfCards] - self.remainingCards;
-    [self addCardView:[self.dataSource cardForItemAtIndex:newIndex] atIndex:2];
-    
+    if (self.remainingCards > 0) {
+        [self addCardView:[self.dataSource cardForItemAtIndex:newIndex] atIndex:2];
+    }
     for (int i = 0; i < self.cardViews.count; i++){
         [UIView animateWithDuration:0.2 animations:^{
                     [self setFrameForCardView:self.cardViews[i] atIndex:i];
