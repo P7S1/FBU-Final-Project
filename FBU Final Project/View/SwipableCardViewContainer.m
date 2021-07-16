@@ -17,6 +17,9 @@
 
 @property (nonatomic, strong) NSMutableArray<SwipableCardViewCard*>* cardViews;
 @property (nonatomic, strong) NSArray<SwipableCardViewCard*>* visibleCardViews;
+@property (nonatomic, strong) NSArray<SwipableCardViewCard*>* reusableCardViews;
+@property (nonatomic) NSInteger reusableCellIndex;
+
 
 @property (nonatomic) NSInteger remainingCards;
 
@@ -38,6 +41,11 @@
         
         self.backgroundColor = UIColor.clearColor;
         self.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        self.reusableCardViews = [[NSArray alloc]init];
+        for (int i = 0; i <= self.numberOfVisibleCards; i++){
+            self.reusableCardViews = [self.reusableCardViews arrayByAddingObject:[[SwipableCardViewCard alloc]init]];
+        }
     }
     return self;
 }
@@ -54,6 +62,15 @@
     }
     
     [self setNeedsLayout];
+}
+
+- (SwipableCardViewCard*)dequeueReusableCardView{
+    SwipableCardViewCard *const cell = self.reusableCardViews[self.reusableCellIndex];
+    self.reusableCellIndex++;
+    if (self.reusableCellIndex > self.numberOfVisibleCards){
+        self.reusableCellIndex = 0;
+    }
+    return cell;
 }
 
 - (void)addCardView:(SwipableCardViewCard*)cardView atIndex:(NSInteger)index{

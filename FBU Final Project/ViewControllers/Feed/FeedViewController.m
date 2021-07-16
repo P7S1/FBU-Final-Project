@@ -53,7 +53,7 @@
 
 
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
-    SwipableCardViewCard* card = [[SwipableCardViewCard alloc]init];
+    SwipableCardViewCard* card = [self.cardContainerView dequeueReusableCardView];
     
     NSInteger const remainder = index % 5;
     UIColor *color;

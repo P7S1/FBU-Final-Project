@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak, nullable) id<SwipableCardViewDelegate>delegate;
 
 - (void)reloadData;
+- (SwipableCardViewCard*)dequeueReusableCardView;
 
 @end
 
