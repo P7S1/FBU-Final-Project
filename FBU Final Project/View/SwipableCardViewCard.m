@@ -78,7 +78,7 @@
             [self handlePanGestureStateEnded:gestureRecognizer];
             break;
         default:
-            [self handlePanGestureStateEnded:gestureRecognizer];
+            [self handlePanGestureStateDefault:gestureRecognizer];
             break;
     }
 }
@@ -100,10 +100,30 @@
 }
 
 - (void)handlePanGestureStateChanged: (UIPanGestureRecognizer*)gestureRecognizer{
+    CGFloat const rotationStrength = MIN(self.panGestureTranslation.x / self.frame.size.width, self.maximumRotation);
+    CGFloat const rotationAngle = self.animationDirectionY * self.rotationAngle * rotationStrength;
     
+    CATransform3D transform = CATransform3DIdentity;
+    transform = CATransform3DRotate(transform, rotationAngle, 0, 0, 1);
+    transform = CATransform3DTranslate(transform, self.panGestureTranslation.x, self.panGestureTranslation.y, 0);
+    self.layer.transform = transform;
 }
 
 - (void)handlePanGestureStateEnded: (UIPanGestureRecognizer*)gestureRecognizer{
+    [self endedPanAnimation];
+    self.layer.shouldRasterize = NO;
+}
+
+- (void)handlePanGestureStateDefault: (UIPanGestureRecognizer*)gestureRecognizer{
+    [self resetCardViewPosition];
+    self.layer.shouldRasterize = NO;
+}
+
+- (void)endedPanAnimation{
+    
+}
+
+- (void)resetCardViewPosition{
     
 }
 
