@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)didBeginSwipeOnView: (SwipableCardViewCard*)view;
 - (void)didEndSwipeOnView: (SwipableCardViewCard*)view;
 
-
 @end
 
 NS_ASSUME_NONNULL_END

@@ -78,10 +78,6 @@
     
 }
 
-- (SwipableCardViewCard*)cardForItemAtIndex:(NSInteger)index {
-    return nil;
-}
-
 - (void)removeAllCardViews{
     for (SwipableCardViewCard* card in self.cardViews){
         [card removeFromSuperview];

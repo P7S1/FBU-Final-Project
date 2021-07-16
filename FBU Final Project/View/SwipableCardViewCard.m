@@ -69,7 +69,7 @@
     self.panGestureTranslation = [gestureRecognizer translationInView:self];
     switch ([gestureRecognizer state]){
         case UIGestureRecognizerStateBegan:
-            [self handlePanGestureStateBegan:gestureRecognizer];
+            //[self handlePanGestureStateBegan:gestureRecognizer];
             break;
         case UIGestureRecognizerStateChanged:
             [self handlePanGestureStateChanged:gestureRecognizer];
@@ -84,6 +84,7 @@
 }
 
 - (void)handlePanGestureStateBegan: (UIPanGestureRecognizer*)gestureRecognizer{
+    [self layoutIfNeeded];
     CGPoint const initialTouchPoint = [gestureRecognizer locationInView:self];
     CGPoint const newAnchorPoint = CGPointMake(initialTouchPoint.x / self.bounds.size.width, initialTouchPoint.y / self.bounds.size.height);
     CGPoint const oldPosition = CGPointMake(self.bounds.size.width * self.layer.anchorPoint.x, self.bounds.size.height * self.layer.anchorPoint.y);
@@ -120,8 +121,9 @@
 }
 
 - (void)endedPanAnimation{
-    //TODO:- endedPanAnimation
-    [self resetCardViewPosition];
+    [UIView animateWithDuration:0.2 animations:^{
+        
+    }];
 }
 
 - (void)resetCardViewPosition{

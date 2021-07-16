@@ -57,7 +57,7 @@
     [NSLayoutConstraint activateConstraints: @[
         [self.previewView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
         [self.previewView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
-        [self.previewView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.previewView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-100],
         [self.previewView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor]
     ]];
 }
