@@ -41,6 +41,8 @@
 - (void)setUpCollectionView{
     self.collectionView = [[UICollectionView alloc]init];
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
     [self.contentView addSubview:self.collectionView];
     
     [NSLayoutConstraint activateConstraints:@[
