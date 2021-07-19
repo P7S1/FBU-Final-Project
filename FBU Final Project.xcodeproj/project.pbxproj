@@ -43,6 +43,7 @@
 		DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E76226A224FA00EE9853 /* NavigationController.m */; };
 		DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77026A2394000EE9853 /* BasicLabel.m */; };
 		DF82E77426A5F88800EE9853 /* FirebaseFirestoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */; };
+		DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +144,8 @@
 		DF82E77026A2394000EE9853 /* BasicLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicLabel.m; sourceTree = "<group>"; };
 		DF82E77226A5F88800EE9853 /* FirebaseFirestoreHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseFirestoreHelper.h; sourceTree = "<group>"; };
 		DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseFirestoreHelper.m; sourceTree = "<group>"; };
+		DF82E77726A63EC000EE9853 /* CategoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewCell.h; sourceTree = "<group>"; };
+		DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewCell.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 		DF3A874C269E0871008904BB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DF82E77626A63E9C00EE9853 /* UICollectionViewCells */,
+				DF82E77526A63E9300EE9853 /* UITableViewCells */,
 				DF1DEA4226A0DA4900EE488E /* UIKit Subclasses */,
 				DF82E76826A22F8700EE9853 /* XLForm */,
 				DF82E76726A22F5600EE9853 /* SwipableCard */,
@@ -436,6 +441,22 @@
 				DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */,
 			);
 			path = XLForm;
+			sourceTree = "<group>";
+		};
+		DF82E77526A63E9300EE9853 /* UITableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				DF82E77726A63EC000EE9853 /* CategoryTableViewCell.h */,
+				DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */,
+			);
+			path = UITableViewCells;
+			sourceTree = "<group>";
+		};
+		DF82E77626A63E9C00EE9853 /* UICollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UICollectionViewCells;
 			sourceTree = "<group>";
 		};
 		FFAAE985E21F24C4639E03E7 /* Frameworks */ = {
@@ -686,6 +707,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
+				DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */,
 				DF4E3208269FD1F800745766 /* RootViewController.m in Sources */,
 				DF1DEA4926A0E62400EE488E /* FirebaseStorageHelper.m in Sources */,
 				DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */,
