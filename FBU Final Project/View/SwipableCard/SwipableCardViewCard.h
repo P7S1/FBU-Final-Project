@@ -14,8 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SwipableCardViewCard : UIView
 
 @property (nonatomic, weak, nullable) id<SwipableViewDelegate> delegate;
+
+//UI Stuff
 @property (nonatomic, strong) CALayer* shadowLayer;
 @property (nonatomic, strong) UILabel* numberLabel;
+
+@property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) UIImageView* itemImageView;
+@property (nonatomic, strong) UILabel* descriptionLabel;
+@property (nonatomic, strong) UILabel* dateLabel;
 
 @end
 

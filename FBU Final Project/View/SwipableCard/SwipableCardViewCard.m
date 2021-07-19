@@ -61,13 +61,6 @@
         self.cardViewResetAnimationSpringSpeed = 20.0;
         self.cardViewResetAnimationDuration = 0.2;
         
-        self.yesDecisionLabel = [self getDecisionLabelWithColor:UIColor.systemGreenColor withText:@"ADD TO CART"];
-        self.noDecisionLabel = [self getDecisionLabelWithColor:UIColor.redColor withText:@"MAYBE LATER"];
-        
-        CGFloat const rotationAngle = M_PI / 4;
-        self.yesDecisionLabel.transform = CGAffineTransformMakeRotation(rotationAngle);
-        self.noDecisionLabel.transform = CGAffineTransformMakeRotation(-rotationAngle);
-        
         [self setUpGestureRecognizers];
         [self setUpUI];
     }
@@ -94,9 +87,60 @@
     [self.layer insertSublayer:self.shadowLayer atIndex:0];
     
     self.backgroundColor = UIColor.systemBackgroundColor;
+    
+    //StackView Components
+    self.titleLabel = [[UILabel alloc]init];
+    self.titleLabel.text = @"Title";
+    self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
+    
+    self.itemImageView = [[UIImageView alloc]init];
+    self.itemImageView.backgroundColor = UIColor.secondarySystemBackgroundColor;
+    self.itemImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.itemImageView addConstraint:[NSLayoutConstraint
+                                      constraintWithItem:self.itemImageView
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationEqual
+                                      toItem:self.itemImageView
+                                      attribute:NSLayoutAttributeWidth
+                                      multiplier:1
+                                      constant:0]];
+    
+    self.descriptionLabel = [[UILabel alloc]init];
+    self.descriptionLabel.text = @"Description Label la la la la la la la";
+    
+    self.dateLabel = [[UILabel alloc]init];
+    self.dateLabel.textColor = UIColor.secondaryLabelColor;
+    self.dateLabel.text = @"3 days ago";
+    
+    //StackView
+    UIStackView* stackView = [[UIStackView alloc]initWithArrangedSubviews:@[
+        self.titleLabel,
+        self.itemImageView,
+        self.descriptionLabel,
+        self.dateLabel
+    ]];
+    stackView.axis = UILayoutConstraintAxisVertical;
+    stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addSubview:stackView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [stackView.topAnchor constraintEqualToAnchor:self.topAnchor constant:32],
+        [stackView.bottomAnchor constraintLessThanOrEqualToAnchor:self.bottomAnchor constant:-32],
+        [stackView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:32],
+        [stackView.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-32]
+    ]];
+    
+    //Yes or No Decision Labels
+    self.yesDecisionLabel = [self getADecisionLabelWithColor:UIColor.systemGreenColor withText:@"ADD TO CART"];
+    self.noDecisionLabel = [self getADecisionLabelWithColor:UIColor.redColor withText:@"MAYBE LATER"];
+    
+    CGFloat const rotationAngle = M_PI / 4;
+    self.yesDecisionLabel.transform = CGAffineTransformMakeRotation(rotationAngle);
+    self.noDecisionLabel.transform = CGAffineTransformMakeRotation(-rotationAngle);
 }
 
-- (BasicLabel*) getDecisionLabelWithColor:(UIColor*)color withText:(NSString*)text{
+- (BasicLabel*) getADecisionLabelWithColor:(UIColor*)color withText:(NSString*)text{
     BasicLabel* label = [[BasicLabel alloc]init];
     label.font = [UIFont systemFontOfSize:30.0 weight:UIFontWeightBold];
     label.text = text;
@@ -181,7 +225,6 @@
         self.yesDecisionLabel.alpha = 0.0;
         self.noDecisionLabel.alpha = progress;
     }
-    
 }
 
 - (void)handlePanGestureStateEnded:(UIPanGestureRecognizer*)gestureRecognizer{
