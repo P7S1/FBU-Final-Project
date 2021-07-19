@@ -6,6 +6,7 @@
 //
 
 #import "CategoryTableViewCell.h"
+#import "CategoryCollectionViewCell.h"
 
 @interface CategoryTableViewCell()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -48,14 +49,17 @@
         [self.collectionView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor],
         [self.collectionView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor]
     ]];
+    
+    [self.collectionView registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:@"CategoryCollectionViewCell"];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    
+    CategoryCollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"CategoryCollectionViewCell" forIndexPath:indexPath];
+    return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
+    return 30;
 }
 
 @end
