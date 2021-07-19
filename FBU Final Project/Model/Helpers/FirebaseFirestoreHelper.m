@@ -11,10 +11,19 @@
 
 @implementation FirebaseFirestoreHelper
 
-- (void)fetchAllListingsWithCompletion:(ListingCompletionBlock)completion{
++ (void)fetchAllListingsWithCompletion:(ListingCompletionBlock)completion{
     FIRFirestore* db = [FIRFirestore firestore];
-    [[[db collectionWithPath:@"listings"] queryLimitedTo:20] getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
-            
+    [[[db collectionWithPath:@"listings"] queryLimitedTo:20] getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error){
+        if (error == nil){
+            NSMutableArray<ItemListing*>* itemListings = [[NSMutableArray alloc]init];
+            for (FIRDocumentSnapshot* document in [snapshot documents]){
+                ItemListing* item = [[ItemListing alloc]initWithDict:[document data]];
+                [itemListings addObject:item];
+            }
+            completion(itemListings,error);
+        }else{
+            completion(nil,error);
+        }
     }];
 }
 

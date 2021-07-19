@@ -9,6 +9,7 @@
 #import "SwipableCardViewContainer.h"
 #import "SwipeableCardViewDataSource.h"
 #import "SwipableCardViewCard.h"
+#import "FirebaseFirestoreHelper.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource>
 
@@ -44,6 +45,10 @@
     ]];
     
     [self.cardContainerView reloadData];
+}
+
+- (void)fetchListings{
+     
 }
 
 - (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {}

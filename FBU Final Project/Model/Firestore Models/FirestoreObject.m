@@ -23,7 +23,7 @@
     return self;
 }
 
-- (NSString *)getDefaultFirestoreDirectory{
+- (NSString*)getDefaultFirestoreDirectory{
     [NSException raise:@"Firestore Directiory Method not implemetned" format:@"the 'getDefaultFirestoreDirectory' method is not implemented"];
     return @"";
 }
@@ -42,14 +42,13 @@
 - (void)saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     FIRDocumentReference* docRef = [[FIRFirestore firestore] documentWithPath:path];
     [docRef setData:[FirestoreObject dictionaryWithPropertiesOfObject:self] merge:YES completion:completion];
-    
 }
 
 - (void)saveInBackgroundAtDefaultDirectoryWithCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     [self saveInBackgroundAtDirectory:[self getDefaultFirestoreDirectory] withCompletion:completion];
 }
 
-+ (NSDictionary *)dictionaryWithPropertiesOfObject: (id)obj{
++ (NSDictionary*)dictionaryWithPropertiesOfObject: (id)obj{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
     unsigned count;
