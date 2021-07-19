@@ -104,6 +104,7 @@
                                       attribute:NSLayoutAttributeWidth
                                       multiplier:1
                                       constant:0]];
+    self.itemImageView.layer.cornerRadius = 20;
     
     self.descriptionLabel = [[UILabel alloc]init];
     self.descriptionLabel.text = @"Description Label la la la la la la la";

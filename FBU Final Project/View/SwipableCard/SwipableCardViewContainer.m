@@ -65,10 +65,9 @@
     NSInteger const numberOfCards = [self.dataSource numberOfCards];
     self.remainingCards = numberOfCards;
     
-    for (int index = 0; index < (MIN(self.numberOfCards, self.numberOfVisibleCards)); index++){
+    for (int index = 0; index < (MIN(numberOfCards, self.numberOfVisibleCards)); index++){
         [self addCardView:[self.dataSource cardForItemAtIndex:index] atIndex:index];
     }
-    
     [self setNeedsLayout];
 }
 

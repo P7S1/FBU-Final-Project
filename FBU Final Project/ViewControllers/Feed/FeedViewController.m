@@ -68,11 +68,14 @@
 
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
     SwipableCardViewCard* card = [self.cardContainerView dequeueReusableCardView];
+    ItemListing* item = self.items[index];
+    card.titleLabel.text = item.name;
+    card.descriptionLabel.text = item.description;
     return card;
 }
 
 - (NSInteger)numberOfCards {
-    return 10;
+    return self.items.count;
 }
 
 - (UIView * _Nullable)viewForEmptyCards {
