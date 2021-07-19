@@ -42,6 +42,7 @@
 		DF82E76026A203A900EE9853 /* CGAffineTransformHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E75F26A203A900EE9853 /* CGAffineTransformHelper.m */; };
 		DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E76226A224FA00EE9853 /* NavigationController.m */; };
 		DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77026A2394000EE9853 /* BasicLabel.m */; };
+		DF82E77426A5F88800EE9853 /* FirebaseFirestoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,8 @@
 		DF82E76226A224FA00EE9853 /* NavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		DF82E76F26A2394000EE9853 /* BasicLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicLabel.h; sourceTree = "<group>"; };
 		DF82E77026A2394000EE9853 /* BasicLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicLabel.m; sourceTree = "<group>"; };
+		DF82E77226A5F88800EE9853 /* FirebaseFirestoreHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirebaseFirestoreHelper.h; sourceTree = "<group>"; };
+		DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseFirestoreHelper.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 				DF1DEA4826A0E62400EE488E /* FirebaseStorageHelper.m */,
 				DF82E75E26A203A900EE9853 /* CGAffineTransformHelper.h */,
 				DF82E75F26A203A900EE9853 /* CGAffineTransformHelper.m */,
+				DF82E77226A5F88800EE9853 /* FirebaseFirestoreHelper.h */,
+				DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -685,6 +690,7 @@
 				DF1DEA4926A0E62400EE488E /* FirebaseStorageHelper.m in Sources */,
 				DF1DEA4026A0B3AF00EE488E /* ItemListing.m in Sources */,
 				DF2986B5269CFD2B00EFB770 /* WelcomeViewController.m in Sources */,
+				DF82E77426A5F88800EE9853 /* FirebaseFirestoreHelper.m in Sources */,
 				DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */,
 				DF2986BD269DE85900EFB770 /* User.m in Sources */,
 				DF82E76026A203A900EE9853 /* CGAffineTransformHelper.m in Sources */,
