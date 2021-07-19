@@ -44,6 +44,7 @@
 		DF82E77126A2394000EE9853 /* BasicLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77026A2394000EE9853 /* BasicLabel.m */; };
 		DF82E77426A5F88800EE9853 /* FirebaseFirestoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */; };
 		DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */; };
+		DF82E77C26A6423700EE9853 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77B26A6423700EE9853 /* CategoryCollectionViewCell.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,8 @@
 		DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirebaseFirestoreHelper.m; sourceTree = "<group>"; };
 		DF82E77726A63EC000EE9853 /* CategoryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewCell.h; sourceTree = "<group>"; };
 		DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewCell.m; sourceTree = "<group>"; };
+		DF82E77A26A6423700EE9853 /* CategoryCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryCollectionViewCell.h; sourceTree = "<group>"; };
+		DF82E77B26A6423700EE9853 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 		DF82E77626A63E9C00EE9853 /* UICollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				DF82E77A26A6423700EE9853 /* CategoryCollectionViewCell.h */,
+				DF82E77B26A6423700EE9853 /* CategoryCollectionViewCell.m */,
 			);
 			path = UICollectionViewCells;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF82E77C26A6423700EE9853 /* CategoryCollectionViewCell.m in Sources */,
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
 				DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */,
 				DF4E3208269FD1F800745766 /* RootViewController.m in Sources */,
