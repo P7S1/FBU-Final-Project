@@ -9,13 +9,29 @@
 
 @interface ExploreViewController ()
 
+@property (nonatomic, strong) UITableView* tableView;
+
 @end
 
 @implementation ExploreViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.view.backgroundColor = UIColor.blueColor;
+    [self setUpTableView];
+}
+
+- (void)setUpTableView{
+    self.tableView = [[UITableView alloc]init];
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.tableView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.tableView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
+        [self.tableView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
+    ]];
 }
 
 @end
