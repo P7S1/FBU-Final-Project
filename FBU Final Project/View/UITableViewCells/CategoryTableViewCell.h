@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CategoryTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UILabel* titleLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END
