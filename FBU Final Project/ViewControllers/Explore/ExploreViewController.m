@@ -6,8 +6,9 @@
 //
 
 #import "ExploreViewController.h"
+#import "CategoryTableViewCell.h"
 
-@interface ExploreViewController ()
+@interface ExploreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
 
@@ -23,6 +24,8 @@
 - (void)setUpTableView{
     self.tableView = [[UITableView alloc]init];
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self.view addSubview:self.tableView];
     
@@ -32,6 +35,16 @@
         [self.tableView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
         [self.tableView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
     ]];
+}
+
+//MARK:- UITableViewDelegate + Datasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CategoryTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CategoryTableViewCell"];
+    return cell;
 }
 
 @end
