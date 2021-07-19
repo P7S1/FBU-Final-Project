@@ -10,10 +10,12 @@
 #import "SwipeableCardViewDataSource.h"
 #import "SwipableCardViewCard.h"
 #import "FirebaseFirestoreHelper.h"
+#import "ItemListing.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource>
 
 @property (nonatomic, strong) SwipableCardViewContainer *cardContainerView;
+@property (nonatomic, strong) NSArray<ItemListing*>* items;
 
 @end
 
@@ -22,6 +24,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpCardContainerView];
+    [self fetchListings];
     self.navigationItem.title = @"For You";
     self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
@@ -48,7 +51,14 @@
 }
 
 - (void)fetchListings{
-     
+    [FirebaseFirestoreHelper fetchAllListingsWithCompletion:^(NSArray<ItemListing *> * _Nullable results, NSError * _Nullable error) {
+        if (error == nil){
+            self.items = results;
+            [self.cardContainerView reloadData];
+        }else{
+            NSLog(@"Fetching Listings Failure: %@",[error localizedDescription]);
+        }
+    }];
 }
 
 - (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {}
