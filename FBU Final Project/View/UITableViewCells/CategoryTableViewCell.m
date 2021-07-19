@@ -39,7 +39,12 @@
 }
 
 - (void)setUpCollectionView{
-    self.collectionView = [[UICollectionView alloc]init];
+    UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc]init];
+    layout.minimumLineSpacing = 4.0;
+    layout.minimumInteritemSpacing = 4.0;
+    layout.itemSize = CGSizeMake(100, 133);
+    
+    self.collectionView = [[UICollectionView alloc]initWithFrame:UIScreen.mainScreen.bounds collectionViewLayout:layout];
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
