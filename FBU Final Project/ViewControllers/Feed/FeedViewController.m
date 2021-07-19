@@ -5,6 +5,7 @@
 //  Created by Keng Fontem on 7/13/21.
 //
 
+#import <SDWebImage/SDWebImage.h>
 #import "FeedViewController.h"
 #import "SwipableCardViewContainer.h"
 #import "SwipeableCardViewDataSource.h"
@@ -71,6 +72,12 @@
     ItemListing* item = self.items[index];
     card.titleLabel.text = item.name;
     card.descriptionLabel.text = item.description;
+    if (item.imageUrl != nil){
+        NSURL* url = [[NSURL alloc]initWithString:item.imageUrl];
+        [card.itemImageView sd_setImageWithURL:url];
+    }else{
+        card.itemImageView.image = nil;
+    }
     return card;
 }
 

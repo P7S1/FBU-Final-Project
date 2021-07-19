@@ -46,6 +46,7 @@
     
     [FirebaseStorageHelper saveImageAtStorageReferenceString:[[@"listings/" stringByAppendingString:item.uid] stringByAppendingString:@".jpg"] image:self.listingImage completionHandler:^(NSURL * _Nullable url, NSError * _Nullable error) {
         if (error == nil){
+            item.imageUrl = [url absoluteString];
             [item saveInBackgroundAtDefaultDirectoryWithCompletion:^(NSError * _Nullable error) {
                 if (error){
                     [SVProgressHUD showErrorWithStatus:@"Error"];

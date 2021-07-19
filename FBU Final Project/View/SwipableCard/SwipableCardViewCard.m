@@ -94,17 +94,17 @@
     self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
     
     self.itemImageView = [[UIImageView alloc]init];
+    self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.itemImageView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     self.itemImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.itemImageView addConstraint:[NSLayoutConstraint
-                                      constraintWithItem:self.itemImageView
-                                      attribute:NSLayoutAttributeHeight
-                                      relatedBy:NSLayoutRelationEqual
-                                      toItem:self.itemImageView
-                                      attribute:NSLayoutAttributeWidth
-                                      multiplier:1
-                                      constant:0]];
     self.itemImageView.layer.cornerRadius = 20;
+    self.itemImageView.layer.masksToBounds = YES;
+    self.itemImageView.clipsToBounds = YES;
+    CGFloat const itemImageViewSizeConstant = UIScreen.mainScreen.bounds.size.width - ((16 + 32) * 2);
+    [NSLayoutConstraint activateConstraints:@[
+        [self.itemImageView.heightAnchor constraintEqualToConstant:itemImageViewSizeConstant],
+        [self.itemImageView.widthAnchor constraintEqualToConstant:itemImageViewSizeConstant]
+    ]];
     
     self.descriptionLabel = [[UILabel alloc]init];
     self.descriptionLabel.text = @"Description Label la la la la la la la";
@@ -122,6 +122,7 @@
     ]];
     stackView.axis = UILayoutConstraintAxisVertical;
     stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    stackView.spacing = 4;
     
     [self addSubview:stackView];
     
