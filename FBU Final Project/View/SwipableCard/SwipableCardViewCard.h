@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, nullable) id<SwipableViewDelegate> delegate;
 @property (nonatomic, strong) CALayer* shadowLayer;
+@property (nonatomic, strong) UILabel* numberLabel;
 
 @end
 
