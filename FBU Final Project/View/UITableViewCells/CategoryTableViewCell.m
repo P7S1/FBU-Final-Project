@@ -7,7 +7,7 @@
 
 #import "CategoryTableViewCell.h"
 
-@interface CategoryTableViewCell()
+@interface CategoryTableViewCell()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView* collectionView;
 
@@ -48,6 +48,14 @@
         [self.collectionView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor],
         [self.collectionView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor]
     ]];
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
 }
 
 @end
