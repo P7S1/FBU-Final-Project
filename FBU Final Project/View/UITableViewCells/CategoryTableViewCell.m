@@ -60,6 +60,7 @@
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.backgroundColor = UIColor.systemBackgroundColor;
     [self.contentView addSubview:self.collectionView];
     
     [self.stackView addArrangedSubview:self.collectionView];
