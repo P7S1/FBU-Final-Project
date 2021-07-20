@@ -7,6 +7,7 @@
 
 #import "ExploreViewController.h"
 #import "CategoryTableViewCell.h"
+#import "CategoryType.h"
 
 @interface ExploreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -55,7 +56,7 @@
 
 //MARK:- UITableViewDelegate + Datasource
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return [CategoryType getAllCategories].count;
 }
 
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -64,6 +65,7 @@
 
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CategoryTableViewCell"];
+    cell.titleLabel.text = [CategoryType getAllCategories][indexPath.row];
     return cell;
 }
 
