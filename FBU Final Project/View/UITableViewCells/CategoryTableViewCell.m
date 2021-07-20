@@ -36,7 +36,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.stackView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor],
         [self.stackView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor],
-        [self.stackView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor],
+        [self.stackView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor constant:16],
         [self.stackView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor]
     ]];
 }
@@ -44,6 +44,7 @@
 - (void)setUpTitleView{
     self.titleLabel = [[UILabel alloc]init];
     self.titleLabel.text = @"Title goes here";
+    self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
     
@@ -52,9 +53,10 @@
 
 - (void)setUpCollectionView{
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc]init];
-    layout.minimumLineSpacing = 4.0;
-    layout.minimumInteritemSpacing = 4.0;
+    layout.minimumLineSpacing = 8.0;
+    layout.minimumInteritemSpacing = 8.0;
     layout.itemSize = CGSizeMake(100, 133);
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
     self.collectionView = [[UICollectionView alloc]initWithFrame:UIScreen.mainScreen.bounds collectionViewLayout:layout];
     self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;

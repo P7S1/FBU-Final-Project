@@ -19,6 +19,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpTableView];
+    self.navigationItem.title = @"Explore";
 }
 
 - (void)setUpTableView{
@@ -26,6 +27,8 @@
     self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorColor = UIColor.systemBackgroundColor;
+    self.tableView.allowsSelection = NO;
     [self.tableView registerClass:[CategoryTableViewCell class] forCellReuseIdentifier:@"CategoryTableViewCell"];
     
     [self.view addSubview:self.tableView];
