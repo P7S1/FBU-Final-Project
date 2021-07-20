@@ -12,6 +12,7 @@
 #import "XLForm/XLForm.h"
 #import "ItemListing.h"
 #import "FirebaseStorageHelper.h"
+#import "CategoryType.h"
 
 @interface CreateListingViewController ()
 
@@ -111,14 +112,14 @@
     [row.cellConfigAtConfigure setObject:@"0" forKey:@"textField.placeholder"];
     [section addFormRow:row];
     
-    // Location
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"location" rowType:XLFormRowDescriptorTypeText title:@"Location"];
-      [row.cellConfigAtConfigure setObject:@"Item Location" forKey:@"textField.placeholder"];
-      [section addFormRow:row];
+    //Category
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"category" rowType:XLFormRowDescriptorTypeSelectorPickerViewInline title:@"Category"];
+    [row.cellConfigAtConfigure setObject:@"" forKey:@""];
 
-    // Starts
+    // Ends
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"endsInNSDate" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
     row.value = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
+    
     [section addFormRow:row];
 
     self.form = form;

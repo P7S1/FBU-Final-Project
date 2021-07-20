@@ -9,4 +9,15 @@
 
 @implementation CategoryType
 
++ (NSArray<NSString *> *)getAllCategories{
+    return @[
+        @"Books",
+        @"Electronics",
+        @"Pencils",
+        @"Calculators",
+        @"Bags",
+        @"Furniture"
+    ];
+}
+
 @end

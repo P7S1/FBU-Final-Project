@@ -20,6 +20,8 @@ typedef enum {
     CategoryTypeFurniture = 4
 } ItemCategoryType;
 
++ (NSArray<NSString*>*)getAllCategories;
+
 @end
 
 NS_ASSUME_NONNULL_END
