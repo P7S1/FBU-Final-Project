@@ -10,13 +10,14 @@
 #import "CreateListingViewController.h"
 #import "BasicButton.h"
 
-@interface CameraViewController () <AVCapturePhotoCaptureDelegate>
+@interface CameraViewController () <AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
 @property (nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 @property (nonatomic, strong) UIView *previewView;
 
+@property (nonatomic, strong) BasicButton* photoLibraryButton;
 @property (nonatomic, strong) BasicButton* captureButton;
 
 @end
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpCamera];
+    [self setUpPhotoLibraryButton];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -43,12 +45,12 @@
 }
 
 //MARK:- Customising visual view elements
-- (void) captureButtonPressed{
+- (void)captureButtonPressed{
     AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
     [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
 }
 
--(void) setUpCamera{
+-(void)setUpCamera{
     self.previewView = [[UIView alloc]init];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -60,6 +62,32 @@
         [self.previewView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
         [self.previewView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]
     ]];
+}
+
+- (void)setUpPhotoLibraryButton{
+    self.photoLibraryButton = [[BasicButton alloc]init];
+    [self.photoLibraryButton setImage:[UIImage systemImageNamed:@"photo"] forState:UIControlStateNormal];
+    [self.photoLibraryButton addTarget:self action:@selector(photoLibraryButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    self.photoLibraryButton.tintColor = UIColor.whiteColor;
+    self.photoLibraryButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.photoLibraryButton];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.photoLibraryButton.heightAnchor constraintEqualToConstant:50],
+        [self.photoLibraryButton.widthAnchor constraintEqualToConstant:50],
+        [self.photoLibraryButton.bottomAnchor constraintEqualToAnchor:self.previewView.topAnchor constant:-16],
+        [self.photoLibraryButton.centerXAnchor constraintEqualToAnchor:self.previewView.centerXAnchor]
+    ]];
+}
+
+- (void)photoLibraryButtonPressed{
+    UIImagePickerController* pickerController = [[UIImagePickerController alloc]init];
+    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    pickerController.delegate = self;
+        [UIImagePickerController availableMediaTypesForSourceType:
+            UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:pickerController animated:YES completion:nil];
 }
 
 //MARK:- AVSession Setup
@@ -119,10 +147,19 @@
         
         CreateListingViewController *vc = [[CreateListingViewController alloc]init];
         vc.listingImage = image;
-        
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+//MARK:- UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    CreateListingViewController *vc = [[CreateListingViewController alloc]init];
+    vc.listingImage = image;
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -81,6 +81,7 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.titleLabel = [[UILabel alloc]init];
     self.titleLabel.text = @"Title";
     self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.itemImageView = [[UIImageView alloc]init];
     self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -97,10 +98,12 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     
     self.descriptionLabel = [[UILabel alloc]init];
     self.descriptionLabel.text = @"Description Label la la la la la la la";
+    self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.dateLabel = [[UILabel alloc]init];
     self.dateLabel.textColor = UIColor.secondaryLabelColor;
     self.dateLabel.text = @"3 days ago";
+    self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     //StackView
     UIStackView* stackView = [[UIStackView alloc]initWithArrangedSubviews:@[
@@ -118,8 +121,7 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     [NSLayoutConstraint activateConstraints:@[
         [stackView.topAnchor constraintEqualToAnchor:self.topAnchor constant:32],
         [stackView.bottomAnchor constraintLessThanOrEqualToAnchor:self.bottomAnchor constant:-32],
-        [stackView.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:32],
-        [stackView.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-32]
+        [stackView.centerXAnchor constraintEqualToAnchor:self.centerXAnchor]
     ]];
     
     //Yes or No Decision Labels
