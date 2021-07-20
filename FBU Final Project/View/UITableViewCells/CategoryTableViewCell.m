@@ -36,7 +36,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.stackView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor],
         [self.stackView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor],
-        [self.stackView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor constant:16],
+        [self.stackView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor],
         [self.stackView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor]
     ]];
 }
@@ -48,7 +48,17 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
     
-    [self.stackView addArrangedSubview:self.titleLabel];
+    UIView *const containerView = [[UIView alloc]init];
+    containerView.translatesAutoresizingMaskIntoConstraints = NO;
+    [containerView addSubview:self.titleLabel];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [containerView.heightAnchor constraintEqualToAnchor:self.titleLabel.heightAnchor],
+        [self.titleLabel.leftAnchor constraintEqualToAnchor:containerView.leftAnchor constant:16],
+        [self.titleLabel.centerXAnchor constraintEqualToAnchor:containerView.centerXAnchor]
+    ]];
+    
+    [self.stackView addArrangedSubview:containerView];
 }
 
 - (void)setUpCollectionView{
