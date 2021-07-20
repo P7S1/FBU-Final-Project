@@ -114,7 +114,8 @@
     
     //Category
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"category" rowType:XLFormRowDescriptorTypeSelectorPickerViewInline title:@"Category"];
-    [row.cellConfigAtConfigure setObject:@"" forKey:@""];
+    row.value = 0;
+    row.selectorOptions = [CategoryType getAllCategories];
 
     // Ends
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"endsInNSDate" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
