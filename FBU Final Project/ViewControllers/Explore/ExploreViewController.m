@@ -27,6 +27,10 @@
 - (void)setUpHeaderView{
     self.headerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 150)];
     self.headerView.backgroundColor = UIColor.secondarySystemBackgroundColor;
+    self.headerView.image = [UIImage imageNamed:@"back_to_school"];
+    self.headerView.contentMode = UIViewContentModeScaleAspectFill;
+    self.headerView.clipsToBounds = YES;
+    self.headerView.layer.masksToBounds = YES;
 }
 
 - (void)setUpTableView{
