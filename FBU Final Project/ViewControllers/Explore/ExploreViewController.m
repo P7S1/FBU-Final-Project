@@ -11,6 +11,7 @@
 @interface ExploreViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
+@property (nonatomic, strong) UIImageView* headerView;
 
 @end
 
@@ -18,8 +19,14 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self setUpHeaderView];
     [self setUpTableView];
     self.navigationItem.title = @"Explore";
+}
+
+- (void)setUpHeaderView{
+    self.headerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 150)];
+    self.headerView.backgroundColor = UIColor.secondarySystemBackgroundColor;
 }
 
 - (void)setUpTableView{
@@ -29,6 +36,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorColor = UIColor.systemBackgroundColor;
     self.tableView.allowsSelection = NO;
+    self.tableView.tableHeaderView = self.headerView;
     [self.tableView registerClass:[CategoryTableViewCell class] forCellReuseIdentifier:@"CategoryTableViewCell"];
     
     [self.view addSubview:self.tableView];
@@ -42,15 +50,15 @@
 }
 
 //MARK:- UITableViewDelegate + Datasource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section{
     return 20;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 200;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CategoryTableViewCell"];
     return cell;
 }
