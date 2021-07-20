@@ -11,6 +11,7 @@
 @interface CategoryTableViewCell()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView* collectionView;
+@property (nonatomic, strong) UIStackView* stackView;
 
 @end
 
@@ -19,10 +20,25 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self setUpCollectionView];
+        [self setUpStackView];
         [self setUpTitleView];
+        [self setUpCollectionView];
     }
     return self;
+}
+
+- (void)setUpStackView{
+    self.stackView = [[UIStackView alloc]init];
+    self.stackView.axis = UILayoutConstraintAxisVertical;
+    self.stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.contentView addSubview:self.stackView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.stackView.topAnchor constraintEqualToAnchor:self.contentView.topAnchor],
+        [self.stackView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor],
+        [self.stackView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor],
+        [self.stackView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor]
+    ]];
 }
 
 - (void)setUpTitleView{
@@ -31,11 +47,7 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
     
-    [NSLayoutConstraint activateConstraints:@[
-        [self.topAnchor constraintEqualToAnchor:self.contentView.topAnchor constant:16],
-        [self.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor constant:16],
-        [self.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor constant:-16]
-    ]];
+    [self.stackView addArrangedSubview:self.titleLabel];
 }
 
 - (void)setUpCollectionView{
@@ -50,12 +62,7 @@
     self.collectionView.dataSource = self;
     [self.contentView addSubview:self.collectionView];
     
-    [NSLayoutConstraint activateConstraints:@[
-        [self.collectionView.topAnchor constraintEqualToAnchor:self.titleLabel.bottomAnchor constant:8],
-        [self.collectionView.leftAnchor constraintEqualToAnchor:self.contentView.leftAnchor],
-        [self.collectionView.rightAnchor constraintEqualToAnchor:self.contentView.rightAnchor],
-        [self.collectionView.bottomAnchor constraintEqualToAnchor:self.contentView.bottomAnchor]
-    ]];
+    [self.stackView addArrangedSubview:self.collectionView];
     
     [self.collectionView registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:@"CategoryCollectionViewCell"];
 }
