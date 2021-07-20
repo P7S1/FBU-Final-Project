@@ -21,20 +21,8 @@
 @property (nonatomic, strong, nullable) UITapGestureRecognizer* tapGestureRecognizer;
 
 //Drag animation settings
-@property (nonatomic) CGFloat const maximumRotation;
-@property (nonatomic) CGFloat const rotationAngle;
-@property (nonatomic) CGFloat const animationDirectionY;
-@property (nonatomic) CGFloat const swipePercentageMargin;
 @property (nonatomic) CGFloat const animationCompletionThreshold;
 @property (nonatomic) CGFloat initialXPosition;
-
-//Card Finalise Swipe Animation
-@property (nonatomic) NSTimeInterval const finalizeSwipeActionAnimationDuration;
-
-//Card Reset Animation
-@property (nonatomic) CGFloat const cardViewResetAnimationSpringBounciness;
-@property (nonatomic) CGFloat const cardViewResetAnimationSpringSpeed;
-@property (nonatomic) CGFloat const cardViewResetAnimationDuration;
 
 //Decision Labels
 @property (nonatomic, strong) BasicLabel* yesDecisionLabel;
@@ -44,22 +32,23 @@
 
 @implementation SwipableCardViewCard
 
+CGFloat const _swipePercentageMargin = 0.6;
+CGFloat const _maximumRotation = 1.0;
+CGFloat const _rotationAngle = M_PI / 10.0;
+CGFloat const _animationDirectionY = 1.0;
+
+//Card Reset Animation
+CGFloat const _cardViewResetAnimationSpringBounciness = 10.0;
+CGFloat const _cardViewResetAnimationSpringSpeed = 20.0;
+CGFloat const _cardViewResetAnimationDuration = 0.2;
+CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
+
 - (instancetype)init{
     self = [super init];
     if (self) {
         self.panGestureTranslation = CGPointZero;
-        
-        self.maximumRotation = 1.0;
-        self.rotationAngle = M_PI / 10.0;
-        self.animationDirectionY = 1.0;
-        self.swipePercentageMargin = 0.6;
+
         self.animationCompletionThreshold = 90;
-        
-        self.finalizeSwipeActionAnimationDuration = 0.8;
-        
-        self.cardViewResetAnimationSpringBounciness = 10.0;
-        self.cardViewResetAnimationSpringSpeed = 20.0;
-        self.cardViewResetAnimationDuration = 0.2;
         
         [self setUpGestureRecognizers];
         [self setUpUI];
@@ -206,8 +195,8 @@
 }
 
 - (void)handlePanGestureStateChanged:(UIPanGestureRecognizer*)gestureRecognizer{
-    CGFloat const rotationStrength = MIN(self.panGestureTranslation.x / self.frame.size.width, self.maximumRotation);
-    CGFloat const rotationAngle = self.animationDirectionY * self.rotationAngle * rotationStrength;
+    CGFloat const rotationStrength = MIN(self.panGestureTranslation.x / self.frame.size.width, _maximumRotation);
+    CGFloat const rotationAngle = _animationDirectionY * _rotationAngle * rotationStrength;
     
     CATransform3D transform = CATransform3DIdentity;
     transform = CATransform3DRotate(transform, rotationAngle, 0, 0, 1);
