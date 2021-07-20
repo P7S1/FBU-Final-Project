@@ -55,10 +55,10 @@
     [self.view addSubview:self.previewView];
     
     [NSLayoutConstraint activateConstraints: @[
-        [self.previewView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
-        [self.previewView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
-        [self.previewView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-100],
-        [self.previewView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor]
+        [self.previewView.widthAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width],
+        [self.previewView.heightAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width * 1.33],
+        [self.previewView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
+        [self.previewView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]
     ]];
 }
 
@@ -94,7 +94,7 @@
     self.videoPreviewLayer = [AVCaptureVideoPreviewLayer layerWithSession:self.captureSession];
     if (self.videoPreviewLayer) {
         
-        self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        self.videoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
         self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
         [self.previewView.layer addSublayer:self.videoPreviewLayer];
         
