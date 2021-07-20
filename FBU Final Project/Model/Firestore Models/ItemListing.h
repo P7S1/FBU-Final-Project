@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) NSInteger quantity;
 @property (nonatomic) FIRTimestamp* endsInTimestamp;
 @property (nonatomic, strong) NSString* location;
+@property (nonatomic) CGFloat category;
 
 @end
 

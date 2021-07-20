@@ -116,11 +116,11 @@
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"category" rowType:XLFormRowDescriptorTypeSelectorPickerViewInline title:@"Category"];
     row.value = 0;
     row.selectorOptions = [CategoryType getAllCategories];
+    [section addFormRow:row];
 
     // Ends
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"endsInNSDate" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
     row.value = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
-    
     [section addFormRow:row];
 
     self.form = form;
