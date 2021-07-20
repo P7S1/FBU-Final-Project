@@ -73,6 +73,9 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.backgroundColor = UIColor.systemBackgroundColor;
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.contentInset = UIEdgeInsetsMake(0, 16, 0, 16);
     [self.contentView addSubview:self.collectionView];
     
     [self.stackView addArrangedSubview:self.collectionView];
