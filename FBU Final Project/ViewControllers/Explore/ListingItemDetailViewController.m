@@ -5,7 +5,9 @@
 //  Created by Keng Fontem on 7/21/21.
 //
 
+#import <SDWebImage/SDWebImage.h>
 #import "ListingItemDetailViewController.h"
+#import "ItemListing.h"
 
 @interface ListingItemDetailViewController ()
 
@@ -15,12 +17,24 @@
 
 @implementation ListingItemDetailViewController
 
-- (void)viewDidLoad {
+- (instancetype)initWithListing: (ItemListing*)listing{
+    self = [super init];
+    if (self) {
+        self.item = listing;
+    }
+    return self;
+}
+
+- (void)viewDidLoad{
     [super viewDidLoad];
     
     self.imageView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    self.imageView.image = self.image;
+    NSString* str = self.item.imageUrl;
+    if (str){
+        NSURL* url = [[NSURL alloc]initWithString:str];
+        [self.imageView sd_setImageWithURL:url];
+    }
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.imageView];

@@ -6,12 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemListing.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListingItemDetailViewController : UIViewController
 
-@property (nonatomic, strong) UIImage* image;
+@property (nonatomic, strong) ItemListing* item;
 
 @end
 
