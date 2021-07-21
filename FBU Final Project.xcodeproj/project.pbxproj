@@ -46,6 +46,7 @@
 		DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */; };
 		DF82E77C26A6423700EE9853 /* CategoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77B26A6423700EE9853 /* CategoryCollectionViewCell.m */; };
 		DF82E78026A727F100EE9853 /* CategoryType.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E77F26A727F100EE9853 /* CategoryType.m */; };
+		DF82E78426A8966000EE9853 /* ListingItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E78326A8966000EE9853 /* ListingItemViewController.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,8 @@
 		DF82E77B26A6423700EE9853 /* CategoryCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryCollectionViewCell.m; sourceTree = "<group>"; };
 		DF82E77E26A727F100EE9853 /* CategoryType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryType.h; sourceTree = "<group>"; };
 		DF82E77F26A727F100EE9853 /* CategoryType.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryType.m; sourceTree = "<group>"; };
+		DF82E78226A8966000EE9853 /* ListingItemViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingItemViewController.h; sourceTree = "<group>"; };
+		DF82E78326A8966000EE9853 /* ListingItemViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingItemViewController.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 			children = (
 				DF4E31E7269E4C9300745766 /* ExploreViewController.h */,
 				DF4E31E8269E4C9300745766 /* ExploreViewController.m */,
+				DF82E78226A8966000EE9853 /* ListingItemViewController.h */,
+				DF82E78326A8966000EE9853 /* ListingItemViewController.m */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -716,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF82E78426A8966000EE9853 /* ListingItemViewController.m in Sources */,
 				DF82E77C26A6423700EE9853 /* CategoryCollectionViewCell.m in Sources */,
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
 				DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */,
