@@ -52,7 +52,7 @@
 }
 
 - (void)fetchListings{
-    [FirebaseFirestoreHelper fetchAllListingsWithCompletion:^(NSArray<ItemListing *> * _Nullable results, NSError * _Nullable error) {
+    [FirebaseFirestoreHelper addSnapshotListenerWithCompletion:^(NSArray<ItemListing *> * _Nullable results, NSError * _Nullable error) {
         if (error == nil){
             self.items = results;
             [self.cardContainerView reloadData];
