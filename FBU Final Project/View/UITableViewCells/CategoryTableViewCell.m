@@ -98,6 +98,7 @@
     }else{
         cell.itemImageView.image = nil;
     }
+    cell.presentingViewController = self.presentingViewController;
     return cell;
 }
 
