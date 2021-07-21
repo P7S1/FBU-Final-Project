@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UILabel* descriptionLabel;
 @property (nonatomic, strong) UILabel* dateLabel;
 
+@property (nonatomic, strong) CAGradientLayer* gradientLayer;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -78,6 +78,19 @@
     }else{
         card.itemImageView.image = nil;
     }
+    switch (index % 3) {
+        case 0:
+            card.gradientLayer.colors = @[(id)[UIColor systemTealColor].CGColor, (id)[UIColor systemBlueColor].CGColor];
+            break;
+        case 1:
+            card.gradientLayer.colors = @[(id)[UIColor systemOrangeColor].CGColor, (id)[UIColor systemRedColor].CGColor];
+            break;
+        case 2:
+            card.gradientLayer.colors = @[(id)[UIColor systemGreenColor].CGColor, (id)[UIColor greenColor].CGColor];
+            break;
+        default:
+            break;
+    }
     return card;
 }
 

@@ -75,6 +75,12 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.shadowLayer.opacity = 0.0;
     [self.layer insertSublayer:self.shadowLayer atIndex:0];
     
+    self.gradientLayer = [CAGradientLayer layer];
+    self.gradientLayer.frame = self.bounds;
+    self.gradientLayer.startPoint = CGPointZero;
+    self.gradientLayer.endPoint = CGPointMake(1.0, 1.0);
+    [self.layer insertSublayer:self.gradientLayer atIndex:0];
+    
     self.backgroundColor = UIColor.systemBackgroundColor;
     
     //StackView Components
@@ -82,6 +88,7 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.titleLabel.text = @"Title";
     self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.textColor = UIColor.whiteColor;
     
     self.itemImageView = [[UIImageView alloc]init];
     self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -99,9 +106,10 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.descriptionLabel = [[UILabel alloc]init];
     self.descriptionLabel.text = @"Description Label la la la la la la la";
     self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.descriptionLabel.textColor = UIColor.whiteColor;
     
     self.dateLabel = [[UILabel alloc]init];
-    self.dateLabel.textColor = UIColor.secondaryLabelColor;
+    self.dateLabel.textColor = UIColor.whiteColor;
     self.dateLabel.text = @"3 days ago";
     self.dateLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -163,6 +171,7 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.shadowLayer.frame = self.layer.bounds;
+    self.gradientLayer.frame = self.layer.bounds;
 }
 
 //MARK:- Pan Gesture Recognizer
