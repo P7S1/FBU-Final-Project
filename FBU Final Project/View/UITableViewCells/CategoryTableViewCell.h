@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel* titleLabel;
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
+@property (nonatomic, strong) UIViewController* presentingViewController;
 
 - (void)reloadCollectionViewData;
 

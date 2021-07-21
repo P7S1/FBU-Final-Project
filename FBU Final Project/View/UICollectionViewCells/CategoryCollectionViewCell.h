@@ -6,12 +6,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemListing.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CategoryCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, strong) UIImageView* itemImageView;
+
+@property (nonatomic, strong) UIViewController* presentingViewController;
+@property (nonatomic, strong) ItemListing* item;
+
 
 @end
 
