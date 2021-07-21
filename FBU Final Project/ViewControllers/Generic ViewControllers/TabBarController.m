@@ -129,13 +129,11 @@
 }
 
 //MARK:- Buttons Delegate
-- (void)captuerButtonPressed{
+- (void)captureButtonPressed{
     [self.cameraVc captureButtonPressed];
 }
 
-- (void)backToCamerea{
-    
-}
+- (void)backToCamerea{}
 
 - (void)scrollToPosition: (PanelButtonPosition)posiiton {
     self.shouldAnimate = self.scrollView.contentOffset.x == UIScreen.mainScreen.bounds.size.width || posiiton == center;

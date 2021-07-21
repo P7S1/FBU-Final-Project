@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)scrollToPosition: (PanelButtonPosition)posiiton;
 - (void)backToCamerea;
-- (void)captuerButtonPressed;
+- (void)captureButtonPressed;
 
 @end
 

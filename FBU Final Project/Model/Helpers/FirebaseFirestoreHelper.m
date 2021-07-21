@@ -14,7 +14,7 @@
 + (void)addSnapshotListenerWithCompletion:(ListingCompletionBlock)completion{
     FIRFirestore* db = [FIRFirestore firestore];
     
-    [[[db collectionWithPath:@"listings"] queryLimitedTo:20] addSnapshotListener:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
+    [[[[db collectionWithPath:@"listings"] queryOrderedByField:@"endsInTimestamp" descending:YES] queryLimitedTo:20] addSnapshotListener:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
         if (error == nil){
             NSMutableArray<ItemListing*>* itemListings = [[NSMutableArray alloc]init];
             for (FIRDocumentSnapshot* document in [snapshot documents]){

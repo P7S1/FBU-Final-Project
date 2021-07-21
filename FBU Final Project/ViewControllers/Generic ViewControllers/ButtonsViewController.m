@@ -97,7 +97,7 @@
             break;
         case center:
             if (self.currentViewControllerPosition == center){
-                [self.delegate captuerButtonPressed];
+                [self.delegate captureButtonPressed];
             }else{
                 [self.delegate scrollToPosition:center];
                 self.currentViewControllerPosition = center;
