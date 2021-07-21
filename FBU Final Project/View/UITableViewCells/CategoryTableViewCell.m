@@ -8,6 +8,8 @@
 #import <SDWebImage/SDWebImage.h>
 #import "CategoryTableViewCell.h"
 #import "CategoryCollectionViewCell.h"
+#import "ItemListing.h"
+#import "ListingItemDetailViewController.h"
 
 @interface CategoryTableViewCell()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -100,6 +102,12 @@
     }
     cell.presentingViewController = self.presentingViewController;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    ItemListing* item = self.items[indexPath.row];
+    ListingItemDetailViewController* vc = [[ListingItemDetailViewController alloc]initWithListing:item];
+    [self.presentingViewController.navigationController pushViewController:vc animated:YES];
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

@@ -148,7 +148,7 @@
     }
     
     [cell reloadCollectionViewData];
-    
+    cell.presentingViewController = self;
     return cell;
 }
 

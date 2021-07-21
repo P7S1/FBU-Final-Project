@@ -27,7 +27,10 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+    self.navigationItem.title = self.item.name;
     
+    self.imageView = [[UIImageView alloc]init];
     self.imageView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     NSString* str = self.item.imageUrl;

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ListingItemDetailViewController : UIViewController
 
+- (instancetype)initWithListing: (ItemListing*)listing;
+
 @property (nonatomic, strong) ItemListing* item;
 
 @end
