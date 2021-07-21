@@ -124,7 +124,6 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CategoryTableViewCell"];
     cell.titleLabel.text = [CategoryType getAllCategories][indexPath.row];
-    
     switch (indexPath.row) {
         case CategoryTypeBooks:
             cell.items = self.books;
