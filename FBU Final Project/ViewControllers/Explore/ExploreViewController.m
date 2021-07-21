@@ -8,22 +8,80 @@
 #import "ExploreViewController.h"
 #import "CategoryTableViewCell.h"
 #import "CategoryType.h"
+#import "ItemListing.h"
+#import "FirebaseFirestoreHelper.h"
 
-@interface ExploreViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface ExploreViewController()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) UIImageView* headerView;
+
+@property (nonatomic, strong) NSArray<ItemListing*>* books;
+@property (nonatomic, strong) NSArray<ItemListing*>* electronics;
+@property (nonatomic, strong) NSArray<ItemListing*>* pencils;
+@property (nonatomic, strong) NSArray<ItemListing*>* calculators;
+@property (nonatomic, strong) NSArray<ItemListing*>* bags;
+@property (nonatomic, strong) NSArray<ItemListing*>* furniture;
 
 @end
 
 @implementation ExploreViewController
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.books = [[NSArray alloc]init];
+        self.electronics = [[NSArray alloc]init];
+        self.pencils = [[NSArray alloc]init];
+        self.calculators = [[NSArray alloc]init];
+        self.bags = [[NSArray alloc]init];
+        self.furniture = [[NSArray alloc]init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpHeaderView];
     [self setUpTableView];
+    [self fetchListings];
     self.navigationItem.title = @"Explore";
 }
+
+- (void)fetchListings{
+    [FirebaseFirestoreHelper fetchListings:^(NSArray<ItemListing *> * _Nullable results, NSError * _Nullable error) {
+        if (error == nil){
+            for(ItemListing* item in results){
+                switch (item.category) {
+                    case CategoryTypeBooks:
+                        self.books = [self.books arrayByAddingObject:item];
+                        break;
+                    case CategoryTypeElectronics:
+                        self.electronics = [self.electronics arrayByAddingObject:item];
+                        break;
+                    case CategoryTypePencils:
+                        self.pencils = [self.pencils arrayByAddingObject:item];
+                        break;
+                    case CategoryTypeCalculators:
+                        self.calculators = [self.calculators arrayByAddingObject:item];
+                        break;
+                    case CategoryTypeBags:
+                        self.bags = [self.bags arrayByAddingObject:item];
+                        break;
+                    case CategoryTypeFurniture:
+                        self.furniture = [self.furniture arrayByAddingObject:item];
+                        break;
+                    default:
+                        break;
+                }
+                [self.tableView reloadData];
+            }
+        }else{
+            NSLog(@"Fetching Listings Failure: %@",[error localizedDescription]);
+        }
+    }];
+}
+
 
 - (void)setUpHeaderView{
     self.headerView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width, 150)];
@@ -66,6 +124,32 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CategoryTableViewCell"];
     cell.titleLabel.text = [CategoryType getAllCategories][indexPath.row];
+    
+    switch (indexPath.row) {
+        case CategoryTypeBooks:
+            cell.items = self.books;
+            break;
+        case CategoryTypeElectronics:
+            cell.items = self.electronics;
+            break;
+        case CategoryTypePencils:
+            cell.items = self.pencils;
+            break;
+        case CategoryTypeCalculators:
+            cell.items = self.calculators;
+            break;
+        case CategoryTypeBags:
+            cell.items = self.bags;
+            break;
+        case CategoryTypeFurniture:
+            cell.items = self.furniture;
+            break;
+        default:
+            break;
+    }
+    
+    [cell reloadCollectionViewData];
+    
     return cell;
 }
 

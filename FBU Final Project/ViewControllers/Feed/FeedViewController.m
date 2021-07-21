@@ -25,7 +25,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self setUpCardContainerView];
-    [self fetchListings];
+    [self startListingsSnapshotListener];
     self.navigationItem.title = @"For You";
     self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
@@ -51,7 +51,7 @@
     [self.cardContainerView reloadData];
 }
 
-- (void)fetchListings{
+- (void)startListingsSnapshotListener{
     [FirebaseFirestoreHelper addSnapshotListenerWithCompletion:^(NSArray<ItemListing *> * _Nullable results, NSError * _Nullable error) {
         if (error == nil){
             self.items = results;

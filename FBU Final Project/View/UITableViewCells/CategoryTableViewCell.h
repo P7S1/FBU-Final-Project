@@ -6,12 +6,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ItemListing.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CategoryTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel* titleLabel;
+@property (nonatomic, strong) NSArray<ItemListing*>* items;
+
+- (void)reloadCollectionViewData;
 
 @end
 

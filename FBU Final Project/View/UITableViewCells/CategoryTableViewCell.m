@@ -5,6 +5,7 @@
 //  Created by Keng Fontem on 7/19/21.
 //
 
+#import <SDWebImage/SDWebImage.h>
 #import "CategoryTableViewCell.h"
 #import "CategoryCollectionViewCell.h"
 
@@ -20,6 +21,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.items = [[NSArray alloc]init];
         [self setUpStackView];
         [self setUpTitleView];
         [self setUpCollectionView];
@@ -83,13 +85,24 @@
     [self.collectionView registerClass:[CategoryCollectionViewCell class] forCellWithReuseIdentifier:@"CategoryCollectionViewCell"];
 }
 
+- (void)reloadCollectionViewData{
+    [self.collectionView reloadData];
+}
+
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CategoryCollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"CategoryCollectionViewCell" forIndexPath:indexPath];
+    NSString* urlString = self.items[indexPath.row].imageUrl;
+    if (urlString){
+        NSURL* url = [[NSURL alloc]initWithString:urlString];
+        [cell.itemImageView sd_setImageWithURL:url];
+    }else{
+        cell.itemImageView.image = nil;
+    }
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 30;
+    return self.items.count;
 }
 
 @end

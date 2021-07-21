@@ -15,9 +15,9 @@ typedef enum {
     CategoryTypeBooks = 0,
     CategoryTypeElectronics = 1,
     CategoryTypePencils = 2,
-    CategoryTypeCalculators,
-    CategoryTypeBags = 3,
-    CategoryTypeFurniture = 4
+    CategoryTypeCalculators = 3,
+    CategoryTypeBags = 4,
+    CategoryTypeFurniture = 5
 } ItemCategoryType;
 
 + (NSArray<NSString*>*)getAllCategories;
