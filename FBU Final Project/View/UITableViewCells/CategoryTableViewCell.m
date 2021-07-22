@@ -109,6 +109,11 @@
     
     ItemListing* item = self.items[indexPath.row];
     ListingItemDetailViewController* vc = [[ListingItemDetailViewController alloc]initWithListing:item];
+    
+    self.presentingViewController.navigationController.delegate = vc.transitionController;
+    vc.transitionController.fromDelegate = self.presentingViewController;
+    vc.transitionController.toDelegate = vc;
+    
     [self.presentingViewController.navigationController pushViewController:vc animated:YES];
 }
 

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ItemListing.h"
+#import "ZoomTransitionController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithListing: (ItemListing*)listing;
 
 @property (nonatomic, strong) ItemListing* item;
+@property (nonatomic, strong) ZoomTransitionController* transitionController;
 
 @end
 

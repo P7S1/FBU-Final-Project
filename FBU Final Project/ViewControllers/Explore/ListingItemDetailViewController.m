@@ -9,6 +9,7 @@
 #import "ListingItemDetailViewController.h"
 #import "ItemListing.h"
 #import "ZoomAnimatorDelegate.h"
+#import "ZoomTransitionController.h"
 
 @interface ListingItemDetailViewController()<ZoomAnimatorDelegate>
 
@@ -22,6 +23,7 @@
     self = [super init];
     if (self) {
         self.item = listing;
+        self.transitionController = [[ZoomTransitionController alloc]init];
     }
     return self;
 }
@@ -65,5 +67,9 @@
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
     return self.imageView.frame;
 }
+
+- (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
+
+- (void)transitionWillStartWith:(ZoomAnimator *)zoomAnimator {}
 
 @end

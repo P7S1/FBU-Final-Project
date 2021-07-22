@@ -8,7 +8,8 @@
 #import <UIKit/UIKit.h>
 #import "ZoomTransitionController.h"
 #import "ZoomAnimatorDelegate.h"
-@interface ZoomTransitionController ()<UIViewControllerTransitioningDelegate>
+
+@interface ZoomTransitionController ()<UIViewControllerTransitioningDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -53,4 +54,29 @@
     self.interactionController.animator = animator;
     return self.interactionController;
 }
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPush){
+        self.animator.isPresenting = (BOOL*)YES;
+        self.animator.fromDelegate = self.fromDelegate;
+        self.animator.toDelegate = self.toDelegate;
+    }else{
+        self.animator.isPresenting =(BOOL*)NO;
+        id<ZoomAnimatorDelegate> temp = self.fromDelegate;
+        self.animator.fromDelegate = self.toDelegate;
+        self.animator.toDelegate = temp;
+    }
+    
+    return self.animator;
+}
+
+- (id<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>)animationController{
+    if (!self.isInteractive){
+        return nil;
+    }
+    
+    self.interactionController.animator = self.animator;
+    return self.interactionController;
+}
+
 @end

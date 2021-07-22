@@ -12,6 +12,8 @@
 #import "FirebaseFirestoreHelper.h"
 #import "ZoomAnimatorDelegate.h"
 #import "CategoryTableViewCell.h"
+#import "ZoomAnimator.h"
+#import "ZoomTransitionController.h"
 
 @interface ExploreViewController()<UITableViewDelegate, UITableViewDataSource, ZoomAnimatorDelegate>
 
