@@ -105,6 +105,8 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    self.presentingViewController.selectedCell = (CategoryCollectionViewCell * _Nullable)[self.collectionView cellForItemAtIndexPath:indexPath];
+    
     ItemListing* item = self.items[indexPath.row];
     ListingItemDetailViewController* vc = [[ListingItemDetailViewController alloc]initWithListing:item];
     [self.presentingViewController.navigationController pushViewController:vc animated:YES];

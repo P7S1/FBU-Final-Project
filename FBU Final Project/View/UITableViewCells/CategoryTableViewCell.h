@@ -7,14 +7,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ItemListing.h"
+#import "ExploreViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class ExploreViewController;
 
 @interface CategoryTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel* titleLabel;
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
-@property (nonatomic, strong) UIViewController* presentingViewController;
+@property (nonatomic, strong) ExploreViewController* presentingViewController;
 
 - (void)reloadCollectionViewData;
 

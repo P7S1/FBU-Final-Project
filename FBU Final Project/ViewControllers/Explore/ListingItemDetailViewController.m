@@ -8,8 +8,9 @@
 #import <SDWebImage/SDWebImage.h>
 #import "ListingItemDetailViewController.h"
 #import "ItemListing.h"
+#import "ZoomAnimatorDelegate.h"
 
-@interface ListingItemDetailViewController ()
+@interface ListingItemDetailViewController()<ZoomAnimatorDelegate>
 
 @property (nonatomic, strong) UIImageView* imageView;
 
@@ -55,6 +56,14 @@
 - (void)setUpInitialViewElements{
     
     
+}
+
+- (UIImageView *)refereneImageViewFor:(ZoomAnimator *)zoomAnimator{
+    return self.imageView;
+}
+
+- (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
+    return self.imageView.frame;
 }
 
 @end
