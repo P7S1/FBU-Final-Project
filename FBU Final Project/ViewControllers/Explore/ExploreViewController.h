@@ -8,12 +8,13 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 #import "CategoryCollectionViewCell.h"
+#import "ZoomAnimatorDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @class CategoryTableViewCell;
 
-@interface ExploreViewController : RootViewController
+@interface ExploreViewController : RootViewController<ZoomAnimatorDelegate>
 
 @property (nonatomic, strong) CategoryCollectionViewCell * _Nullable selectedCell;
 

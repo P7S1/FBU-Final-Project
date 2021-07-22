@@ -8,10 +8,11 @@
 #import <UIKit/UIKit.h>
 #import "ItemListing.h"
 #import "ZoomTransitionController.h"
+#import "ZoomAnimatorDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListingItemDetailViewController : UIViewController
+@interface ListingItemDetailViewController : UIViewController<ZoomAnimatorDelegate>
 
 - (instancetype)initWithListing: (ItemListing*)listing;
 
