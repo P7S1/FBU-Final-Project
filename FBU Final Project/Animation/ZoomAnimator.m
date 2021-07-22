@@ -65,7 +65,6 @@
         [toReferenceImageView setHidden:NO];
         [fromReferenceImageView setHidden:NO];
         
-        
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         [self.fromDelegate transitionDidEndWith:self];
         [self.toDelegate transitionDidEndWith:self];
@@ -78,7 +77,7 @@
 - (void)animateZoomOutTransition: (id<UIViewControllerContextTransitioning>) transitionContext{
     UIView *containerView = transitionContext.containerView;
     
-    UIViewController *toVC = [transitionContext viewControllerForKey: UITransitionContextToViewControllerKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIImageView *fromReferenceImageView = [self.fromDelegate refereneImageViewFor:self];
@@ -103,6 +102,8 @@
     }
     
     [containerView addSubview:self.transitionImageView];
+    
+    [containerView insertSubview:toVC.view belowSubview:fromVC.view];
     [fromReferenceImageView setHidden:YES];
     
     CGRect finalTransitionSize = toReferenceImageViewFrame;
@@ -114,16 +115,15 @@
         //Animations
         fromVC.view.alpha = 0;
         self.transitionImageView.frame = finalTransitionSize;
-        toVC.tabBarController.tabBar.alpha = 1;
     }
                      completion:^(BOOL completion) {
         //Completion
         [self.transitionImageView removeFromSuperview];
-        [toReferenceImageView setHidden:YES];
+        [toReferenceImageView setHidden:NO];
         [fromReferenceImageView setHidden:YES];
         
         [transitionContext completeTransition:transitionContext.transitionWasCancelled];
-        
+
         [self.toDelegate transitionDidEndWith:self];
         [self.fromDelegate transitionDidEndWith:self];
     }];
