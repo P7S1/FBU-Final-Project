@@ -11,9 +11,10 @@
 #import "ZoomAnimatorDelegate.h"
 #import "ZoomTransitionController.h"
 
-@interface ListingItemDetailViewController()<ZoomAnimatorDelegate>
+@interface ListingItemDetailViewController()<ZoomAnimatorDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UIImageView* imageView;
+@property (nonatomic, strong) UIPanGestureRecognizer* panGestureRecognizer;
 
 @end
 
@@ -30,6 +31,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self setUpPanGestureRecognizer];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     self.navigationItem.title = self.item.name;
     
@@ -63,6 +65,50 @@
     
     
 }
+
+//MARK:- UIPanGestureRecognizer
+
+- (void)setUpPanGestureRecognizer{
+    self.panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(didPanWith:)];
+    self.panGestureRecognizer.delegate = self;
+    [self.view addGestureRecognizer:self.panGestureRecognizer];
+}
+
+- (void)didPanWith: (UIPanGestureRecognizer*)gestureRecognizer{
+    switch (gestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self handlePangestureRecognizerBegan:gestureRecognizer];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self handlePangestureRecognizerEnded:gestureRecognizer];
+            break;
+        default:
+            [self handlePangestureRecognizerDefault:gestureRecognizer];
+            if (self.transitionController.isInteractive){
+                [self.transitionController didPanWith:gestureRecognizer];
+            }
+            break;
+    }
+}
+
+- (void)handlePangestureRecognizerBegan: (UIPanGestureRecognizer*)gestureRecognizer{
+    self.transitionController.isInteractive = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)handlePangestureRecognizerEnded: (UIPanGestureRecognizer*)gestureRecognizer{
+    if (self.transitionController.isInteractive){
+        self.transitionController.isInteractive = NO;
+        [self.transitionController didPanWith:gestureRecognizer];
+        
+    }
+}
+
+- (void)handlePangestureRecognizerDefault: (UIPanGestureRecognizer*)gestureRecognizer{
+    
+}
+
+//MARK:- ZoomAnimatorDelegate
 
 - (UIImageView *)refereneImageViewFor:(ZoomAnimator *)zoomAnimator{
     return self.imageView;

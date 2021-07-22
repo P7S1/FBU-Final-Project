@@ -14,8 +14,10 @@
 - (void)didPanWith:(UIPanGestureRecognizer *)gestureRecognizer{
     ZoomAnimator* animator = self.animator;
     UIImageView* transitionImageView = animator.transitionImageView;
-    UIViewController* fromVC = [self.transitionContext viewControllerForKey:UITransitionContextFromViewKey];
+    UIViewController* fromVC = [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController* toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
+    
     UIImageView* fromReferenceImageView = [animator.fromDelegate refereneImageViewFor:animator];
     UIImageView* toReferenceImageView = [animator.toDelegate refereneImageViewFor:animator];
     CGRect fromReferenceImageViewFrame = self.fromReferceImageViewFrame;
@@ -32,6 +34,7 @@
     CGFloat backgroundAlpha = [self backgroundAlphaFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     CGFloat scale = [self scaleFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     fromVC.view.alpha = backgroundAlpha;
+    transitionImageView.layer.cornerRadius = scale * toReferenceImageView.layer.cornerRadius;
     
     transitionImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
     CGPoint newCenter = CGPointMake(anchorPoint.x + translatedPoint.x, anchorPoint.y + translatedPoint.y - transitionImageView.frame.size.height * (1-scale) / 2.0);
@@ -54,6 +57,7 @@
                                 options:UIViewAnimationOptionTransitionNone animations:^{
                 //Animations
                 transitionImageView.frame = fromReferenceImageViewFrame;
+                transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
                 fromVC.view.alpha = 0;
                 toVC.tabBarController.tabBar.alpha = 0;
             }
@@ -65,38 +69,37 @@
                 [transitionImageView removeFromSuperview];
                 animator.transitionImageView = nil;
                 [self.transitionContext cancelInteractiveTransition];
-                [self.transitionContext completeTransition:!self.transitionContext];
+                [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
                 [animator.toDelegate transitionDidEndWith:animator];
                 [animator.fromDelegate transitionDidEndWith:animator];
                 self.transitionContext = nil;
             }];
-            return;
+        }else{
+            //start animation
+            CGRect finalTransitionSize = toReferenceImageViewFrame;
+            [UIView animateWithDuration:0.25
+                delay:0
+                options:UIViewAnimationOptionTransitionNone
+                animations:^{
+                    //Animations
+                    fromVC.view.alpha = 0;
+                    transitionImageView.frame = finalTransitionSize;
+                    transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
+                    toVC.tabBarController.tabBar.alpha = 1;
+                }
+                completion:^(BOOL finished) {
+                    //Completion
+                    [transitionImageView removeFromSuperview];
+                    [toReferenceImageView setHidden:NO];
+                    [fromReferenceImageView setHidden:YES];
+                    
+                    [self.transitionContext finishInteractiveTransition];
+                    [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
+                    [animator.toDelegate transitionDidEndWith:animator];
+                    [animator.fromDelegate transitionDidEndWith:animator];
+                    self.transitionContext = nil;
+            }];
         }
-        
-        //start animation
-        CGRect finalTransitionSize = toReferenceImageViewFrame;
-        [UIView animateWithDuration:0.25
-            delay:0
-            options:UIViewAnimationOptionTransitionNone
-            animations:^{
-                //Animations
-                fromVC.view.alpha = 0;
-                transitionImageView.frame = finalTransitionSize;
-                toVC.tabBarController.tabBar.alpha = 1;
-            }
-            completion:^(BOOL finished) {
-                //Completion
-                [transitionImageView removeFromSuperview];
-                [toReferenceImageView setHidden:YES];
-                [fromReferenceImageView setHidden:YES];
-                
-                [self.transitionContext finishInteractiveTransition];
-                [self.transitionContext completeTransition:!self.transitionContext];
-                [animator.toDelegate transitionDidEndWith:animator];
-                [animator.fromDelegate transitionDidEndWith:animator];
-                self.transitionContext = nil;
-        }];
-        
     }
 }
 
@@ -106,7 +109,7 @@
     CGFloat totalAvaliableAlpha = startingAlpha - finalAlpha;
     
     CGFloat maximumDelta = view.bounds.size.height / 4.0;
-    CGFloat deltaAsPercentageOfMaximum = MIN(abs(verticalDelta) / maximumDelta, 1.0);
+    CGFloat deltaAsPercentageOfMaximum = MIN(fabs(*verticalDelta) / maximumDelta, 1.0);
     
     return startingAlpha - (deltaAsPercentageOfMaximum * totalAvaliableAlpha);
 }
@@ -117,7 +120,7 @@
     CGFloat totalAvaliableScale = startingScale - finalScale;
     
     CGFloat maximumDelta = view.bounds.size.height / 2.0;
-    CGFloat deltaAsPercentageOfMaxiumum = MIN(abs(verticalDelta)/maximumDelta, 1.0);
+    CGFloat deltaAsPercentageOfMaxiumum = MIN((fabs(*verticalDelta)/maximumDelta), 1.0);
     
     return startingScale - (deltaAsPercentageOfMaxiumum * totalAvaliableScale);
 }
@@ -128,8 +131,8 @@
     UIView* containerView = transitionContext.containerView;
     
     ZoomAnimator* animator = self.animator;
-    UIViewController* fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewKey];
-    UIViewController* toVC = [transitionContext viewControllerForKey:UITransitionContextToViewKey];
+    UIViewController* fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIViewController* toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     CGRect fromReferenceImageViewFrame = [animator.fromDelegate refereneImageViewFrameInTransitioningViewFor:animator];
     CGRect toRefernceImageViewFrame = [animator.toDelegate refereneImageViewFrameInTransitioningViewFor:animator];
     UIImageView* fromReferenceImageView = [animator.fromDelegate refereneImageViewFor:animator];
@@ -143,14 +146,14 @@
     UIImage* referenceImage = fromReferenceImageView.image;
     
     [containerView insertSubview:toVC.view belowSubview:fromVC.view];
-    if (animator.transitionImageView == nil){
-        UIImageView* transitionImageView = [[UIImageView alloc]initWithImage:referenceImage];
-        transitionImageView.contentMode = UIViewContentModeScaleAspectFill;
-        transitionImageView.clipsToBounds = true;
-        transitionImageView.frame = fromReferenceImageViewFrame;
-        animator.transitionImageView = transitionImageView;
-        [containerView addSubview:transitionImageView];
-    }
+    
+    UIImageView* transitionImageView = [[UIImageView alloc]initWithImage:referenceImage];
+    transitionImageView.contentMode = UIViewContentModeScaleAspectFill;
+    transitionImageView.clipsToBounds = true;
+    transitionImageView.frame = fromReferenceImageViewFrame;
+    animator.transitionImageView = transitionImageView;
+    
+    [containerView addSubview:transitionImageView];
     
 }
 
