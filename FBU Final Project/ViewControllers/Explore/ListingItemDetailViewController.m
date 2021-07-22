@@ -55,6 +55,10 @@
     ]];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 - (void)setUpInitialViewElements{
     
     
@@ -65,8 +69,8 @@
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    CGRect test = self.imageView.frame;
-    return [self.imageView convertRect:self.imageView.bounds toView:self.view];
+    [self loadViewIfNeeded];
+    return CGRectMake(0, 91, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
 }
 
 - (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
