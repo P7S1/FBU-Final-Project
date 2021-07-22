@@ -30,7 +30,7 @@
     
     [self.fromDelegate transitionWillStartWith:self];
     [self.toDelegate transitionWillStartWith:self];
-    
+    self.transitionImageView.layer.cornerRadius = fromReferenceImageView.layer.cornerRadius;
     toVC.view.alpha = 0;
     [toReferenceImageView setHidden:YES];
     [containerView addSubview:toVC.view];
@@ -52,14 +52,17 @@
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
                           delay:0.0
+         usingSpringWithDamping:0.7
+          initialSpringVelocity:0.0
                         options:UIViewAnimationOptionTransitionNone
                      animations:^{
         //Animations
         self.transitionImageView.frame = finalTransitionSize;
         toVC.view.alpha = 1.0;
         fromVC.tabBarController.tabBar.alpha = 0;
+        self.transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
     }
-                     completion:^(BOOL completed) {
+                     completion:^(BOOL finished) {
         //CompletionHandler
         [self.transitionImageView removeFromSuperview];
         [toReferenceImageView setHidden:NO];
@@ -69,7 +72,6 @@
         [self.fromDelegate transitionDidEndWith:self];
         [self.toDelegate transitionDidEndWith:self];
     }];
-    
 }
 
 //MARK:- Zoom Out
@@ -100,7 +102,7 @@
         transitionImageView.frame = fromReferenceImageViewFrame;
         self.transitionImageView = transitionImageView;
     }
-    
+    self.transitionImageView.layer.cornerRadius = fromReferenceImageView.layer.cornerRadius;
     [containerView addSubview:self.transitionImageView];
     
     [containerView insertSubview:toVC.view belowSubview:fromVC.view];
@@ -108,33 +110,36 @@
     
     CGRect finalTransitionSize = toReferenceImageViewFrame;
     
-    [UIView animateWithDuration:[self transitionDuration:transitionContext]
-                          delay:0.0
-                        options:UIViewAnimationOptionTransitionNone
-                     animations:^{
-        //Animations
-        fromVC.view.alpha = 0;
-        self.transitionImageView.frame = finalTransitionSize;
-    }
-                     completion:^(BOOL completion) {
-        //Completion
-        [self.transitionImageView removeFromSuperview];
-        [toReferenceImageView setHidden:NO];
-        [fromReferenceImageView setHidden:YES];
-        
-        [transitionContext completeTransition:transitionContext.transitionWasCancelled];
+   [UIView animateWithDuration:[self transitionDuration:transitionContext]
+                         delay:0.0
+        usingSpringWithDamping:0.55
+         initialSpringVelocity:0.0
+                       options:UIViewAnimationOptionTransitionNone
+                    animations:^{
+       //Animations
+       fromVC.view.alpha = 0.0;
+       self.transitionImageView.frame = finalTransitionSize;
+       self.transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
+   }
+                    completion:^(BOOL finished) {
+       //Completion
+       [self.transitionImageView removeFromSuperview];
+       [toReferenceImageView setHidden:NO];
+       [fromReferenceImageView setHidden:YES];
+       
+       [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
 
-        [self.toDelegate transitionDidEndWith:self];
-        [self.fromDelegate transitionDidEndWith:self];
-    }];
+       [self.toDelegate transitionDidEndWith:self];
+       [self.fromDelegate transitionDidEndWith:self];
+   }];
 }
 
 //MARK:- UIViewControllerAnimatedTransitioning
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     if (self.isPresenting){
-        return 0.25;
+        return 0.5;
     }else{
-        return 0.25;
+        return 0.5;
     }
 }
 
