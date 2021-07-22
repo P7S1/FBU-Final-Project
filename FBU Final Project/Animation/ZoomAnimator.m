@@ -51,7 +51,7 @@
     CGRect finalTransitionSize = toReferenceImageViewFrame;
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
-                          delay:9
+                          delay:0.0
                         options:UIViewAnimationOptionTransitionNone
                      animations:^{
         //Animations

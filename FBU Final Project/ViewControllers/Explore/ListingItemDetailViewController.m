@@ -65,7 +65,8 @@
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    return self.imageView.frame;
+    CGRect test = self.imageView.frame;
+    return [self.imageView convertRect:self.imageView.bounds toView:self.view];
 }
 
 - (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
