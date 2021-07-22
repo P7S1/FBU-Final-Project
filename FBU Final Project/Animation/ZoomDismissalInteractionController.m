@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "ZoomDismissalInteractionController.h"
 #import "ZoomAnimator.h"
+
 @implementation ZoomDismissalInteractionController : NSObject 
 
 - (void)didPanWith:(UIPanGestureRecognizer *)gestureRecognizer{

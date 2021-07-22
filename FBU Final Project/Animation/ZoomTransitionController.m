@@ -20,7 +20,7 @@
     if (self) {
         self.animator = [[ZoomAnimator alloc]init];
         self.interactionController = [[ZoomDismissalInteractionController alloc]init];
-        self.isInteractive = YES;
+        self.isInteractive = NO;
     }
     return self;
 }

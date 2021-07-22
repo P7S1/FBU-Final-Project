@@ -136,6 +136,7 @@
         return 0.25;
     }
 }
+
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     if (self.isPresenting){
         [self animateZoomInTransition:transitionContext];
