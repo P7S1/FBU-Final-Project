@@ -155,11 +155,15 @@
 }
 
 - (UIImageView*)refereneImageViewFor:(ZoomAnimator *)zoomAnimator{
-    return [[UIImageView alloc]init];
+    return self.selectedCell.itemImageView;
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    return CGRectMake(0, 0, 100, 100);
+    return [self.selectedCell convertRect:self.selectedCell.bounds toView:self.view];
 }
+
+- (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
+
+- (void)transitionWillStartWith:(ZoomAnimator *)zoomAnimator {}
 
 @end
