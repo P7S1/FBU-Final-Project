@@ -55,8 +55,8 @@
             [propertyAnimator addAnimations:^{
                 //Animations
                 transitionImageView.frame = fromReferenceImageViewFrame;
-                fromVC.view.alpha = 0;
-                toVC.tabBarController.tabBar.alpha = 0;
+                transitionImageView.layer.cornerRadius = fromReferenceImageView.layer.cornerRadius;
+                fromVC.view.alpha = 1.0;
             }];
             [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
                 //Completion Handler
@@ -65,7 +65,7 @@
                 [transitionImageView removeFromSuperview];
                 animator.transitionImageView = nil;
                 [self.transitionContext cancelInteractiveTransition];
-               // [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
+                [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
                 [animator.toDelegate transitionDidEndWith:animator];
                 [animator.fromDelegate transitionDidEndWith:animator];
                 self.transitionContext = nil;
@@ -78,8 +78,8 @@
             [propertyAnimator addAnimations:^{
                 //Animations
                 fromVC.view.alpha = 0;
-                transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
                 transitionImageView.frame = finalTransitionSize;
+                transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
                 toVC.tabBarController.tabBar.alpha = 1;
             }];
             [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {

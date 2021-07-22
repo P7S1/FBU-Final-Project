@@ -69,6 +69,7 @@
         [self.fromDelegate transitionDidEndWith:self];
         [self.toDelegate transitionDidEndWith:self];
     }];
+    [propertyAnimator startAnimation];
 }
 
 //MARK:- Zoom Out
@@ -126,6 +127,7 @@
         [self.toDelegate transitionDidEndWith:self];
         [self.fromDelegate transitionDidEndWith:self];
     }];
+    [propertyAnimator startAnimation];
 }
 
 //MARK:- UIViewControllerAnimatedTransitioning

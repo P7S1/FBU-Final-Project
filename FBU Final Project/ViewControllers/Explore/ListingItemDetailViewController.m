@@ -55,10 +55,8 @@
         [self.imageView.widthAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width],
         [self.imageView.heightAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width * 1.33]
     ]];
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    
+    self.view.backgroundColor = UIColor.brownColor;
 }
 
 - (void)setUpInitialViewElements{
