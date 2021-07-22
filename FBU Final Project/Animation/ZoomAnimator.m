@@ -100,10 +100,9 @@
         transitionImageView.clipsToBounds = YES;
         transitionImageView.frame = fromReferenceImageViewFrame;
         self.transitionImageView = transitionImageView;
-        [containerView addSubview:transitionImageView];
     }
     
-    [containerView insertSubview:toVC.view belowSubview:fromVC.view];
+    [containerView addSubview:self.transitionImageView];
     [fromReferenceImageView setHidden:YES];
     
     CGRect finalTransitionSize = toReferenceImageViewFrame;
@@ -124,6 +123,7 @@
         [fromReferenceImageView setHidden:YES];
         
         [transitionContext completeTransition:transitionContext.transitionWasCancelled];
+        
         [self.toDelegate transitionDidEndWith:self];
         [self.fromDelegate transitionDidEndWith:self];
     }];
