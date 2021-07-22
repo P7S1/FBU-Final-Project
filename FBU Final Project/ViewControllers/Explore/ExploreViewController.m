@@ -10,8 +10,9 @@
 #import "CategoryType.h"
 #import "ItemListing.h"
 #import "FirebaseFirestoreHelper.h"
+#import "ZoomAnimatorDelegate.h"
 
-@interface ExploreViewController()<UITableViewDelegate, UITableViewDataSource>
+@interface ExploreViewController()<UITableViewDelegate, UITableViewDataSource, ZoomAnimatorDelegate>
 
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) UIImageView* headerView;
@@ -150,6 +151,14 @@
     [cell reloadCollectionViewData];
     cell.presentingViewController = self;
     return cell;
+}
+
+- (UIImageView *)refereneImageViewFor:(ZoomAnimator *)zoomAnimator{
+    return [[UIImage alloc]init];
+}
+
+- (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
+    return CGRectZero;
 }
 
 @end

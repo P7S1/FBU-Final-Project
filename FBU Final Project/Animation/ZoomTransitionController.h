@@ -15,6 +15,7 @@
 @property (nonatomic, strong) ZoomAnimator* _Nullable animator;
 @property (nonatomic, strong) ZoomDismissalInteractionController* _Nullable interactionController;
 @property (nonatomic) BOOL isInteractive;
+
 @property (nonatomic, weak, nullable) id <ZoomAnimatorDelegate> fromDelegate;
 @property (nonatomic, weak, nullable) id <ZoomAnimatorDelegate> toDelegate;
 

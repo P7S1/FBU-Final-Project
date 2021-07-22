@@ -488,13 +488,13 @@
 		DF82E78526A8C49600EE9853 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
-				DF82E78626A8C49600EE9853 /* ZoomTransitionController.m */,
-				DF82E78726A8C49600EE9853 /* ZoomDismissalInteractionController.m */,
 				DF82E78826A8C49600EE9853 /* ZoomAnimatorDelegate.h */,
-				DF82E78926A8C49600EE9853 /* ZoomAnimator.h */,
-				DF82E78A26A8C49600EE9853 /* ZoomDismissalInteractionController.h */,
 				DF82E78B26A8C49600EE9853 /* ZoomTransitionController.h */,
+				DF82E78626A8C49600EE9853 /* ZoomTransitionController.m */,
+				DF82E78926A8C49600EE9853 /* ZoomAnimator.h */,
 				DF82E78C26A8C49600EE9853 /* ZoomAnimator.m */,
+				DF82E78A26A8C49600EE9853 /* ZoomDismissalInteractionController.h */,
+				DF82E78726A8C49600EE9853 /* ZoomDismissalInteractionController.m */,
 			);
 			path = Animation;
 			sourceTree = "<group>";

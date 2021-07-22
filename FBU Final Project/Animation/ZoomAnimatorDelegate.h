@@ -14,5 +14,5 @@
 -(void) transitionWillStartWith: (ZoomAnimator*)zoomAnimator;
 -(void) transitionDidEndWith: (ZoomAnimator*)zoomAnimator;
 -(UIImageView*) refereneImageViewFor: (ZoomAnimator*)zoomAnimator;
--(CGRect*) refereneImageViewFrameInTransitioningViewFor: (ZoomAnimator*)zoomAnimator;
+-(CGRect) refereneImageViewFrameInTransitioningViewFor: (ZoomAnimator*)zoomAnimator;
 @end

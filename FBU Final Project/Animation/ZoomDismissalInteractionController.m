@@ -11,20 +11,19 @@
 @implementation ZoomDismissalInteractionController : NSObject 
 
 - (void)didPanWith:(UIPanGestureRecognizer *)gestureRecognizer{
-    ZoomDismissalInteractionController* transitionContext = self.transitionContext;
     ZoomAnimator* animator = self.animator;
     UIImageView* transitionImageView = animator.transitionImageView;
     UIViewController* fromVC = [self.transitionContext viewControllerForKey:UITransitionContextFromViewKey];
     UIViewController* toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIImageView* fromReferenceImageView = [animator.fromDelegate refereneImageViewFor:animator];
     UIImageView* toReferenceImageView = [animator.toDelegate refereneImageViewFor:animator];
-    CGRect* fromReferenceImageViewFrame = self.fromReferceImageViewFrame;
-    CGRect* toReferenceImageViewFrame = self.toReferenceImageViewFrame;
+    CGRect fromReferenceImageViewFrame = self.fromReferceImageViewFrame;
+    CGRect toReferenceImageViewFrame = self.toReferenceImageViewFrame;
     
     [fromReferenceImageView setHidden:YES];
     
-    double midY = CGRectGetMidY(*fromReferenceImageViewFrame);
-    double midX = CGRectGetMidX(*fromReferenceImageViewFrame);
+    double midY = CGRectGetMidY(fromReferenceImageViewFrame);
+    double midX = CGRectGetMidX(fromReferenceImageViewFrame);
     CGPoint anchorPoint = CGPointMake(midX, midY);
     CGPoint translatedPoint = [gestureRecognizer translationInView:fromReferenceImageView];
     CGFloat verticalDelta = translatedPoint.y < 0 ? 0 : translatedPoint.y;
@@ -53,7 +52,7 @@
                   initialSpringVelocity:0
                                 options:UIViewAnimationOptionTransitionNone animations:^{
                 //Animations
-                transitionImageView.frame = *(fromReferenceImageViewFrame);
+                transitionImageView.frame = fromReferenceImageViewFrame;
                 fromVC.view.alpha = 0;
                 toVC.tabBarController.tabBar.alpha = 0;
             }
@@ -65,7 +64,7 @@
                 [transitionImageView removeFromSuperview];
                 animator.transitionImageView = nil;
                 [self.transitionContext cancelInteractiveTransition];
-                [self.transitionContext completeTransition:!transitionContext.transitionContext];
+                [self.transitionContext completeTransition:!self.transitionContext];
                 [animator.toDelegate transitionDidEndWith:animator];
                 [animator.fromDelegate transitionDidEndWith:animator];
                 self.transitionContext = nil;
@@ -74,14 +73,14 @@
         }
         
         //start animation
-        CGRect* finalTransitionSize = toReferenceImageViewFrame;
+        CGRect finalTransitionSize = toReferenceImageViewFrame;
         [UIView animateWithDuration:0.25
             delay:0
             options:UIViewAnimationOptionTransitionNone
             animations:^{
                 //Animations
                 fromVC.view.alpha = 0;
-                transitionImageView.frame = *(finalTransitionSize);
+                transitionImageView.frame = finalTransitionSize;
                 toVC.tabBarController.tabBar.alpha = 1;
             }
             completion:^(BOOL finished) {
@@ -91,7 +90,7 @@
                 [fromReferenceImageView setHidden:YES];
                 
                 [self.transitionContext finishInteractiveTransition];
-                [self.transitionContext completeTransition:!transitionContext.transitionContext];
+                [self.transitionContext completeTransition:!self.transitionContext];
                 [animator.toDelegate transitionDidEndWith:animator];
                 [animator.fromDelegate transitionDidEndWith:animator];
                 self.transitionContext = nil;
@@ -130,8 +129,8 @@
     ZoomAnimator* animator = self.animator;
     UIViewController* fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewKey];
     UIViewController* toVC = [transitionContext viewControllerForKey:UITransitionContextToViewKey];
-    CGRect* fromReferenceImageViewFrame = [animator.fromDelegate refereneImageViewFrameInTransitioningViewFor:animator];
-    CGRect* toRefernceImageViewFrame = [animator.toDelegate refereneImageViewFrameInTransitioningViewFor:animator];
+    CGRect fromReferenceImageViewFrame = [animator.fromDelegate refereneImageViewFrameInTransitioningViewFor:animator];
+    CGRect toRefernceImageViewFrame = [animator.toDelegate refereneImageViewFrameInTransitioningViewFor:animator];
     UIImageView* fromReferenceImageView = [animator.fromDelegate refereneImageViewFor:animator];
     
     [animator.fromDelegate transitionWillStartWith:animator];
@@ -147,7 +146,7 @@
         UIImageView* transitionImageView = [[UIImageView alloc]initWithImage:referenceImage];
         transitionImageView.contentMode = UIViewContentModeScaleAspectFill;
         transitionImageView.clipsToBounds = true;
-        transitionImageView.frame = *(fromReferenceImageViewFrame);
+        transitionImageView.frame = fromReferenceImageViewFrame;
         animator.transitionImageView = transitionImageView;
         [containerView addSubview:transitionImageView];
     }

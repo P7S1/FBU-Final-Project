@@ -14,9 +14,6 @@
 @property (nonatomic, weak) id <ZoomAnimatorDelegate> toDelegate;
 
 @property (nonatomic, strong) UIImageView* transitionImageView;
-@property (nonatomic) bool* isPresenting;
-
--(UIImageView*) referenceImageViewFor: (ZoomAnimator*)zoomAnimator;
--(CGRect*) referenceImageViewFrameInTransitioningView: (ZoomAnimator*)zoomAnimator;
+@property (nonatomic) bool* isPresenting; 
 
 @end

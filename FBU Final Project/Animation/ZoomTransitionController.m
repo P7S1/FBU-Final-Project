@@ -13,12 +13,13 @@
 @end
 
 @implementation ZoomTransitionController:NSObject
-- (instancetype)init
-{
+
+- (instancetype)init{
     self = [super init];
     if (self) {
         self.animator = [[ZoomAnimator alloc]init];
         self.interactionController = [[ZoomDismissalInteractionController alloc]init];
+        self.isInteractive = YES;
     }
     return self;
 }
@@ -30,7 +31,7 @@
 
 //MARK:- UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    self.animator.isPresenting = true;
+    self.animator.isPresenting = (BOOL*)YES;
     self.animator.fromDelegate = self.fromDelegate;
     self.animator.toDelegate = self.toDelegate;
     return self.animator;
