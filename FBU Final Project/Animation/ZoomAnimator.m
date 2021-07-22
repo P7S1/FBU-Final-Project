@@ -19,8 +19,8 @@
 -(void)animateZoomInTransition: (id<UIViewControllerContextTransitioning>) transitionContext{
     UIView *containerView = transitionContext.containerView;
     
-    UIViewController *toVC = [transitionContext viewControllerForKey: UITransitionContextToViewKey];
-    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIImageView *fromReferenceImageView = [self.fromDelegate refereneImageViewFor:self];
     UIImageView *toReferenceImageView = [self.toDelegate refereneImageViewFor:self];
