@@ -12,11 +12,13 @@
 #import "SwipableCardViewCard.h"
 #import "FirebaseFirestoreHelper.h"
 #import "ItemListing.h"
+#import "ZoomAnimatorDelegate.h"
 
-@interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource>
+@interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource, ZoomAnimatorDelegate>
 
 @property (nonatomic, strong) SwipableCardViewContainer *cardContainerView;
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
+@property (nonatomic, strong, nullable) SwipableCardViewCard* tappedCard;
 
 @end
 
@@ -62,7 +64,9 @@
     }];
 }
 
-- (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {}
+- (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {
+    self.tappedCard = card;
+}
 
 - (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction {}
 
@@ -101,5 +105,17 @@
 - (UIView * _Nullable)viewForEmptyCards {
     return nil;
 }
+
+- (UIImageView *)refereneImageViewFor:(ZoomAnimator *)zoomAnimator {
+    return self.tappedCard.itemImageView;
+}
+
+- (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator {
+    return [self.tappedCard.itemImageView convertRect:self.tappedCard.itemImageView.bounds toView:self.view];
+}
+
+- (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
+
+- (void)transitionWillStartWith:(ZoomAnimator *)zoomAnimator {}
 
 @end
