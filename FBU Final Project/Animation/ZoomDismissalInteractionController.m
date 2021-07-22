@@ -34,7 +34,7 @@
     CGFloat backgroundAlpha = [self backgroundAlphaFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     CGFloat scale = [self scaleFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     fromVC.view.alpha = backgroundAlpha;
-    transitionImageView.layer.cornerRadius = scale * toReferenceImageView.layer.cornerRadius;
+    transitionImageView.layer.cornerRadius = (1-scale) * toReferenceImageView.layer.cornerRadius;
     
     transitionImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
     CGPoint newCenter = CGPointMake(anchorPoint.x + translatedPoint.x, anchorPoint.y + translatedPoint.y - transitionImageView.frame.size.height * (1-scale) / 2.0);
@@ -50,55 +50,51 @@
         
         if (velocity.y < 0 || newCenter.y < anchorPoint.y){
             //cancel
-            [UIView animateWithDuration:0.5
-                                  delay:0
-                 usingSpringWithDamping:0.9
-                  initialSpringVelocity:0
-                                options:UIViewAnimationOptionTransitionNone animations:^{
+            UISpringTimingParameters* timingParameters = [[UISpringTimingParameters alloc]initWithDampingRatio:0.7];
+            UIViewPropertyAnimator* propertyAnimator = [[UIViewPropertyAnimator alloc]initWithDuration:0.5 timingParameters:timingParameters];
+            [propertyAnimator addAnimations:^{
                 //Animations
                 transitionImageView.frame = fromReferenceImageViewFrame;
-                transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
                 fromVC.view.alpha = 0;
                 toVC.tabBarController.tabBar.alpha = 0;
-            }
-                             completion:^(BOOL finished) {
+            }];
+            [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
                 //Completion Handler
-                
                 [toReferenceImageView setHidden:NO];
                 [fromReferenceImageView setHidden:NO];
                 [transitionImageView removeFromSuperview];
                 animator.transitionImageView = nil;
                 [self.transitionContext cancelInteractiveTransition];
+               // [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
+                [animator.toDelegate transitionDidEndWith:animator];
+                [animator.fromDelegate transitionDidEndWith:animator];
+                self.transitionContext = nil;
+            }];
+            [propertyAnimator startAnimation];
+        }else{
+            CGRect finalTransitionSize = toReferenceImageViewFrame;
+            UISpringTimingParameters* timingParameters = [[UISpringTimingParameters alloc]initWithDampingRatio:0.7];
+            UIViewPropertyAnimator* propertyAnimator = [[UIViewPropertyAnimator alloc]initWithDuration:0.5 timingParameters:timingParameters];
+            [propertyAnimator addAnimations:^{
+                //Animations
+                fromVC.view.alpha = 0;
+                transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
+                transitionImageView.frame = finalTransitionSize;
+                toVC.tabBarController.tabBar.alpha = 1;
+            }];
+            [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
+                //Completion
+                [transitionImageView removeFromSuperview];
+                [toReferenceImageView setHidden:NO];
+                [fromReferenceImageView setHidden:YES];
+                
+                [self.transitionContext finishInteractiveTransition];
                 [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
                 [animator.toDelegate transitionDidEndWith:animator];
                 [animator.fromDelegate transitionDidEndWith:animator];
                 self.transitionContext = nil;
             }];
-        }else{
-            //start animation
-            CGRect finalTransitionSize = toReferenceImageViewFrame;
-            [UIView animateWithDuration:0.25
-                delay:0
-                options:UIViewAnimationOptionTransitionNone
-                animations:^{
-                    //Animations
-                    fromVC.view.alpha = 0;
-                    transitionImageView.frame = finalTransitionSize;
-                    transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
-                    toVC.tabBarController.tabBar.alpha = 1;
-                }
-                completion:^(BOOL finished) {
-                    //Completion
-                    [transitionImageView removeFromSuperview];
-                    [toReferenceImageView setHidden:NO];
-                    [fromReferenceImageView setHidden:YES];
-                    
-                    [self.transitionContext finishInteractiveTransition];
-                    [self.transitionContext completeTransition:!self.transitionContext.transitionWasCancelled];
-                    [animator.toDelegate transitionDidEndWith:animator];
-                    [animator.fromDelegate transitionDidEndWith:animator];
-                    self.transitionContext = nil;
-            }];
+            [propertyAnimator startAnimation];
         }
     }
 }

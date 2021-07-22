@@ -115,7 +115,6 @@
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    [self loadViewIfNeeded];
     return CGRectMake(0, 91, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
 }
 
