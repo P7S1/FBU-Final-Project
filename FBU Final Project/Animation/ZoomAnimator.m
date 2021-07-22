@@ -112,7 +112,7 @@
     
    [UIView animateWithDuration:[self transitionDuration:transitionContext]
                          delay:0.0
-        usingSpringWithDamping:0.55
+        usingSpringWithDamping:0.7
          initialSpringVelocity:0.0
                        options:UIViewAnimationOptionTransitionNone
                     animations:^{

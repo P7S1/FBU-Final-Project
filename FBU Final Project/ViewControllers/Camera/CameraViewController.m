@@ -28,6 +28,7 @@
     [super viewDidLoad];
     [self setUpCamera];
     [self setUpPhotoLibraryButton];
+    self.view.backgroundColor = UIColor.blackColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
