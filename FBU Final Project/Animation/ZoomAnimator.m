@@ -78,8 +78,8 @@
 - (void)animateZoomOutTransition: (id<UIViewControllerContextTransitioning>) transitionContext{
     UIView *containerView = transitionContext.containerView;
     
-    UIViewController *toVC = [transitionContext viewControllerForKey: UITransitionContextToViewKey];
-    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewKey];
+    UIViewController *toVC = [transitionContext viewControllerForKey: UITransitionContextToViewControllerKey];
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIImageView *fromReferenceImageView = [self.fromDelegate refereneImageViewFor:self];
     UIImageView *toReferenceImageView = [self.toDelegate refereneImageViewFor:self];
@@ -109,7 +109,7 @@
     CGRect finalTransitionSize = toReferenceImageViewFrame;
     
     [UIView animateWithDuration:[self transitionDuration:transitionContext]
-                          delay:0
+                          delay:0.0
                         options:UIViewAnimationOptionTransitionNone
                      animations:^{
         //Animations
@@ -121,6 +121,7 @@
         //Completion
         [self.transitionImageView removeFromSuperview];
         [toReferenceImageView setHidden:YES];
+        [fromReferenceImageView setHidden:YES];
         
         [transitionContext completeTransition:transitionContext.transitionWasCancelled];
         [self.toDelegate transitionDidEndWith:self];
@@ -131,7 +132,7 @@
 //MARK:- UIViewControllerAnimatedTransitioning
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     if (self.isPresenting){
-        return 0.5;
+        return 0.25;
     }else{
         return 0.25;
     }

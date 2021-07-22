@@ -39,7 +39,7 @@
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    self.animator.isPresenting = false;
+    self.animator.isPresenting = (BOOL*)NO;
     id<ZoomAnimatorDelegate> tmp = self.fromDelegate;
     self.animator.fromDelegate = self.toDelegate;
     self.animator.toDelegate = tmp;
