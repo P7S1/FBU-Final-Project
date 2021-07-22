@@ -33,12 +33,15 @@
     
     CGFloat backgroundAlpha = [self backgroundAlphaFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     CGFloat scale = [self scaleFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
-    fromVC.view.alpha = backgroundAlpha;
     transitionImageView.layer.cornerRadius = (1-scale) * toReferenceImageView.layer.cornerRadius;
     
     transitionImageView.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
     CGPoint newCenter = CGPointMake(anchorPoint.x + translatedPoint.x, anchorPoint.y + translatedPoint.y - transitionImageView.frame.size.height * (1-scale) / 2.0);
+
     transitionImageView.center = newCenter;
+    
+    fromVC.view.transform = CGAffineTransformScale(CGAffineTransformIdentity, scale, scale);
+    fromVC.view.center = newCenter;
     
     [toReferenceImageView setHidden:YES];
     [self.transitionContext updateInteractiveTransition:1-scale];
@@ -56,6 +59,8 @@
                 //Animations
                 transitionImageView.frame = fromReferenceImageViewFrame;
                 transitionImageView.layer.cornerRadius = fromReferenceImageView.layer.cornerRadius;
+                fromVC.view.frame = UIScreen.mainScreen.bounds;
+                fromVC.view.transform = CGAffineTransformIdentity;
                 fromVC.view.alpha = 1.0;
             }];
             [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
@@ -77,8 +82,10 @@
             UIViewPropertyAnimator* propertyAnimator = [[UIViewPropertyAnimator alloc]initWithDuration:0.5 timingParameters:timingParameters];
             [propertyAnimator addAnimations:^{
                 //Animations
-                fromVC.view.alpha = 0;
+                //fromVC.view.alpha = 0;
+                fromVC.view.frame = finalTransitionSize;
                 transitionImageView.frame = finalTransitionSize;
+                fromVC.view.layer.shadowColor = UIColor.clearColor.CGColor;
                 transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
                 toVC.tabBarController.tabBar.alpha = 1;
             }];
@@ -112,7 +119,7 @@
 
 - (CGFloat)scaleFor:(UIView *)view withPanningVerticalDelta:(CGFloat *)verticalDelta{
     CGFloat startingScale = 1.0;
-    CGFloat finalScale = 0.5;
+    CGFloat finalScale = 0.7;
     CGFloat totalAvaliableScale = startingScale - finalScale;
     
     CGFloat maximumDelta = view.bounds.size.height / 2.0;

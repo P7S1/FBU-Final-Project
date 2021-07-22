@@ -50,13 +50,18 @@
     [self.view addSubview:self.imageView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [self.imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [self.imageView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
         [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
         [self.imageView.widthAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width],
         [self.imageView.heightAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width * 1.33]
     ]];
     
-    self.view.backgroundColor = UIColor.brownColor;
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+    self.view.layer.cornerRadius = 50;
+    self.view.layer.shadowColor = UIColor.darkGrayColor.CGColor;
+    self.view.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    self.view.layer.shadowRadius = 12.0;
+    self.view.layer.shadowOpacity = 0.7;
 }
 
 - (void)setUpInitialViewElements{
@@ -113,7 +118,7 @@
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    return CGRectMake(0, 91, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
+    return CGRectMake(0, 162.667, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
 }
 
 - (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
