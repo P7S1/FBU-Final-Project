@@ -13,6 +13,7 @@
 #import "FirebaseFirestoreHelper.h"
 #import "ItemListing.h"
 #import "ZoomAnimatorDelegate.h"
+#import "ListingItemDetailViewController.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource, ZoomAnimatorDelegate>
 
@@ -66,6 +67,14 @@
 
 - (void)didSelectCard:(nonnull SwipableCardViewCard *)card atIndex:(NSInteger)index {
     self.tappedCard = card;
+    ListingItemDetailViewController* vc = [[ListingItemDetailViewController alloc]initWithListing:self.items[index]];
+    
+    self.navigationController.delegate = vc.transitionController;
+    vc.transitionController.fromDelegate = self;
+    vc.transitionController.toDelegate = vc;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction {}
