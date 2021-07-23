@@ -27,6 +27,11 @@
     self.navigationItem.title = @"Create A Listing";
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)createPostButton{
     UIBarButtonItem* const createBarButtonItem = [[UIBarButtonItem alloc]initWithTitle: @"Finish" style: UIBarButtonItemStyleDone target: self action: @selector(createButtonPressed)];
     self.navigationItem.rightBarButtonItem = createBarButtonItem;
