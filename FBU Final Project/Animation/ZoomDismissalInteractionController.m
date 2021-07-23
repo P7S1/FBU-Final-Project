@@ -45,9 +45,7 @@
     
     [toReferenceImageView setHidden:YES];
     [self.transitionContext updateInteractiveTransition:1-scale];
-    
-    toVC.tabBarController.tabBar.alpha = 1 - backgroundAlpha;
-    
+
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded){
         CGPoint velocity = [gestureRecognizer velocityInView:fromVC.view];
         
@@ -87,7 +85,6 @@
                 transitionImageView.frame = finalTransitionSize;
                 fromVC.view.layer.shadowColor = UIColor.clearColor.CGColor;
                 transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
-                toVC.tabBarController.tabBar.alpha = 1;
             }];
             [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {
                 //Completion
