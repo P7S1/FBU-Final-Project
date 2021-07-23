@@ -23,7 +23,6 @@
 @property (nonatomic, strong) BasicButton* addToCartButton;
 @property (nonatomic, strong) UIPanGestureRecognizer* panGestureRecognizer;
 
-
 @end
 
 @implementation ListingItemDetailViewController
@@ -43,8 +42,6 @@
     [self setUpInitialViewElements];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     self.navigationItem.title = self.item.name;
-    
-    
 }
 
 - (void)setUpInitialViewElements{
@@ -126,8 +123,6 @@
         [stackView.topAnchor constraintEqualToAnchor:self.imageView.bottomAnchor constant:8],
         [stackView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16]
     ]];
-    
-    
 }
 
 //MARK:- UIPanGestureRecognizer
@@ -172,7 +167,7 @@
 }
 
 - (CGRect)refereneImageViewFrameInTransitioningViewFor:(ZoomAnimator *)zoomAnimator{
-    return CGRectMake(0, 32, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
+    return CGRectMake(0, 162.667, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.width * 1.33);
 }
 
 - (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}

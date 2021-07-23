@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "ZoomDismissalInteractionController.h"
 #import "ZoomAnimator.h"
+#import "CGAffineTransformHelper.h"
 
 @implementation ZoomDismissalInteractionController : NSObject 
 
@@ -15,7 +16,7 @@
     ZoomAnimator* animator = self.animator;
     UIImageView* transitionImageView = animator.transitionImageView;
     UIViewController* fromVC = [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    UIViewController* toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    //UIViewController* toVC = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     
     UIImageView* fromReferenceImageView = [animator.fromDelegate refereneImageViewFor:animator];
@@ -31,7 +32,7 @@
     CGPoint translatedPoint = [gestureRecognizer translationInView:fromReferenceImageView];
     CGFloat verticalDelta = translatedPoint.y < 0 ? 0 : translatedPoint.y;
     
-    CGFloat backgroundAlpha = [self backgroundAlphaFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
+    //CGFloat backgroundAlpha = [self backgroundAlphaFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     CGFloat scale = [self scaleFor:fromVC.view withPanningVerticalDelta:&verticalDelta];
     transitionImageView.layer.cornerRadius = (1-scale) * toReferenceImageView.layer.cornerRadius;
     
@@ -81,7 +82,8 @@
             [propertyAnimator addAnimations:^{
                 //Animations
                 //fromVC.view.alpha = 0;
-                fromVC.view.frame = finalTransitionSize;
+                fromVC.view.transform = [CGAffineTransformHelper transformFromRect:fromVC.view.frame toRect:finalTransitionSize];
+                fromVC.view.alpha = 0.0;
                 transitionImageView.frame = finalTransitionSize;
                 fromVC.view.layer.shadowColor = UIColor.clearColor.CGColor;
                 transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
