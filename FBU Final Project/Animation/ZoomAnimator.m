@@ -56,7 +56,7 @@
         //Animations
         self.transitionImageView.frame = finalTransitionSize;
         toVC.view.alpha = 1.0;
-        fromVC.tabBarController.tabBar.alpha = 0;
+        fromVC.navigationController.navigationBar.alpha = 0.0;
         self.transitionImageView.layer.cornerRadius = toReferenceImageView.layer.cornerRadius;
     }];
     [propertyAnimator addCompletion:^(UIViewAnimatingPosition finalPosition) {

@@ -6,7 +6,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <pop/POP.h>
 #import "SwipableCardViewCard.h"
 #import "SwipeableCardViewDataSource.h"
 #import "CGAffineTransformHelper.h"
@@ -197,8 +196,7 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     [self layoutIfNeeded];
     
     self.initialXPosition = [gestureRecognizer locationInView:nil].x;
-
-    [self removeAnimations];
+    
     self.layer.rasterizationScale = UIScreen.mainScreen.scale;
     self.layer.shouldRasterize = YES;
     
@@ -259,7 +257,6 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
             self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
-            [self removeAnimations];
             self.layer.transform = CATransform3DIdentity;
             self.transform = CGAffineTransformIdentity;
             self.yesDecisionLabel.alpha = 0.0;
@@ -270,17 +267,11 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
 }
 
 - (void)resetCardViewPosition{
-    [self removeAnimations];
     [UIView animateWithDuration:0.2 animations:^{
         self.layer.transform = CATransform3DIdentity;
         self.yesDecisionLabel.alpha = 0.0;
         self.noDecisionLabel.alpha = 0.0;
     }];
-}
-
-- (void)removeAnimations{
-    [POPAnimator pop_removeAllAnimations];
-    [self.layer pop_removeAllAnimations];
 }
 
 //MARK:- Tap Gesture Recognizer

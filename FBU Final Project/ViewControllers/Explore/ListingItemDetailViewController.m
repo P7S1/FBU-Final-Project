@@ -103,7 +103,6 @@
     if (self.transitionController.isInteractive){
         self.transitionController.isInteractive = NO;
         [self.transitionController didPanWith:gestureRecognizer];
-        
     }
 }
 
@@ -112,7 +111,6 @@
 }
 
 //MARK:- ZoomAnimatorDelegate
-
 - (UIImageView *)refereneImageViewFor:(ZoomAnimator *)zoomAnimator{
     return self.imageView;
 }

@@ -6,11 +6,12 @@
 //
 
 #import <AVFoundation/AVFoundation.h>
+#import <TOCropViewController/TOCropViewController.h>
 #import "CameraViewController.h"
 #import "CreateListingViewController.h"
 #import "BasicButton.h"
 
-@interface CameraViewController () <AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController() <AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
@@ -43,6 +44,12 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.captureSession stopRunning];
+}
+
+- (void)launchCropViewControllerWithImage: (UIImage*)image{
+    TOCropViewController* vc = [[TOCropViewController alloc]initWithImage:image];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 //MARK:- Customising visual view elements
@@ -145,17 +152,20 @@
     NSData *imageData = photo.fileDataRepresentation;
     if (imageData) {
         UIImage *image = [UIImage imageWithData:imageData];
-        
-        CreateListingViewController *vc = [[CreateListingViewController alloc]init];
-        vc.listingImage = image;
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-        [self.navigationController pushViewController:vc animated:YES];
+        [self launchCropViewControllerWithImage:image];
     }
 }
 
 //MARK:- UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
+    [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [self launchCropViewControllerWithImage:image];
+}
+
+//MARK:- TOCropViewControllerDelegat4e
+- (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle{
+    [cropViewController dismissViewControllerAnimated:YES completion:nil];
     CreateListingViewController *vc = [[CreateListingViewController alloc]init];
     vc.listingImage = image;
     
