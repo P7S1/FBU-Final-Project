@@ -220,7 +220,19 @@
             NSLog(@"Error constructing ml request: %@", [error localizedDescription]);
             return;
         }else{
-            NSLog(@"%@", request.results);
+            NSArray<VNClassificationObservation*>* results = [request.results sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                VNObservation* item1 = obj1;
+                VNObservation* item2 = obj2;
+                return item1.confidence < item2.confidence;
+            }];
+            
+            if (results.count <= 0) { return; }
+            
+            VNClassificationObservation* topResult = results[0];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.descriptorLabel.text = [[@"Are you trying to sell a " stringByAppendingString: topResult.identifier] stringByAppendingString:@"?"];
+            });
         }
     }];
     
