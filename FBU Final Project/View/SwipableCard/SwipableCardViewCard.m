@@ -74,12 +74,6 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.shadowLayer.opacity = 0.0;
     [self.layer insertSublayer:self.shadowLayer atIndex:0];
     
-    self.gradientLayer = [CAGradientLayer layer];
-    self.gradientLayer.frame = self.bounds;
-    self.gradientLayer.startPoint = CGPointZero;
-    self.gradientLayer.endPoint = CGPointMake(1.0, 1.0);
-    [self.layer insertSublayer:self.gradientLayer atIndex:0];
-    
     self.backgroundColor = UIColor.systemBackgroundColor;
     
     //StackView Components
@@ -170,7 +164,6 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.shadowLayer.frame = self.layer.bounds;
-    self.gradientLayer.frame = self.layer.bounds;
 }
 
 //MARK:- Pan Gesture Recognizer

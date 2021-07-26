@@ -57,6 +57,7 @@
 - (void)launchCropViewControllerWithImage: (UIImage*)image{
     TOCropViewController* const vc = [[TOCropViewController alloc]initWithImage:image];
     vc.delegate = self;
+    
     [self presentViewController:vc animated:YES completion:nil];
 }
 
@@ -198,6 +199,7 @@
 //MARK:- TOCropViewControllerDelegat4e
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle{
     [cropViewController dismissViewControllerAnimated:YES completion:nil];
+    
     CreateListingViewController* const vc = [[CreateListingViewController alloc]init];
     vc.listingImage = image;
     
@@ -233,7 +235,7 @@
             
             VNClassificationObservation* const topResult = results[0];
             
-                NSString* const questionText = is_vowel([topResult.identifier characterAtIndex:0]) ? @"Are you trying to sell an " : @"Are you trying to sell a ";
+            NSString* const questionText = is_vowel([topResult.identifier characterAtIndex:0]) ? @"Are you trying to sell an " : @"Are you trying to sell a ";
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.descriptorLabel.text = [[questionText stringByAppendingString: topResult.identifier] stringByAppendingString:@"?"];
