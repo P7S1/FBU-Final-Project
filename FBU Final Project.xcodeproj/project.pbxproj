@@ -51,6 +51,7 @@
 		DF82E78E26A8C49600EE9853 /* ZoomDismissalInteractionController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E78726A8C49600EE9853 /* ZoomDismissalInteractionController.m */; };
 		DF82E78F26A8C49600EE9853 /* ZoomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E78C26A8C49600EE9853 /* ZoomAnimator.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
+		DFC4A5F826AF28430031CAA1 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		DF82E78C26A8C49600EE9853 /* ZoomAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomAnimator.m; sourceTree = "<group>"; };
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
+		DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -363,6 +365,7 @@
 			children = (
 				DF29868D269C9EE000EFB770 /* main.m */,
 				DF298689269C9EE000EFB770 /* LaunchScreen.storyboard */,
+				DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */,
 				DF29867B269C9EDF00EFB770 /* AppDelegate.h */,
 				DF29867C269C9EDF00EFB770 /* AppDelegate.m */,
 				DF29867E269C9EDF00EFB770 /* SceneDelegate.h */,
@@ -747,6 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF82E78426A8966000EE9853 /* ListingItemDetailViewController.m in Sources */,
+				DFC4A5F826AF28430031CAA1 /* MobileNet.mlmodel in Sources */,
 				DF82E77C26A6423700EE9853 /* CategoryCollectionViewCell.m in Sources */,
 				DF4E31F7269E80A200745766 /* ButtonsViewController.m in Sources */,
 				DF82E77926A63EC000EE9853 /* CategoryTableViewCell.m in Sources */,
