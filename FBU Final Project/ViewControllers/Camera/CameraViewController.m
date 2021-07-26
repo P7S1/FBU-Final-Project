@@ -215,28 +215,35 @@
         return;
     }
     
-    VNCoreMLRequest* request = [[VNCoreMLRequest alloc]initWithModel:model completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
+    VNCoreMLRequest* const request = [[VNCoreMLRequest alloc]initWithModel:model completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
         if (error != nil){
             NSLog(@"Error constructing ml request: %@", [error localizedDescription]);
             return;
         }else{
-            NSArray<VNClassificationObservation*>* results = [request.results sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                VNObservation* item1 = obj1;
-                VNObservation* item2 = obj2;
+            NSArray<VNClassificationObservation*>* const results = [request.results sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                VNObservation* const item1 = obj1;
+                VNObservation* const item2 = obj2;
                 return item1.confidence < item2.confidence;
             }];
             
             if (results.count <= 0) { return; }
             
-            VNClassificationObservation* topResult = results[0];
+            VNClassificationObservation* const topResult = results[0];
+            
+                NSString* const questionText = is_vowel([topResult.identifier characterAtIndex:0]) ? @"Are you trying to sell an " : @"Are you trying to sell a ";
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                self.descriptorLabel.text = [[@"Are you trying to sell a " stringByAppendingString: topResult.identifier] stringByAppendingString:@"?"];
+                self.descriptorLabel.text = [[questionText stringByAppendingString: topResult.identifier] stringByAppendingString:@"?"];
             });
         }
     }];
     
     [[[VNImageRequestHandler alloc]initWithCVPixelBuffer:pixelBuffer options:[NSDictionary new]] performRequests:@[request] error:&error];
+}
+
+bool is_vowel(unichar c) {
+    c = tolower(c);
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
 }
 
 @end
