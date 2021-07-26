@@ -14,7 +14,7 @@
 #import "CreateListingViewController.h"
 #import "BasicButton.h"
 
-@interface CameraViewController() <AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate>
+@interface CameraViewController() <AVCapturePhotoCaptureDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate>
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCapturePhotoOutput *stillImageOutput;
@@ -169,8 +169,9 @@
         dispatch_queue_attr_t qos = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, -1);
         dispatch_queue_t videoQueue = dispatch_queue_create("videoQueue", qos);
         
-        AVCaptureVideoDataOutput* dataOutput = [[AVCaptureVideoDataOutput alloc]init];
+        AVCaptureVideoDataOutput *const dataOutput = [[AVCaptureVideoDataOutput alloc]init];
         [dataOutput setSampleBufferDelegate:self queue:videoQueue];
+        [self.captureSession addOutput:dataOutput];
     }
 }
 
