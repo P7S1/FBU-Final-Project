@@ -159,4 +159,14 @@
     
 }
 
+- (UIImageView*)getSnapshotImageViewForViewController: (UIViewController*)viewController{
+    UIGraphicsBeginImageContextWithOptions(viewController.view.bounds.size, NO, [UIScreen mainScreen].scale);
+
+    [viewController.view drawViewHierarchyInRect:viewController.view.bounds afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return [[UIImageView alloc]initWithImage:image];
+}
+
 @end

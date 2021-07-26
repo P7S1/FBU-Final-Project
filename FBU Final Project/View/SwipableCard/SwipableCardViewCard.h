@@ -9,6 +9,7 @@
 #import "SwipableViewDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 @protocol SwipableViewDelegate;
 
 @interface SwipableCardViewCard : UIView

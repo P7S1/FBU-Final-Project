@@ -206,5 +206,4 @@
 - (void)transitionDidEndWith:(ZoomAnimator *)zoomAnimator {}
 
 - (void)transitionWillStartWith:(ZoomAnimator *)zoomAnimator {}
-
 @end
