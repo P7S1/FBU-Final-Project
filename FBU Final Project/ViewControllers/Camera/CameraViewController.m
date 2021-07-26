@@ -7,6 +7,9 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import <TOCropViewController/TOCropViewController.h>
+#import <CoreML/CoreML.h>
+#import <Vision/Vision.h>
+#import "MobileNet.h"
 #import "CameraViewController.h"
 #import "CreateListingViewController.h"
 #import "BasicButton.h"
@@ -21,6 +24,8 @@
 @property (nonatomic, strong) BasicButton* photoLibraryButton;
 @property (nonatomic, strong) BasicButton* captureButton;
 
+@property (nonatomic, strong) UILabel* descriptorLabel;
+
 @end
 
 @implementation CameraViewController
@@ -29,7 +34,9 @@
     [super viewDidLoad];
     [self setUpCamera];
     [self setUpPhotoLibraryButton];
+    [self setUpDescriptorLabel];
     self.view.backgroundColor = UIColor.blackColor;
+    self.overrideUserInterfaceStyle = UIUserInterfaceStyleDark;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -54,6 +61,20 @@
 }
 
 //MARK:- Customising visual view elements
+- (void)setUpDescriptorLabel{
+    self.descriptorLabel = [[UILabel alloc]init];
+    self.descriptorLabel.text = @"Descriptor Label";
+    self.descriptorLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.descriptorLabel.textColor = UIColor.secondaryLabelColor;
+    
+    [self.view addSubview:self.descriptorLabel];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.descriptorLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.descriptorLabel.topAnchor constraintEqualToAnchor:self.previewView.bottomAnchor constant:8]
+    ]];
+}
+
 - (void)captureButtonPressed{
     AVCapturePhotoSettings *settings = [AVCapturePhotoSettings photoSettingsWithFormat:@{AVVideoCodecKey: AVVideoCodecTypeJPEG}];
     [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
