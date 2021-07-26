@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpCamera];
+    [self setUpCameraPreviewView];
     [self setUpPhotoLibraryButton];
     [self setUpDescriptorLabel];
     self.view.backgroundColor = UIColor.blackColor;
@@ -80,7 +80,7 @@
     [self.stillImageOutput capturePhotoWithSettings:settings delegate:self];
 }
 
--(void)setUpCamera{
+-(void)setUpCameraPreviewView{
     self.previewView = [[UIView alloc]init];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
     
@@ -165,6 +165,12 @@
             });
             
         });
+        
+        dispatch_queue_attr_t qos = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, -1);
+        dispatch_queue_t videoQueue = dispatch_queue_create("videoQueue", qos);
+        
+        AVCaptureVideoDataOutput* dataOutput = [[AVCaptureVideoDataOutput alloc]init];
+        [dataOutput setSampleBufferDelegate:self queue:videoQueue];
     }
 }
 
