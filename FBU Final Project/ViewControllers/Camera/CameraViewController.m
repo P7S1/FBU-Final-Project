@@ -55,7 +55,7 @@
 }
 
 - (void)launchCropViewControllerWithImage: (UIImage*)image{
-    TOCropViewController* vc = [[TOCropViewController alloc]initWithImage:image];
+    TOCropViewController* const vc = [[TOCropViewController alloc]initWithImage:image];
     vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
 }
@@ -112,7 +112,7 @@
 }
 
 - (void)photoLibraryButtonPressed{
-    UIImagePickerController* pickerController = [[UIImagePickerController alloc]init];
+    UIImagePickerController* const pickerController = [[UIImagePickerController alloc]init];
     pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     pickerController.delegate = self;
         [UIImagePickerController availableMediaTypesForSourceType:
@@ -132,7 +132,7 @@
     }
     
     NSError *error;
-    AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera error:&error];
+    AVCaptureDeviceInput* const input = [AVCaptureDeviceInput deviceInputWithDevice:backCamera error:&error];
     if (!error) {
         self.stillImageOutput = [AVCapturePhotoOutput new];
         
@@ -156,7 +156,7 @@
         self.videoPreviewLayer.connection.videoOrientation = AVCaptureVideoOrientationPortrait;
         [self.previewView.layer addSublayer:self.videoPreviewLayer];
         
-        dispatch_queue_t globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        dispatch_queue_t const globalQueue =  dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
         dispatch_async(globalQueue, ^{
             [self.captureSession startRunning];
             //Size the Preview Layer to fit the Preview View
@@ -166,8 +166,8 @@
             
         });
         
-        dispatch_queue_attr_t qos = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, -1);
-        dispatch_queue_t videoQueue = dispatch_queue_create("videoQueue", qos);
+        dispatch_queue_attr_t const qos = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, QOS_CLASS_USER_INITIATED, -1);
+        dispatch_queue_t const videoQueue = dispatch_queue_create("videoQueue", qos);
         
         AVCaptureVideoDataOutput *const dataOutput = [[AVCaptureVideoDataOutput alloc]init];
         [dataOutput setSampleBufferDelegate:self queue:videoQueue];
@@ -180,7 +180,7 @@
     
     NSData *imageData = photo.fileDataRepresentation;
     if (imageData) {
-        UIImage *image = [UIImage imageWithData:imageData];
+        UIImage* const image = [UIImage imageWithData:imageData];
         [self launchCropViewControllerWithImage:image];
     }
 }
@@ -188,18 +188,43 @@
 //MARK:- UIImagePickerControllerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info{
     [picker dismissViewControllerAnimated:YES completion:nil];
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    UIImage* const image = info[UIImagePickerControllerOriginalImage];
     [self launchCropViewControllerWithImage:image];
 }
 
 //MARK:- TOCropViewControllerDelegat4e
 - (void)cropViewController:(TOCropViewController *)cropViewController didCropToImage:(UIImage *)image withRect:(CGRect)cropRect angle:(NSInteger)angle{
     [cropViewController dismissViewControllerAnimated:YES completion:nil];
-    CreateListingViewController *vc = [[CreateListingViewController alloc]init];
+    CreateListingViewController* const vc = [[CreateListingViewController alloc]init];
     vc.listingImage = image;
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+//MARK:- AVCaptureVideoDataOutputSampleBufferDelegate
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection{
+    struct __CVBuffer* const pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    if (pixelBuffer == nil) { return; }
+    
+    NSError* error;
+    VNCoreMLModel* const model = [VNCoreMLModel modelForMLModel: [[MobileNet alloc]init].model error:&error];
+    
+    if (error != nil){
+        NSLog(@"Error capturing ml model output: %@", [error localizedDescription]);
+        return;
+    }
+    
+    VNCoreMLRequest* request = [[VNCoreMLRequest alloc]initWithModel:model completionHandler:^(VNRequest * _Nonnull request, NSError * _Nullable error) {
+        if (error != nil){
+            NSLog(@"Error constructing ml request: %@", [error localizedDescription]);
+            return;
+        }else{
+            NSLog(@"%@", request.results);
+        }
+    }];
+    
+    [[[VNImageRequestHandler alloc]initWithCVPixelBuffer:pixelBuffer options:[NSDictionary new]] performRequests:@[request] error:&error];
 }
 
 @end
