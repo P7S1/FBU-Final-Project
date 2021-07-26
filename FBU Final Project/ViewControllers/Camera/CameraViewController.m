@@ -63,15 +63,18 @@
 //MARK:- Customising visual view elements
 - (void)setUpDescriptorLabel{
     self.descriptorLabel = [[UILabel alloc]init];
-    self.descriptorLabel.text = @"Descriptor Label";
     self.descriptorLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.descriptorLabel.textColor = UIColor.secondaryLabelColor;
+    self.descriptorLabel.numberOfLines = 0;
+    self.descriptorLabel.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:self.descriptorLabel];
     
     [NSLayoutConstraint activateConstraints:@[
         [self.descriptorLabel.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [self.descriptorLabel.topAnchor constraintEqualToAnchor:self.previewView.bottomAnchor constant:8]
+        [self.descriptorLabel.topAnchor constraintEqualToAnchor:self.previewView.bottomAnchor constant:8],
+        [self.descriptorLabel.leftAnchor constraintGreaterThanOrEqualToAnchor:self.view.leftAnchor constant:16],
+        [self.descriptorLabel.rightAnchor constraintLessThanOrEqualToAnchor:self.view.rightAnchor constant:-16]
     ]];
 }
 
