@@ -26,6 +26,8 @@
 //Decision Labels
 @property (nonatomic, strong) BasicLabel* yesDecisionLabel;
 @property (nonatomic, strong) BasicLabel* noDecisionLabel;
+
+@property (nonatomic, strong) UIVisualEffectView* blurView;
     
 @end
 
@@ -73,6 +75,31 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     self.shadowLayer.backgroundColor = UIColor.blackColor.CGColor;
     self.shadowLayer.opacity = 0.0;
     [self.layer insertSublayer:self.shadowLayer atIndex:0];
+    
+    self.backgroundImageView = [[UIImageView alloc]init];
+    self.backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.backgroundImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self addSubview:self.backgroundImageView];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.backgroundImageView.topAnchor constraintEqualToAnchor:self.topAnchor],
+        [self.backgroundImageView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor],
+        [self.backgroundImageView.leftAnchor constraintEqualToAnchor:self.leftAnchor],
+        [self.backgroundImageView.rightAnchor constraintEqualToAnchor:self.rightAnchor]
+    ]];
+    
+    
+    UIVisualEffect* effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurView = [[UIVisualEffectView alloc]initWithEffect:effect];
+    self.blurView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.blurView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.blurView.topAnchor constraintEqualToAnchor:self.topAnchor],
+        [self.blurView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor],
+        [self.blurView.leftAnchor constraintEqualToAnchor:self.leftAnchor],
+        [self.blurView.rightAnchor constraintEqualToAnchor:self.rightAnchor]
+    ]];
     
     self.backgroundColor = UIColor.systemBackgroundColor;
     

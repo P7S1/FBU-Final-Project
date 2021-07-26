@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UILabel* titleLabel;
 @property (nonatomic, strong) UIImageView* itemImageView;
+@property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) UILabel* descriptionLabel;
 @property (nonatomic, strong) UILabel* dateLabel;
 

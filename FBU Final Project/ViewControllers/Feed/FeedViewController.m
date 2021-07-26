@@ -87,8 +87,10 @@
     if (item.imageUrl != nil){
         NSURL* url = [[NSURL alloc]initWithString:item.imageUrl];
         [card.itemImageView sd_setImageWithURL:url];
+        [card.backgroundImageView sd_setImageWithURL:url];
     }else{
         card.itemImageView.image = nil;
+        card.backgroundImageView.image = nil;
     }
     return card;
 }
