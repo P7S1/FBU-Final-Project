@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) FIRTimestamp* endsInTimestamp;
 @property (nonatomic, strong) NSString* location;
 @property (nonatomic) NSInteger category;
+@property (nonatomic, strong) NSArray<NSString*>* buyers;
 
 @end
 
