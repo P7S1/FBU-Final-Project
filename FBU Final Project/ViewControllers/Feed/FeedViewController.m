@@ -83,7 +83,6 @@
     }
 }
 
-
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
     SwipableCardViewCard* card = [self.cardContainerView dequeueReusableCardView];
     ItemListing* item = self.items[index];
