@@ -13,7 +13,7 @@
 + (void)addItemToCart:(ItemListing *)item{
     FIRDocumentReference* ref = [[FIRFirestore firestore] documentWithPath:[@"listings/" stringByAppendingString:item.uid]];
     [ref setData:@{
-        @"":[FIRFieldValue fieldValueForArrayUnion:@[item.uid]]
+        @"buyers":[FIRFieldValue fieldValueForArrayUnion:@[item.uid]]
     } merge:YES];
 }
 
