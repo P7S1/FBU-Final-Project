@@ -53,6 +53,7 @@
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 		DFC4A5F826AF28430031CAA1 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */; };
 		DFC4A63C26B1B9A90031CAA1 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */; };
+		DFC4A63F26B1E0740031CAA1 /* ItemListingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A63E26B1E0740031CAA1 /* ItemListingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,8 @@
 		DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 		DFC4A63A26B1B9A90031CAA1 /* CartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
 		DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
+		DFC4A63D26B1E0740031CAA1 /* ItemListingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemListingTableViewCell.h; sourceTree = "<group>"; };
+		DFC4A63E26B1E0740031CAA1 /* ItemListingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemListingTableViewCell.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +483,8 @@
 			children = (
 				DF82E77726A63EC000EE9853 /* CategoryTableViewCell.h */,
 				DF82E77826A63EC000EE9853 /* CategoryTableViewCell.m */,
+				DFC4A63D26B1E0740031CAA1 /* ItemListingTableViewCell.h */,
+				DFC4A63E26B1E0740031CAA1 /* ItemListingTableViewCell.m */,
 			);
 			path = UITableViewCells;
 			sourceTree = "<group>";
@@ -784,6 +789,7 @@
 				DF1DEA5326A1C32E00EE488E /* SwipableCardViewContainer.m in Sources */,
 				DF4E31F3269E6D7D00745766 /* ScrollViewHelper.m in Sources */,
 				DF82E78E26A8C49600EE9853 /* ZoomDismissalInteractionController.m in Sources */,
+				DFC4A63F26B1E0740031CAA1 /* ItemListingTableViewCell.m in Sources */,
 				DF2986B8269D019400EFB770 /* EnterPhoneNumberViewController.m in Sources */,
 				DF3A8746269E000C008904BB /* TabBarController.m in Sources */,
 				DF29868E269C9EE000EFB770 /* main.m in Sources */,
