@@ -14,6 +14,7 @@
 #import "ItemListing.h"
 #import "ZoomAnimatorDelegate.h"
 #import "ListingItemDetailViewController.h"
+#import "CartHelper.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource, ZoomAnimatorDelegate>
 
@@ -78,7 +79,7 @@
 
 - (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction{
     if (direction == right){
-        
+        [CartHelper addItemToCart:view.itemListing];
     }
 }
 
@@ -86,6 +87,7 @@
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {
     SwipableCardViewCard* card = [self.cardContainerView dequeueReusableCardView];
     ItemListing* item = self.items[index];
+    card.itemListing = item;
     card.titleLabel.text = item.name;
     card.descriptionLabel.text = item.description;
     if (item.imageUrl != nil){

@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SwipableViewDelegate.h"
+#import "ItemListing.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak, nullable) id<SwipableViewDelegate> delegate;
 
-//UI Stuff
+@property (nonatomic, strong, nullable) ItemListing* itemListing;
+
 @property (nonatomic, strong) CALayer* shadowLayer;
 @property (nonatomic, strong) UILabel* numberLabel;
 

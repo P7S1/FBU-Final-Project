@@ -9,7 +9,7 @@
 
 @implementation CartHelper
 
-- (void)addItemToCart:(ItemListing *)item{
++ (void)addItemToCart:(ItemListing *)item{
     
 }
 

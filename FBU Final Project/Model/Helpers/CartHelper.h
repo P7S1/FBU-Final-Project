@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CartHelper : NSObject
 
-- (void)addItemToCart: (ItemListing*)item;
++ (void)addItemToCart: (ItemListing*)item;
 
 @end
 
