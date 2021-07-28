@@ -20,6 +20,14 @@
 
 @implementation CartViewController
 
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        self.items = [[NSArray alloc]init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpTableView];
