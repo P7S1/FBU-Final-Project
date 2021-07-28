@@ -14,13 +14,17 @@
 
 @implementation RootViewController
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    [self setUpCartNavigationItem];
+    self.view.backgroundColor = UIColor.systemBackgroundColor;
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"tabBarDidAppear" object:nil]];
 
     self.navigationItem.largeTitleDisplayMode = UINavigationItemLargeTitleDisplayModeAutomatic;
-    
-    [self setUpCartNavigationItem];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

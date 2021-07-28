@@ -5,9 +5,11 @@
 //  Created by Keng Fontem on 7/28/21.
 //
 
+#import <FirebaseFirestore/FirebaseFirestore.h>
 #import "CartViewController.h"
 #import "ItemListing.h"
 #import "ItemListingTableViewCell.h"
+#import "User.h"
 
 @interface CartViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -22,6 +24,8 @@
     [super viewDidLoad];
     [self setUpTableView];
     [self fetchItems];
+    
+    self.navigationItem.title = @"Your Cart";
 }
 
 - (void)setUpTableView{
@@ -42,7 +46,21 @@
 }
 
 - (void)fetchItems{
+    const FIRFirestore* db = [FIRFirestore firestore];
+    const FIRQuery* collectionRef = [[db collectionWithPath:@"/listings"] queryWhereField:@"buyers" arrayContains:[User sharedInstance].uid];
     
+    [collectionRef getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
+            if (error == nil){
+                for (const FIRQueryDocumentSnapshot* document in [snapshot documents]){
+                    ItemListing* item = [[ItemListing alloc]initWithDict: [document data]];
+                    if (item){
+                        self.items = [self.items arrayByAddingObject:item];
+                    }
+                }
+            }else{
+                NSLog(@"There was an error fetching cart items: %@", [error localizedDescription]);
+            }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
