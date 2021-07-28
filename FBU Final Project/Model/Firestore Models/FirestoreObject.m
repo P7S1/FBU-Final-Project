@@ -18,8 +18,7 @@
 
 - (instancetype)init{
     self = [super init];
-    FIRDocumentReference* dummyDoc = [[[FIRFirestore firestore] collectionWithPath:@"dummy"] documentWithAutoID];
-    self.uid = dummyDoc.documentID;
+    [self setDummyUid];
     return self;
 }
 
@@ -31,8 +30,7 @@
 - (instancetype)initWithDict:(NSDictionary *)dictionary{
     self = [super init];
     if (self) {
-        FIRDocumentReference* dummyDoc = [[[FIRFirestore firestore] collectionWithPath:@"dummy"] documentWithAutoID];
-        self.uid = dummyDoc.documentID;
+        [self setDummyUid];
         [self setValuesForKeysWithDictionary:dictionary];
     }
     
@@ -51,7 +49,12 @@
     [self saveInBackgroundAtDirectory:[self getDefaultFirestoreDirectory] withCompletion:completion];
 }
 
-+ (NSDictionary*)dictionaryWithPropertiesOfObject: (id)obj{
+- (void)setDummyUid{
+    FIRDocumentReference* dummyDoc = [[[FIRFirestore firestore] collectionWithPath:@"dummy"] documentWithAutoID];
+    self.uid = dummyDoc.documentID;
+}
+
++ (NSDictionary*)dictionaryWithPropertiesOfObject: (FirestoreObject*)obj{
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 
     unsigned count;
@@ -70,7 +73,7 @@
      }
 
     free(properties);
-
+    [dict setObject:obj.uid forKey:@"uid"];
     return [NSDictionary dictionaryWithDictionary:dict];
 }
 
