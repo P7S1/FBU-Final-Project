@@ -52,6 +52,7 @@
 		DF82E78F26A8C49600EE9853 /* ZoomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82E78C26A8C49600EE9853 /* ZoomAnimator.m */; };
 		DF8E6110269FE2B50097F826 /* ListingImageViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */; };
 		DFC4A5F826AF28430031CAA1 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */; };
+		DFC4A63C26B1B9A90031CAA1 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,8 @@
 		DF8E610E269FE2B50097F826 /* ListingImageViewTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListingImageViewTableViewCell.h; sourceTree = "<group>"; };
 		DF8E610F269FE2B50097F826 /* ListingImageViewTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListingImageViewTableViewCell.m; sourceTree = "<group>"; };
 		DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
+		DFC4A63A26B1B9A90031CAA1 /* CartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartViewController.h; sourceTree = "<group>"; };
+		DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,6 +423,8 @@
 			children = (
 				DF4E31E4269E4C8A00745766 /* FeedViewController.h */,
 				DF4E31E5269E4C8A00745766 /* FeedViewController.m */,
+				DFC4A63A26B1B9A90031CAA1 /* CartViewController.h */,
+				DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
 				DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */,
+				DFC4A63C26B1B9A90031CAA1 /* CartViewController.m in Sources */,
 				DF4E31FF269E944A00745766 /* ViewControllerHelper.m in Sources */,
 				DF4E31E9269E4C9300745766 /* ExploreViewController.m in Sources */,
 				DF4E3205269F8CCB00745766 /* CreateListingViewController.m in Sources */,

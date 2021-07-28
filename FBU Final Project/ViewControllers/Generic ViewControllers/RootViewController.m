@@ -6,6 +6,7 @@
 //
 
 #import "RootViewController.h"
+#import "CartViewController.h"
 
 @interface RootViewController ()
 
@@ -39,7 +40,8 @@
 }
 
 - (void)cartButtonPressed{
-    
+    CartViewController* vc = [[CartViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end
