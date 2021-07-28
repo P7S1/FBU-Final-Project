@@ -16,7 +16,6 @@
 @property (nonatomic) CGRect toReferenceImageViewFrame;
 
 -(void) didPanWith: (UIPanGestureRecognizer*) gestureRecognizer;
--(CGFloat) backgroundAlphaFor: (UIView*)view withPanningVerticalDelta: (CGFloat*)verticalDelta;
 -(CGFloat) scaleFor: (UIView*)view withPanningVerticalDelta: (CGFloat*)verticalDelta;
 
 -(void) startInteractiveTransition: (id<UIViewControllerContextTransitioning>) transitionContext;
