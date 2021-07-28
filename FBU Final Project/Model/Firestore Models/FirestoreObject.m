@@ -41,6 +41,9 @@
 
 - (void)saveInBackgroundAtDirectory: (NSString*)path withCompletion: (nullable void (^)(NSError *_Nullable error))completion{
     FIRDocumentReference* docRef = [[FIRFirestore firestore] documentWithPath:path];
+    if (self.uid == nil){
+        self.uid = docRef.documentID;
+    }
     [docRef setData:[FirestoreObject dictionaryWithPropertiesOfObject:self] merge:YES completion:completion];
 }
 
