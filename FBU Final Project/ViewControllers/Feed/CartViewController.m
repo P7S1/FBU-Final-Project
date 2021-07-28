@@ -57,6 +57,7 @@
                         self.items = [self.items arrayByAddingObject:item];
                     }
                 }
+                [self.tableView reloadData];
             }else{
                 NSLog(@"There was an error fetching cart items: %@", [error localizedDescription]);
             }
@@ -70,6 +71,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ItemListingTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ItemListingTableViewCell"];
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 150.0;
 }
 
 @end
