@@ -5,6 +5,7 @@
 //  Created by Keng Fontem on 7/28/21.
 //
 
+#import <SDWebImage/SDWebImage.h>
 #import "ItemListingTableViewCell.h"
 
 @interface ItemListingTableViewCell()
@@ -70,7 +71,14 @@
 }
 
 - (void)setUpWithItemListing:(ItemListing*)item{
-    
+    self.titleLabel.text = item.name;
+    self.descriptonLabel.text = item.description;
+    if (item.imageUrl){
+        NSURL* url = [[NSURL alloc]initWithString:item.imageUrl];
+        [self.itemImageView sd_setImageWithURL:url];
+    }else{
+        self.itemImageView.image = nil;
+    }
 }
 
 @end
