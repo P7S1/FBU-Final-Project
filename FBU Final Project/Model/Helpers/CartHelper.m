@@ -6,15 +6,15 @@
 //
 
 #import <FirebaseFirestore/FirebaseFirestore.h>
+#import <FirebaseAuth/FirebaseAuth.h>
 #import "CartHelper.h"
-#import "User.h"
 
 @implementation CartHelper
 
 + (void)addItemToCart:(ItemListing *)item{
     FIRDocumentReference* ref = [[FIRFirestore firestore] documentWithPath:[@"listings/" stringByAppendingString:item.uid]];
     [ref setData:@{
-        @"buyers":[FIRFieldValue fieldValueForArrayUnion:@[[User sharedInstance].uid]]
+        @"buyers":[FIRFieldValue fieldValueForArrayUnion:@[[FIRAuth auth].currentUser.uid]]
     } merge:YES];
 }
 

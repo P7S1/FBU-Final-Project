@@ -6,10 +6,10 @@
 //
 
 #import <FirebaseFirestore/FirebaseFirestore.h>
+#import <FirebaseAuth/FirebaseAuth.h>
 #import "CartViewController.h"
 #import "ItemListing.h"
 #import "ItemListingTableViewCell.h"
-#import "User.h"
 
 @interface CartViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -47,7 +47,7 @@
 
 - (void)fetchItems{
     const FIRFirestore* db = [FIRFirestore firestore];
-    const FIRQuery* collectionRef = [[db collectionWithPath:@"/listings"] queryWhereField:@"buyers" arrayContains:[User sharedInstance].uid];
+    const FIRQuery* collectionRef = [[db collectionWithPath:@"listings"] queryWhereField:@"buyers" arrayContains:[FIRAuth auth].currentUser.uid];
     
     [collectionRef getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot, NSError * _Nullable error) {
             if (error == nil){
@@ -73,7 +73,7 @@
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 150.0;
 }
 
