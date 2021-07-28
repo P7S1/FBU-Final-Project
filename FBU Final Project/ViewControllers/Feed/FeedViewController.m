@@ -76,7 +76,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction{}
+- (void)didSwipeAwayView:(nonnull SwipableCardViewCard *)view towardsDirection:(PanelButtonPosition)direction{
+    if (direction == right){
+        
+    }
+}
 
 
 - (SwipableCardViewCard * _Nullable)cardForItemAtIndex:(NSInteger)index {

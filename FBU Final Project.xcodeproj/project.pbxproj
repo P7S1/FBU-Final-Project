@@ -54,6 +54,7 @@
 		DFC4A5F826AF28430031CAA1 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A5F726AF28430031CAA1 /* MobileNet.mlmodel */; };
 		DFC4A63C26B1B9A90031CAA1 /* CartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */; };
 		DFC4A63F26B1E0740031CAA1 /* ItemListingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A63E26B1E0740031CAA1 /* ItemListingTableViewCell.m */; };
+		DFC4A64226B1E8830031CAA1 /* CartHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DFC4A64126B1E8830031CAA1 /* CartHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,8 @@
 		DFC4A63B26B1B9A90031CAA1 /* CartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartViewController.m; sourceTree = "<group>"; };
 		DFC4A63D26B1E0740031CAA1 /* ItemListingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemListingTableViewCell.h; sourceTree = "<group>"; };
 		DFC4A63E26B1E0740031CAA1 /* ItemListingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemListingTableViewCell.m; sourceTree = "<group>"; };
+		DFC4A64026B1E8830031CAA1 /* CartHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CartHelper.h; sourceTree = "<group>"; };
+		DFC4A64126B1E8830031CAA1 /* CartHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CartHelper.m; sourceTree = "<group>"; };
 		E455FA271757885065A8D89E /* Pods-FBU Final ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBU Final ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FBU Final ProjectTests/Pods-FBU Final ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -395,6 +398,8 @@
 				DF82E75F26A203A900EE9853 /* CGAffineTransformHelper.m */,
 				DF82E77226A5F88800EE9853 /* FirebaseFirestoreHelper.h */,
 				DF82E77326A5F88800EE9853 /* FirebaseFirestoreHelper.m */,
+				DFC4A64026B1E8830031CAA1 /* CartHelper.h */,
+				DFC4A64126B1E8830031CAA1 /* CartHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -776,6 +781,7 @@
 				DF82E76026A203A900EE9853 /* CGAffineTransformHelper.m in Sources */,
 				DF4E31E6269E4C8A00745766 /* FeedViewController.m in Sources */,
 				DF1DEA4626A0DA6E00EE488E /* BasicButton.m in Sources */,
+				DFC4A64226B1E8830031CAA1 /* CartHelper.m in Sources */,
 				DF1DEA5026A1BB8E00EE488E /* SwipableCardViewCard.m in Sources */,
 				DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */,
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
