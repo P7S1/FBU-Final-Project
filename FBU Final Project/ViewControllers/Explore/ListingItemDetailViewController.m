@@ -6,12 +6,14 @@
 //
 
 #import <SDWebImage/SDWebImage.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 #import "ListingItemDetailViewController.h"
 #import "ItemListing.h"
 #import "ZoomAnimatorDelegate.h"
 #import "ZoomTransitionController.h"
 #import "BasicButton.h"
 #import "DesignHelper.h"
+#import "CartHelper.h"
 
 @interface ListingItemDetailViewController()<ZoomAnimatorDelegate, UIGestureRecognizerDelegate>
 
@@ -105,6 +107,7 @@
     [self.addToCartButton setTitle:@"Add to Cart" forState:UIControlStateNormal];
     self.addToCartButton.backgroundColor = [DesignHelper buttonBackgroundColor];
     [self.addToCartButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];
+    [self.addToCartButton addTarget:self action:@selector(addToCartButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [[self.addToCartButton.heightAnchor constraintEqualToConstant:50.0] setActive:YES];
     
     UIStackView* stackView = [[UIStackView alloc]initWithArrangedSubviews:@[
@@ -123,6 +126,10 @@
         [stackView.topAnchor constraintEqualToAnchor:self.imageView.bottomAnchor constant:8],
         [stackView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16]
     ]];
+}
+
+- (void)addToCartButtonPressed{
+    [CartHelper addItemToCart:self.item];
 }
 
 - (NSString*)getDateLabelTextWithDate: (NSDate*)date{
