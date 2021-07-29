@@ -78,6 +78,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ItemListingTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"ItemListingTableViewCell"];
+    [cell setUpWithItemListing:self.items[indexPath.row]];
     return cell;
 }
 

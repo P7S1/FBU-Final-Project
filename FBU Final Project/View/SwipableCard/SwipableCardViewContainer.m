@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSArray<SwipableCardViewCard*>* reusableCardViews;
 @property (nonatomic) NSInteger reusableCellIndex;
 
-
 @property (nonatomic) NSInteger remainingCards;
 
 @end
