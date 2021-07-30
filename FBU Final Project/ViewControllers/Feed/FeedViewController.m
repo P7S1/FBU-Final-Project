@@ -52,7 +52,7 @@
     CGFloat const width = UIScreen.mainScreen.bounds.size.width - 32;
     
     [NSLayoutConstraint activateConstraints:@[
-        [self.cardContainerView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:16],
+        [self.cardContainerView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor constant:16],
         [self.cardContainerView.centerXAnchor constraintEqualToAnchor: self.view.centerXAnchor],
         [self.cardContainerView.heightAnchor constraintEqualToConstant:width * 1.33],
         [self.cardContainerView.widthAnchor constraintEqualToConstant:width]

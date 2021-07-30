@@ -73,20 +73,35 @@
 
 - (void)configureCenterButton{
     CGFloat const centralButtonHeight = 70;
-    CGFloat const ringViewDistanceFromEdges = 4;
-    
-    self.centerButton.backgroundColor = UIColor.whiteColor;
-    
-    CGSize ringViewSize = CGSizeMake(centralButtonHeight - (ringViewDistanceFromEdges * 2), centralButtonHeight - (ringViewDistanceFromEdges * 2));
-    CGPoint ringViewPoint = CGPointMake(ringViewDistanceFromEdges, ringViewDistanceFromEdges);
-    
-    CALayer *maskLayer = [CAShapeLayer layer];
-    maskLayer.borderColor = UIColor.blackColor.CGColor;
-    maskLayer.borderWidth = 2;
-    maskLayer.cornerRadius = (centralButtonHeight - (ringViewDistanceFromEdges * 2)) / 2;
-    maskLayer.frame = (CGRect){ringViewPoint, ringViewSize};
+    CGFloat const ringViewDistanceFromEdges = 5.5;
 
-    [self.centerButton.layer addSublayer:maskLayer];
+    const CGSize ringViewSize = CGSizeMake(centralButtonHeight - (ringViewDistanceFromEdges * 2), centralButtonHeight - (ringViewDistanceFromEdges * 2));
+    const CGPoint ringViewPoint = CGPointMake(ringViewDistanceFromEdges, ringViewDistanceFromEdges);
+    const CGRect ringViewRect = (CGRect){ringViewPoint, ringViewSize};
+    
+    const CAShapeLayer *maskLayer = [CAShapeLayer layer];
+    UIBezierPath *circularPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0.0, 0.0, centralButtonHeight, centralButtonHeight) cornerRadius: centralButtonHeight];
+    maskLayer.path = circularPath.CGPath;
+    maskLayer.fillColor = UIColor.clearColor.CGColor;
+    maskLayer.strokeColor = [UIColor blackColor].CGColor;
+    maskLayer.lineWidth = 7;
+    
+    const CAShapeLayer *secondMaskLayer = [CAShapeLayer layer];
+    circularPath = [UIBezierPath bezierPathWithRoundedRect:ringViewRect cornerRadius: centralButtonHeight];
+    secondMaskLayer.path = circularPath.CGPath;
+    secondMaskLayer.fillColor = [UIColor blackColor].CGColor;
+    secondMaskLayer.strokeColor = [UIColor blackColor].CGColor;
+    secondMaskLayer.lineWidth = 0.0;
+    
+    self.centerButton.layer.masksToBounds = true;
+    self.centerButton.layer.shadowColor = UIColor.yellowColor.CGColor;
+    self.centerButton.layer.shadowOffset = CGSizeZero;
+    self.centerButton.layer.shadowOpacity = 0.9;
+    self.centerButton.layer.shadowRadius = 10;
+    
+    [maskLayer addSublayer:secondMaskLayer];
+    
+    self.centerButton.layer.mask = maskLayer;
 }
 
 - (void)changePanel: (BasicButton*) sender{
@@ -113,7 +128,6 @@
 }
 
 - (void)animateButtonsWithOffset: (CGFloat)offset{
-    
     CGFloat const sideButtonMargin =  32;
     CGFloat const distanceFromYCenter = 10;
     CGFloat const centralButtonHeight = 70;
@@ -135,20 +149,25 @@
     
     UIImage* leftImage;
     UIImage* rightImage;
+    UIImage* centerImage;
     
     if (position == left){
         leftImage = [UIImage systemImageNamed:@"house.fill" withConfiguration:config];
         rightImage = [UIImage systemImageNamed:@"star" withConfiguration:config];
+        centerImage = [UIImage systemImageNamed:@"camera" withConfiguration:config];
     }else if (position == center){
         leftImage = [UIImage systemImageNamed:@"house" withConfiguration:config];
         rightImage = [UIImage systemImageNamed:@"star" withConfiguration:config];
+        centerImage = [UIImage systemImageNamed:@"camera.fill" withConfiguration:config];
     }else{
         leftImage = [UIImage systemImageNamed:@"house" withConfiguration:config];
         rightImage = [UIImage systemImageNamed:@"star.fill" withConfiguration:config];
+        centerImage = [UIImage systemImageNamed:@"camera" withConfiguration:config];
     }
     
     [self.leftButton setImage:leftImage forState:UIControlStateNormal];
     [self.rightButton setImage:rightImage forState:UIControlStateNormal];
+    [self.centerButton setImage:centerImage forState:UIControlStateNormal];
 }
 
 @end

@@ -68,13 +68,6 @@
         [self.imageView.heightAnchor constraintEqualToConstant:UIScreen.mainScreen.bounds.size.width * 1.33]
     ]];
     
-    self.view.backgroundColor = UIColor.systemBackgroundColor;
-    self.view.layer.cornerRadius = 50;
-    self.view.layer.shadowColor = UIColor.darkGrayColor.CGColor;
-    self.view.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    self.view.layer.shadowRadius = 12.0;
-    self.view.layer.shadowOpacity = 0.7;
-    
     self.titleLabel = [[UILabel alloc]init];
     self.titleLabel.text = self.item.name;
     self.titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightBold];

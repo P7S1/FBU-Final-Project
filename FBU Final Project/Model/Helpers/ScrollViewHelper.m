@@ -58,6 +58,7 @@
     
     BasicButton* button = [[BasicButton alloc]init];
     button.backgroundColor = UIColor.whiteColor;
+    button.tintColor = UIColor.labelColor;
     
     [button.layer setShadowOffset:CGSizeMake(0, 5)];
     [button.layer setShadowColor:[[UIColor blackColor] CGColor]];

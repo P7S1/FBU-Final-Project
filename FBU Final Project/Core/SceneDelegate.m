@@ -40,7 +40,6 @@
     [UINavigationBar appearance].scrollEdgeAppearance.backgroundColor = UIColor.systemBackgroundColor;
     [UINavigationBar appearance].compactAppearance.backgroundColor = UIColor.systemBackgroundColor;
     [[UINavigationBar appearance] setBackgroundColor:UIColor.systemBackgroundColor];
-    [[UINavigationBar appearance] setTranslucent:NO];
 }
 
 @end

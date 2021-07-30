@@ -99,8 +99,10 @@
 }
 
 - (void)setUpPhotoLibraryButton{
+    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:21.0 weight:UIImageSymbolWeightBold];
+    
     self.photoLibraryButton = [[BasicButton alloc]init];
-    [self.photoLibraryButton setImage:[UIImage systemImageNamed:@"photo"] forState:UIControlStateNormal];
+    [self.photoLibraryButton setImage:[UIImage systemImageNamed:@"photo" withConfiguration:config] forState:UIControlStateNormal];
     [self.photoLibraryButton addTarget:self action:@selector(photoLibraryButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     self.photoLibraryButton.tintColor = UIColor.whiteColor;
     self.photoLibraryButton.translatesAutoresizingMaskIntoConstraints = NO;
