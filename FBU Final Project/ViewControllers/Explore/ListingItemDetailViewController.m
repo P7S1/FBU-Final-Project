@@ -131,6 +131,7 @@
 - (void)addToCartButtonPressed{
     [CartHelper addItemToCart:self.item];
     [self.navigationController popViewControllerAnimated:YES];
+    [SVProgressHUD showSuccessWithStatus:@"Item Added to Cart!"];
 }
 
 - (NSString*)getDateLabelTextWithDate: (NSDate*)date{
