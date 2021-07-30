@@ -16,6 +16,7 @@
 #import "ListingItemDetailViewController.h"
 #import "CartHelper.h"
 #import "BasicButton.h"
+#import "PanelButtonPosition.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource, ZoomAnimatorDelegate>
 
@@ -108,11 +109,11 @@
 }
 
 - (void)yesDecisionButtonPressed{
-    
+    [self.cardContainerView dismissCardTowardsDirection:right];
 }
 
 - (void)noDecisionButtonPressed{
-    
+    [self.cardContainerView dismissCardTowardsDirection:left];
 }
 
 - (void)hideDecisionButtons{
