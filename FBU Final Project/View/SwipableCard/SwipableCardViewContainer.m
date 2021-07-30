@@ -153,4 +153,8 @@
     [self.delegate didSelectCard:view atIndex:index];
 }
 
+- (void)manuallySwipeTowardsDirection: (PanelButtonPosition)direction{
+    
+}
+
 @end

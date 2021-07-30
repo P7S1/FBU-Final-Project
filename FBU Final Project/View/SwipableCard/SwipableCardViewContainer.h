@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "SwipableViewDelegate.h"
 #import "SwipableCardViewDelegate.h"
+#import "PanelButtonPosition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadData;
 - (SwipableCardViewCard*)dequeueReusableCardView;
+- (void)manuallySwipeTowardsDirection: (PanelButtonPosition)direction;
 
 @end
 
