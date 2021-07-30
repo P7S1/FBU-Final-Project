@@ -10,11 +10,16 @@
 #import "CartViewController.h"
 #import "ItemListing.h"
 #import "ItemListingTableViewCell.h"
+#import "BasicButton.h"
+#import "DesignHelper.h"
 
 @interface CartViewController()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView* tableView;
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
+@property (nonatomic, strong) BasicButton* checkoutButton;
+
+@property (nonatomic) CGFloat total;
 
 @end
 
@@ -31,6 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setUpTableView];
+    [self setUpCheckoutButton];
     [self fetchItems];
     
     self.navigationItem.title = @"Your Cart";
@@ -50,6 +56,23 @@
         [self.tableView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
         [self.tableView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor],
         [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+    ]];
+}
+
+- (void)setUpCheckoutButton{
+    self.checkoutButton = [[BasicButton alloc]init];
+    self.checkoutButton.backgroundColor = [DesignHelper buttonBackgroundColor];
+    [self.checkoutButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];
+    [self.checkoutButton setTitle:[[@"$" stringByAppendingString:@(self.total).stringValue] stringByAppendingString:@" Checkout"] forState:UIControlStateNormal];
+    self.checkoutButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.checkoutButton];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.checkoutButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:16.0],
+        [self.checkoutButton.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16.0],
+        [self.checkoutButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-16],
+        [self.checkoutButton.heightAnchor constraintEqualToConstant:50.0]
     ]];
 }
 
