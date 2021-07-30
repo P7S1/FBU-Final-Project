@@ -63,7 +63,6 @@
     self.checkoutButton = [[BasicButton alloc]init];
     self.checkoutButton.backgroundColor = [DesignHelper buttonBackgroundColor];
     [self.checkoutButton setTitleColor:[DesignHelper buttonTitleLabelColor] forState:UIControlStateNormal];
-    [self.checkoutButton setTitle:[[@"$" stringByAppendingString:@(self.total).stringValue] stringByAppendingString:@" Checkout"] forState:UIControlStateNormal];
     self.checkoutButton.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.checkoutButton];
@@ -71,7 +70,7 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.checkoutButton.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:16.0],
         [self.checkoutButton.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16.0],
-        [self.checkoutButton.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:-16],
+        [self.checkoutButton.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-16],
         [self.checkoutButton.heightAnchor constraintEqualToConstant:50.0]
     ]];
 }
@@ -95,7 +94,20 @@
     }];
 }
 
+- (void)updateCheckoutButton{
+    [self.checkoutButton setTitle:[[@"$" stringByAppendingString:@(self.total).stringValue] stringByAppendingString:@" Checkout"] forState:UIControlStateNormal];
+}
+
+- (CGFloat)total{
+    CGFloat total = 0.0;
+    for (int i = 0; i < self.items.count; i++){
+        total += self.items[self.items.count-1].price;
+    }
+    return total;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    [self updateCheckoutButton];
     return self.items.count;
 }
 
