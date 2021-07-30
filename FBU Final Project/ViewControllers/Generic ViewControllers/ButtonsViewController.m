@@ -131,15 +131,24 @@
 }
 
 - (void)updateCurrentButtonLooksWithCurrentPosition: (PanelButtonPosition)position{
-    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:25.0 weight:UIImageSymbolWeightBold];
+    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:19.0 weight:UIImageSymbolWeightBold];
+    
+    UIImage* leftImage;
+    UIImage* rightImage;
     
     if (position == left){
-        
+        leftImage = [UIImage systemImageNamed:@"house.fill" withConfiguration:config];
+        rightImage = [UIImage systemImageNamed:@"star" withConfiguration:config];
     }else if (position == center){
-        
+        leftImage = [UIImage systemImageNamed:@"house" withConfiguration:config];
+        rightImage = [UIImage systemImageNamed:@"star" withConfiguration:config];
     }else{
-        
+        leftImage = [UIImage systemImageNamed:@"house" withConfiguration:config];
+        rightImage = [UIImage systemImageNamed:@"star.fill" withConfiguration:config];
     }
+    
+    [self.leftButton setImage:leftImage forState:UIControlStateNormal];
+    [self.rightButton setImage:rightImage forState:UIControlStateNormal];
 }
 
 @end
