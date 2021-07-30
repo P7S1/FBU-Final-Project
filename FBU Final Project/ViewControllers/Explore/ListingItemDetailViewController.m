@@ -130,6 +130,7 @@
 
 - (void)addToCartButtonPressed{
     [CartHelper addItemToCart:self.item];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (NSString*)getDateLabelTextWithDate: (NSDate*)date{

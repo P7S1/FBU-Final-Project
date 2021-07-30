@@ -19,7 +19,7 @@
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
 @property (nonatomic, strong) BasicButton* checkoutButton;
 
-@property (nonatomic) CGFloat total;
+@property (nonatomic, readonly) CGFloat total;
 
 @end
 
