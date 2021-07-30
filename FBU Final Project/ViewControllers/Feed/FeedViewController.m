@@ -15,12 +15,16 @@
 #import "ZoomAnimatorDelegate.h"
 #import "ListingItemDetailViewController.h"
 #import "CartHelper.h"
+#import "BasicButton.h"
 
 @interface FeedViewController ()<SwipableCardViewDelegate, SwipeableCardViewDataSource, ZoomAnimatorDelegate>
 
 @property (nonatomic, strong) SwipableCardViewContainer *cardContainerView;
 @property (nonatomic, strong) NSArray<ItemListing*>* items;
 @property (nonatomic, strong, nullable) SwipableCardViewCard* tappedCard;
+
+@property (nonatomic, strong) BasicButton* yesDecisionButton;
+@property (nonatomic, strong) BasicButton* noDecisionButton;
 
 @end
 
@@ -56,12 +60,24 @@
     [self.cardContainerView reloadData];
 }
 
+//MARK:- Handling of Decision Buttons
 - (void)setUpDecisionButtons{
     
 }
 
-- (void)getDecisionButton{
+- (BasicButton*)getDecisionButtonWithColor: (UIColor*)color{
+    BasicButton* button = [[BasicButton alloc]init];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    button.tintColor = color;
+    button.layer.borderColor = color.CGColor;
+    button.layer.borderWidth = 4;
     
+    [NSLayoutConstraint activateConstraints:@[
+        [button.heightAnchor constraintEqualToConstant:50],
+        [button.widthAnchor constraintEqualToConstant:50]
+    ]];
+    
+    return button;
 }
 
 - (void)yesDecisionButtonPressed{
@@ -69,6 +85,10 @@
 }
 
 - (void)noDecisionButtonPressed{
+    
+}
+
+- (void)hideDecisionButtons{
     
 }
 
