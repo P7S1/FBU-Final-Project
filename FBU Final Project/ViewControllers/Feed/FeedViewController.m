@@ -62,19 +62,46 @@
 
 //MARK:- Handling of Decision Buttons
 - (void)setUpDecisionButtons{
+    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:32.0 weight:UIImageSymbolWeightBold];
     
+    self.yesDecisionButton = [self getDecisionButtonWithColor:UIColor.systemGreenColor];
+    [self.yesDecisionButton setImage:[UIImage systemImageNamed:@"cart" withConfiguration:config] forState:UIControlStateNormal];
+    [self.yesDecisionButton addTarget:self action:@selector(yesDecisionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.noDecisionButton = [self getDecisionButtonWithColor:UIColor.systemRedColor];
+    [self.noDecisionButton setImage:[UIImage systemImageNamed:@"xmark" withConfiguration:config] forState:UIControlStateNormal];
+    [self.noDecisionButton addTarget:self action:@selector(noDecisionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIStackView* stackView = [[UIStackView alloc]initWithArrangedSubviews:@[
+        self.noDecisionButton,
+        self.yesDecisionButton
+    ]];
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.translatesAutoresizingMaskIntoConstraints = NO;
+    stackView.spacing = 16.0;
+    
+    [self.view addSubview:stackView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [stackView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor constant:-92.0],
+        [stackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor]
+    ]];
 }
 
 - (BasicButton*)getDecisionButtonWithColor: (UIColor*)color{
+    const CGFloat buttonHeight = 75.0;
+    
     BasicButton* button = [[BasicButton alloc]init];
     button.translatesAutoresizingMaskIntoConstraints = NO;
     button.tintColor = color;
     button.layer.borderColor = color.CGColor;
-    button.layer.borderWidth = 4;
+    button.layer.borderWidth = 4.0;
+    button.layer.cornerRadius = buttonHeight/2;
+    button.backgroundColor = [UIColor systemBackgroundColor];
     
     [NSLayoutConstraint activateConstraints:@[
-        [button.heightAnchor constraintEqualToConstant:50],
-        [button.widthAnchor constraintEqualToConstant:50]
+        [button.heightAnchor constraintEqualToConstant:buttonHeight],
+        [button.widthAnchor constraintEqualToConstant:buttonHeight]
     ]];
     
     return button;
