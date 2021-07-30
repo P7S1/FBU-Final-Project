@@ -17,9 +17,11 @@
 @implementation SceneDelegate
 
 - (void)scene:(UIScene *)scene willConnectToSession:(UISceneSession *)session options:(UISceneConnectionOptions *)connectionOptions {
+    [self setNavigationBarAppearence];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowScene = (UIWindowScene *)scene;
-    
+    self.window.tintColor = UIColor.systemGreenColor;
     if ([FIRAuth auth].currentUser){
         self.window.rootViewController = [[TabBarController alloc]init];
     }else{
@@ -31,6 +33,14 @@
     UIApplication.sharedApplication.delegate.self.window = self.window;
     
     [self.window makeKeyAndVisible];
+}
+
+- (void)setNavigationBarAppearence{
+    [UINavigationBar appearance].standardAppearance.backgroundColor = UIColor.systemBackgroundColor;
+    [UINavigationBar appearance].scrollEdgeAppearance.backgroundColor = UIColor.systemBackgroundColor;
+    [UINavigationBar appearance].compactAppearance.backgroundColor = UIColor.systemBackgroundColor;
+    [[UINavigationBar appearance] setBackgroundColor:UIColor.systemBackgroundColor];
+    [[UINavigationBar appearance] setTranslucent:NO];
 }
 
 @end

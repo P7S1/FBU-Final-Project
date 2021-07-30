@@ -32,6 +32,7 @@
     [self startListingsSnapshotListener];
     self.navigationItem.title = @"For You";
     self.view.backgroundColor = UIColor.systemBackgroundColor;
+    self.navigationController.navigationBar.prefersLargeTitles = NO;
 }
 
 - (void)setUpCardContainerView{
