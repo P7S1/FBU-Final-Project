@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)reloadData;
 - (SwipableCardViewCard*)dequeueReusableCardView;
-- (void)manuallySwipeTowardsDirection: (PanelButtonPosition)direction;
+- (void)dismissCardTowardsDirection: (PanelButtonPosition)direction;
 
 @end
 

@@ -153,8 +153,10 @@
     [self.delegate didSelectCard:view atIndex:index];
 }
 
-- (void)manuallySwipeTowardsDirection: (PanelButtonPosition)direction{
+- (void)dismissCardTowardsDirection: (PanelButtonPosition)direction{
+    if (self.cardViews.count <= 0) { return; }
     
+    [self.cardViews[0] dismissCardTowardsDirection:direction];
 }
 
 @end
