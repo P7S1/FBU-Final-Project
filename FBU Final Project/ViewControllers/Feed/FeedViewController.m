@@ -66,7 +66,7 @@
     const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:32.0 weight:UIImageSymbolWeightBold];
     
     self.yesDecisionButton = [self getDecisionButtonWithColor:UIColor.systemGreenColor];
-    [self.yesDecisionButton setImage:[UIImage systemImageNamed:@"cart" withConfiguration:config] forState:UIControlStateNormal];
+    [self.yesDecisionButton setImage:[UIImage systemImageNamed:@"cart.badge.plus" withConfiguration:config] forState:UIControlStateNormal];
     [self.yesDecisionButton addTarget:self action:@selector(yesDecisionButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     self.noDecisionButton = [self getDecisionButtonWithColor:UIColor.systemRedColor];

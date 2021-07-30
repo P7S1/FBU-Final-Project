@@ -126,4 +126,20 @@
     self.centerButton.center = CGPointMake(self.centerButton.center.x, (self.view.frame.size.height / 2 - distanceFromYCenter) + distanceFromYCenter * fabs(offset));
 }
 
+- (void)setCurrentViewControllerPosition:(PanelButtonPosition)currentViewControllerPosition{
+    [self updateCurrentButtonLooksWithCurrentPosition:currentViewControllerPosition];
+}
+
+- (void)updateCurrentButtonLooksWithCurrentPosition: (PanelButtonPosition)position{
+    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:25.0 weight:UIImageSymbolWeightBold];
+    
+    if (position == left){
+        
+    }else if (position == center){
+        
+    }else{
+        
+    }
+}
+
 @end
