@@ -116,7 +116,8 @@
 }
 
 - (void)hideDecisionButtons{
-    
+    [self.yesDecisionButton setHidden:YES];
+    [self.noDecisionButton setHidden:NO];
 }
 
 - (void)startListingsSnapshotListener{
