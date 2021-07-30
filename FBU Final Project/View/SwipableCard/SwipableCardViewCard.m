@@ -299,4 +299,9 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     [self.delegate didTapView:self];
 }
 
+//MARK:- Dismiss Card Towards Direction
+- (void)dismissCardTowardsDirection:(PanelButtonPosition)direction{
+    
+}
+
 @end

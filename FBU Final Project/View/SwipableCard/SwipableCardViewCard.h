@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "SwipableViewDelegate.h"
 #import "ItemListing.h"
+#import "PanelButtonPosition.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -27,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIImageView* backgroundImageView;
 @property (nonatomic, strong) UILabel* descriptionLabel;
 @property (nonatomic, strong) UILabel* dateLabel;
+
+- (void)dismissCardTowardsDirection: (PanelButtonPosition)direction;
 
 @end
 
