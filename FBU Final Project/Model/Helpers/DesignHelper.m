@@ -11,7 +11,7 @@
 @implementation DesignHelper
 
 + (UIColor*)buttonBackgroundColor{
-    return UIColor.systemBlueColor;
+    return [[[UIApplication sharedApplication] delegate] window].tintColor;
 }
 
 + (UIColor*)buttonTitleLabelColor{
