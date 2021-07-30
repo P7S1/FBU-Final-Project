@@ -21,6 +21,7 @@
         self.coverLayer = [[CALayer alloc]init];
         self.coverLayer.backgroundColor = UIColor.blackColor.CGColor;
         self.coverLayer.opacity = 0.0;
+        self.layer.cornerRadius = 25;
         [self.layer addSublayer:self.coverLayer];
         
         [self addTarget:self action:@selector(buttonPress) forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
