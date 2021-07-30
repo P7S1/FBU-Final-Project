@@ -273,7 +273,13 @@ CGFloat const _finalizeSwipeActionAnimationDuration = 0.8;
     CGFloat const xPosition = direction == left ? -UIScreen.mainScreen.bounds.size.height : UIScreen.mainScreen.bounds.size.height;
     CGRect const toRect = CGRectMake(xPosition, UIScreen.mainScreen.bounds.size.height - self.frame.size.width, self.frame.size.height, self.frame.size.width);
     
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    if (direction == left){
+        self.noDecisionLabel.alpha = 1.0;
+    }else{
+        self.yesDecisionLabel.alpha = 1.0;
+    }
+    
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.transform = [CGAffineTransformHelper transformFromRect:self.frame toRect:toRect];
         } completion:^(BOOL finished) {
             [self removeFromSuperview];
