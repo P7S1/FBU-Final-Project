@@ -30,6 +30,7 @@
     [super viewDidLoad];
     [self setUpCardContainerView];
     [self startListingsSnapshotListener];
+    [self setUpDecisionButtons];
     self.navigationItem.title = @"For You";
     self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
@@ -53,6 +54,22 @@
     ]];
     
     [self.cardContainerView reloadData];
+}
+
+- (void)setUpDecisionButtons{
+    
+}
+
+- (void)getDecisionButton{
+    
+}
+
+- (void)yesDecisionButtonPressed{
+    
+}
+
+- (void)noDecisionButtonPressed{
+    
 }
 
 - (void)startListingsSnapshotListener{
