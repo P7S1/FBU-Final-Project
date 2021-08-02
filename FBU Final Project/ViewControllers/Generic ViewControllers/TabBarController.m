@@ -107,7 +107,7 @@
     self.scrollView.delegate = self;
 }
 
-- (void) setUpButtonContainerView{
+- (void)setUpButtonContainerView{
     self.buttonsContainerView = [[UIView alloc]init];
     [self.view insertSubview:self.buttonsContainerView aboveSubview:self.scrollView];
     
@@ -133,7 +133,7 @@
 }
 
 - (void)setUpPipContainerView{
-    self.pipContainerView = [[PipContainerView alloc]initWithFrame:self.view.bounds];
+    self.pipContainerView = [[PipContainerView alloc]initWithViewController:self];
     self.pipContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.pipContainerView];

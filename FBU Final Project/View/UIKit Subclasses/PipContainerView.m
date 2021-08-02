@@ -28,6 +28,15 @@ CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
 
 //MARK:- Init Methods
+- (instancetype)initWithViewController: (UIViewController*)viewController{
+    self = [super init];
+    if (self){
+        [self commonInit];
+        [viewController.view addSubview:_pipView];
+    }
+    return self;
+}
+
 - (instancetype)initWithFrame: (CGRect)frame{
     self = [super initWithFrame:frame];
     if (self){
@@ -84,8 +93,6 @@ UIPanGestureRecognizer* _panRecognizer;
     
     _pipView = [[UIView alloc]init];
     _pipView.backgroundColor = UIColor.greenColor;
-    [_pipView setUserInteractionEnabled:YES];
-    [self addSubview:_pipView];
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
         [_pipView.heightAnchor constraintEqualToConstant:_pipHeight],
@@ -115,6 +122,7 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (UIView*)getPipView{
     UIView* pipView = [[UIView alloc]init];
+    pipView.backgroundColor = UIColor.blueColor;
     [self addSubview:pipView];
     
     pipView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -158,7 +166,7 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (void)handlePanRecognizerStateChanged: (UIPanGestureRecognizer*)recognizer{
     const CGPoint touchPoint = [recognizer locationInView:self];
-    _initialOffset = CGPointMake(touchPoint.x - _initialOffset.x, touchPoint.y - _initialOffset.y);
+    _pipView.center = CGPointMake(touchPoint.x - _initialOffset.x, touchPoint.y - _initialOffset.y);
 }
 
 - (void)handlePanRecognizerStateEnded: (UIPanGestureRecognizer*)recognizer{
