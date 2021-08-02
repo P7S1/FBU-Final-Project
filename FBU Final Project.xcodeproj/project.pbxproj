@@ -30,7 +30,6 @@
 		DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C1269DF08900EFB770 /* UsernameViewController.m */; };
 		DF2986C4269DFC3B00EFB770 /* FirestoreObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DF2986C3269DFC3B00EFB770 /* FirestoreObject.m */; };
 		DF33B0B026B86F5C0099C1C7 /* PipContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33B0AF26B86F5C0099C1C7 /* PipContainerView.m */; };
-		DF33B0B326B873290099C1C7 /* PipPositionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DF33B0B226B873290099C1C7 /* PipPositionView.m */; };
 		DF3A8746269E000C008904BB /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A8745269E000B008904BB /* TabBarController.m */; };
 		DF3A8750269E0B7E008904BB /* DesignHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3A874F269E0B7E008904BB /* DesignHelper.m */; };
 		DF4E31E0269E4C2900745766 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF4E31DF269E4C2900745766 /* CameraViewController.m */; };
@@ -127,8 +126,6 @@
 		DF2986C5269DFC4600EFB770 /* FirestoreObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirestoreObject.h; sourceTree = "<group>"; };
 		DF33B0AE26B86F5C0099C1C7 /* PipContainerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PipContainerView.h; sourceTree = "<group>"; };
 		DF33B0AF26B86F5C0099C1C7 /* PipContainerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PipContainerView.m; sourceTree = "<group>"; };
-		DF33B0B126B873290099C1C7 /* PipPositionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PipPositionView.h; sourceTree = "<group>"; };
-		DF33B0B226B873290099C1C7 /* PipPositionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PipPositionView.m; sourceTree = "<group>"; };
 		DF3A8744269E000B008904BB /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		DF3A8745269E000B008904BB /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		DF3A874F269E0B7E008904BB /* DesignHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DesignHelper.m; sourceTree = "<group>"; };
@@ -239,8 +236,6 @@
 				DF82E77026A2394000EE9853 /* BasicLabel.m */,
 				DF33B0AE26B86F5C0099C1C7 /* PipContainerView.h */,
 				DF33B0AF26B86F5C0099C1C7 /* PipContainerView.m */,
-				DF33B0B126B873290099C1C7 /* PipPositionView.h */,
-				DF33B0B226B873290099C1C7 /* PipPositionView.m */,
 			);
 			path = "UIKit Subclasses";
 			sourceTree = "<group>";
@@ -795,7 +790,6 @@
 				DF1DEA5026A1BB8E00EE488E /* SwipableCardViewCard.m in Sources */,
 				DF2986C2269DF08900EFB770 /* UsernameViewController.m in Sources */,
 				DF2986BB269D05B400EFB770 /* EnterVerificationCodeViewController.m in Sources */,
-				DF33B0B326B873290099C1C7 /* PipPositionView.m in Sources */,
 				DF29867D269C9EDF00EFB770 /* AppDelegate.m in Sources */,
 				DF82E76326A224FA00EE9853 /* NavigationController.m in Sources */,
 				DFC4A63C26B1B9A90031CAA1 /* CartViewController.m in Sources */,

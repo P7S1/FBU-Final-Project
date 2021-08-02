@@ -6,7 +6,12 @@
 //
 
 #import "PipContainerView.h"
-#import "PipPositionView.h"
+
+const CGFloat _pipWidth = 86;
+const CGFloat _pipHeight = 130;
+
+const CGFloat _horizontalSpacing = 23;
+const CGFloat _verticalSpacing = 25;
 
 @implementation PipContainerView
 
