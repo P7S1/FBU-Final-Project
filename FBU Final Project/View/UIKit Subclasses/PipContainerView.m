@@ -148,7 +148,25 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 - (void)handlePanRecognizerStateEnded: (UIPanGestureRecognizer*)recognizer{
+    const CGFloat decelerationRate = UIScrollViewDecelerationRateNormal;
+    const CGPoint velocity = [recognizer velocityInView:self];
+    const CGPoint projectedPosition = (CGPoint){
+        _pipView.center.x + [self projectWithInitialVelocity:velocity.x withDecelerationRate:decelerationRate],
+         _pipView.center.y + [self projectWithInitialVelocity:velocity.y withDecelerationRate:decelerationRate]
+    };
+    const CGPoint nearestCornerPosition = [self nearestCornerToPoint:projectedPosition];
+    const CGVector relativeInitalVelocity = (CGVector){
+        [self relativeVelocityForVelocity:velocity.x fromCurrentValue:_pipView.center.x toTargetValue:nearestCornerPosition.x],
+        [self relativeVelocityForVelocity:velocity.y fromCurrentValue:_pipView.center.y toTargetValue:nearestCornerPosition.y]
+    };
     
+    const UISpringTimingParameters* timingParemeters = [[UISpringTimingParameters alloc]initWithDampingRatio:1.0 initialVelocity:relativeInitalVelocity];
+    const UIViewPropertyAnimator* animatior = [[UIViewPropertyAnimator alloc]initWithDuration:0.0 timingParameters:timingParemeters];
+    [animatior addAnimations:^{
+        _pipView.center = nearestCornerPosition;
+    }];
+    
+    [animatior startAnimation];
 }
 
 - (void)handlePanRecognizerStateCancelled: (UIPanGestureRecognizer*)recognizer{
