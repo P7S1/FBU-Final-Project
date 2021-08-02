@@ -143,7 +143,8 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 - (void)handlePanRecognizerStateChanged: (UIPanGestureRecognizer*)recognizer{
-    
+    const CGPoint touchPoint = [recognizer locationInView:self];
+    _initialOffset = CGPointMake(touchPoint.x - _initialOffset.x, touchPoint.y - _initialOffset.y);
 }
 
 - (void)handlePanRecognizerStateEnded: (UIPanGestureRecognizer*)recognizer{
