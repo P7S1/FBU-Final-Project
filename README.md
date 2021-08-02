@@ -1,43 +1,25 @@
-# FBU Final Project - (name pending)
-
-## Table of Contents
-1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
-
-## Overview
-### Description
-My FBU Final project is a shopping app meant for cheap items where you can either browse through items or swipe through a "for you" page of items
-
-### App Evaluation
-[Evaluation of your app across the following attributes]
-- **Category: Shopping**
-- **Mobile: yes**
-- **Market genz/millenials:**
-
-## Product Spec
-
-### 1. User Stories (Required and Optional)
-
-**Required Must-have Stories**
-
-* An area to "Browse" for items
-* A Feed of items for sale
-* Upload items for sale with image
-* Login flow
-* User persistance
-* Multiple ViewControllers
+- [x] A Feed of items for sale
+- [x] Upload items for sale with image
+- [x] Login flow
+- [x] User persistance
+- [x] Multiple ViewControllers
+- [x] Each item has a price
 
 **Optional Nice-to-have Stories**
 
-* Custom camera
-* Tinder-like animation
-* UIViewcontroller transiiton animations
-* Full text search
-* Using ML to identify what ht eobject is
-* Custom Snapchat-like TabbarController 
-* Customise UI
+- [x] Custom camera UI
+- [x] Tinder-like animation
+- [x] UIViewcontroller transiiton animations
+- [ ] Full text search
+- [x] Using ML to identify what the object is
+- [x] Custom Snapchat-like TabbarController 
+- [x] Customise UI
+- [x] Ability to add items to cart
+- [x] Shopping cart page
+- [x] Ability to post item from camera roll
+- [x] Progress HUD
+- [x] Buttons to assist with left/right swipe
+- [x] Checkout button with total order's price
 
 ### 2. Screen Archetypes
 
