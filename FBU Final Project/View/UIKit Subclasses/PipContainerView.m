@@ -18,8 +18,8 @@
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
-const CGFloat _pipWidth = 44.0;
-const CGFloat _pipHeight = 44.0;
+const CGFloat _pipWidth = 86.0;
+const CGFloat _pipHeight = 130.0;
 
 const CGFloat _horizontalSpacing = 23.0;
 const CGFloat _verticalSpacing = 25.0;
