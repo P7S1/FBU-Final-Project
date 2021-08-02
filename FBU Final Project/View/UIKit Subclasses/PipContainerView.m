@@ -18,11 +18,11 @@
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
-const CGFloat _pipWidth = 86;
-const CGFloat _pipHeight = 130;
+const CGFloat _pipWidth = 86.0;
+const CGFloat _pipHeight = 130.0;
 
-const CGFloat _horizontalSpacing = 23;
-const CGFloat _verticalSpacing = 25;
+const CGFloat _horizontalSpacing = 23.0;
+const CGFloat _verticalSpacing = 25.0;
 
 CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
@@ -50,6 +50,7 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 //MARK:- Lifecycle Methods
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     if (self.pipPositions.lastObject == nil){
@@ -186,7 +187,7 @@ UIPanGestureRecognizer* _panRecognizer;
 
 
 - (CGFloat)projectWithInitialVelocity: (CGFloat)initialVelocity withDecelerationRate: (CGFloat)declerationRate{
-    return (initialVelocity / 1000.0) * declerationRate / (1 - declerationRate);
+    return (initialVelocity / 1000.0) * declerationRate / (1.0 - declerationRate);
 }
 
 - (CGPoint)nearestCornerToPoint: (CGPoint)point{
