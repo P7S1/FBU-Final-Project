@@ -103,4 +103,8 @@ UIPanGestureRecognizer* _panRecognizer;
     
 }
 
+- (CGFloat)projectWithInitialVelocity: (CGFloat)initialVelocity withDecelerationRate: (CGFloat)declerationRate{
+    return (initialVelocity / 1000.0) * declerationRate / (1 - declerationRate);
+}
+
 @end
