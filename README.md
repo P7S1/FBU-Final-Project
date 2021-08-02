@@ -1,4 +1,4 @@
-# FBU Final Project - (name pending)
+# FBU Final Project - Cornerstore
 
 ## Table of Contents
 1. [Overview](#Overview)
@@ -46,6 +46,8 @@ My FBU Final project is a shopping app meant for cheap items where you can eithe
 - [x] Buttons to assist with left/right swipe
 - [x] Checkout button with total order's price
 - [ ] Shows "They're no more items left" in a null state
+- [ ] Floating shopping cart button
+- [ ] Floating shopping cart transition animation
 
 ### 2. Screen Archetypes
 
@@ -95,4 +97,3 @@ My FBU Final project is a shopping app meant for cheap items where you can eithe
     * User class- also has a singleton reference to current user. This class inherits from FirebaseObject
 * Listing
     * Item listing- inherits from FirabaseObject
-### Networking
