@@ -145,4 +145,9 @@ UIPanGestureRecognizer* _panRecognizer;
     return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p1.y,2));
 }
 
+- (CGFloat)relativeVelocityForVelocity: (CGFloat)velocity fromCurrentValue: (CGFloat)currentValue toTargetValue: (CGFloat)targetValue{
+    if ((currentValue - targetValue) == 0.0) { return 0.0; }
+    return velocity / (targetValue - currentValue);
+}
+
 @end
