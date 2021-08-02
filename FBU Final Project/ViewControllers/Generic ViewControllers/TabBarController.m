@@ -139,9 +139,9 @@
     [self.view addSubview:self.pipContainerView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [self.pipContainerView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.pipContainerView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
         [self.pipContainerView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
-        [self.pipContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.pipContainerView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
         [self.pipContainerView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
     ]];
 }

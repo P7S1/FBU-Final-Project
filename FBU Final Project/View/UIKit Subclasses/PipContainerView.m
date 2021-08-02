@@ -122,7 +122,6 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (UIView*)getPipView{
     UIView* pipView = [[UIView alloc]init];
-    pipView.backgroundColor = UIColor.blueColor;
     [self addSubview:pipView];
     
     pipView.translatesAutoresizingMaskIntoConstraints = NO;
