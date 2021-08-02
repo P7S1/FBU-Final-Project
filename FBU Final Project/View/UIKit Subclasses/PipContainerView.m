@@ -118,8 +118,40 @@ UIPanGestureRecognizer* _panRecognizer;
 //MARK:- Pip Animation Gestures Logic
 
 - (void)pipPannedWithRecognizer: (UIPanGestureRecognizer*)recognizer{
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            [self handlePanRecognizerStateBegan:recognizer];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self handlePanRecognizerStateChanged:recognizer];
+            break;
+        case UIGestureRecognizerStateCancelled:
+            [self handlePanRecognizerStateCancelled:recognizer];
+            break;
+        case UIGestureRecognizerStateEnded:
+            [self handlePanRecognizerStateEnded:recognizer];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)handlePanRecognizerStateBegan: (UIPanGestureRecognizer*)recognizer{
     
 }
+
+- (void)handlePanRecognizerStateChanged: (UIPanGestureRecognizer*)recognizer{
+    
+}
+
+- (void)handlePanRecognizerStateEnded: (UIPanGestureRecognizer*)recognizer{
+    
+}
+
+- (void)handlePanRecognizerStateCancelled: (UIPanGestureRecognizer*)recognizer{
+    [self handlePanRecognizerStateEnded:recognizer];
+}
+
 
 - (CGFloat)projectWithInitialVelocity: (CGFloat)initialVelocity withDecelerationRate: (CGFloat)declerationRate{
     return (initialVelocity / 1000.0) * declerationRate / (1 - declerationRate);
