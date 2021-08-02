@@ -27,11 +27,23 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (instancetype)initWithFrame: (CGRect)frame{
     self = [super initWithFrame:frame];
-    if (self) {
-        [self setUpInitialValues];
-        [self setUpPlaceholderViews];
+    if (self){
+        [self commonInit];
     }
     return self;
+}
+
+- (instancetype)initWithCoder: (NSCoder *)coder{
+    self = [super initWithCoder:coder];
+    if (self){
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit{
+    [self setUpInitialValues];
+    [self setUpPlaceholderViews];
 }
 
 - (void)setUpInitialValues{
