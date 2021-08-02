@@ -49,6 +49,17 @@ UIPanGestureRecognizer* _panRecognizer;
     [self setUpPlaceholderViews];
 }
 
+//MARK:- Lifecycle Methods
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    if (self.pipPositions.lastObject == nil){
+        _pipView.center = CGPointZero;
+    }else{
+        NSValue* value = self.pipPositions.lastObject;
+        _pipView.center = [value CGPointValue];
+    }
+}
+
 //MARK:- Varible Getters and Setters
 
 - (NSArray*)pipPositions{
