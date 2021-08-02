@@ -137,6 +137,8 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 - (void)handlePanRecognizerStateBegan: (UIPanGestureRecognizer*)recognizer{
+    const CGPoint touchPoint = [recognizer locationInView:self];
+    _initialOffset = CGPointMake(touchPoint.x - _pipView.center.x, touchPoint.y - _pipView.center.y);
     
 }
 
