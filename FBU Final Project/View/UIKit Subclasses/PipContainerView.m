@@ -45,6 +45,7 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 - (void)commonInit{
+    [self setUserInteractionEnabled:NO];
     [self setUpInitialValues];
     [self setUpPlaceholderViews];
 }
@@ -83,6 +84,7 @@ UIPanGestureRecognizer* _panRecognizer;
     
     _pipView = [[UIView alloc]init];
     _pipView.backgroundColor = UIColor.greenColor;
+    [_pipView setUserInteractionEnabled:YES];
     [self addSubview:_pipView];
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[

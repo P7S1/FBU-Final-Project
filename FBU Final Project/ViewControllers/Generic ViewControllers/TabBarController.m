@@ -15,6 +15,7 @@
 #import "ButtonsViewController.h"
 #import "ViewControllerHelper.h"
 #import "NavigationController.h"
+#import "PipContainerView.h"
 
 @interface TabBarController () <ButtonsDelegate, UIScrollViewDelegate>
 
@@ -33,6 +34,8 @@
 @property (nonatomic, strong) UIColor* const rightPanelColor;
 
 @property (nonatomic) BOOL shouldAnimate;
+
+@property (nonatomic, strong) PipContainerView* pipContainerView;
 
 @end
 
@@ -63,6 +66,7 @@
     [super viewDidLoad];
     [self setUpUI];
     [self setUpButtonContainerView];
+    [self setUpPipContainerView];
 }
 
 - (void)tabBarDidAppear{
@@ -126,6 +130,20 @@
     [UIView animateWithDuration:0.2 animations:^{
         self.buttonsContainerView.alpha = hidden ? 0 : 1;
     }];
+}
+
+- (void)setUpPipContainerView{
+    self.pipContainerView = [[PipContainerView alloc]initWithFrame:self.view.bounds];
+    self.pipContainerView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.view addSubview:self.pipContainerView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [self.pipContainerView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [self.pipContainerView.leftAnchor constraintEqualToAnchor:self.view.leftAnchor],
+        [self.pipContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [self.pipContainerView.rightAnchor constraintEqualToAnchor:self.view.rightAnchor]
+    ]];
 }
 
 //MARK:- Buttons Delegate
