@@ -115,7 +115,7 @@ UIPanGestureRecognizer* _panRecognizer;
     return pipView;
 }
 
-//MARK:- Pip Animation Logic
+//MARK:- Pip Animation Gestures Logic
 
 - (void)pipPannedWithRecognizer: (UIPanGestureRecognizer*)recognizer{
     
@@ -129,6 +129,20 @@ UIPanGestureRecognizer* _panRecognizer;
     CGFloat minDistance = CGFLOAT_MAX;
     CGPoint closestPosition = CGPointZero;
     
+    for (const NSValue* value in self.pipPositions){
+        const CGPoint position = [value CGPointValue];
+        const CGFloat distance = [self distanceBetween:point and:position];
+        if (distance < minDistance){
+            closestPosition = position;
+            minDistance = distance;
+        }
+    }
+    
+    return closestPosition;
+}
+
+- (CGFloat)distanceBetween:(CGPoint)p1 and:(CGPoint)p2{
+    return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p1.y,2));
 }
 
 @end
