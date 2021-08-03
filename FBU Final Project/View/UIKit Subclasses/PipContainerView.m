@@ -18,11 +18,11 @@
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
-const CGFloat _pipWidth = 86.0;
-const CGFloat _pipHeight = 130.0;
+const CGFloat _pipWidth = 44.0;
+const CGFloat _pipHeight = 44.0;
 
-const CGFloat _horizontalSpacing = 23.0;
-const CGFloat _verticalSpacing = 25.0;
+const CGFloat _horizontalSpacing = 16.0;
+const CGFloat _verticalSpacing = 30.0;
 
 CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
@@ -33,6 +33,8 @@ UIPanGestureRecognizer* _panRecognizer;
     if (self){
         [self commonInit];
         [viewController.view addSubview:_pipView];
+        self.backgroundColor = UIColor.blueColor;
+        self.alpha = 0.5;
     }
     return self;
 }
@@ -122,14 +124,17 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (UIView*)getPipView{
     UIView* pipView = [[UIView alloc]init];
-    [self addSubview:pipView];
     
     pipView.translatesAutoresizingMaskIntoConstraints = NO;
+    pipView.layer.borderColor = [UIColor.redColor CGColor];
+    pipView.layer.borderWidth = 8;
     
     [NSLayoutConstraint activateConstraints:@[
         [pipView.heightAnchor constraintEqualToConstant:_pipHeight],
         [pipView.widthAnchor constraintEqualToConstant:_pipWidth]
     ]];
+    
+    [self addSubview:pipView];
     
     _pipPositionViews = [_pipPositionViews arrayByAddingObject:pipView];
     
@@ -184,7 +189,7 @@ UIPanGestureRecognizer* _panRecognizer;
     const UISpringTimingParameters* timingParemeters = [[UISpringTimingParameters alloc]initWithDampingRatio:1.0 initialVelocity:relativeInitalVelocity];
     const UIViewPropertyAnimator* animatior = [[UIViewPropertyAnimator alloc]initWithDuration:0.0 timingParameters:timingParemeters];
     [animatior addAnimations:^{
-        _pipView.center = nearestCornerPosition;
+        _pipView.center = [self convertPoint:nearestCornerPosition toView:self.superview];
     }];
     
     [animatior startAnimation];
@@ -193,7 +198,6 @@ UIPanGestureRecognizer* _panRecognizer;
 - (void)handlePanRecognizerStateCancelled: (UIPanGestureRecognizer*)recognizer{
     [self handlePanRecognizerStateEnded:recognizer];
 }
-
 
 - (CGFloat)projectWithInitialVelocity: (CGFloat)initialVelocity withDecelerationRate: (CGFloat)declerationRate{
     return (initialVelocity / 1000.0) * declerationRate / (1.0 - declerationRate);
