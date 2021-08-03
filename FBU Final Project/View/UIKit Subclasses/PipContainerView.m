@@ -110,8 +110,16 @@ UIPanGestureRecognizer* _panRecognizer;
     
     [_pipView addGestureRecognizer:_panRecognizer];
     
-    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:32.0 weight:UIImageSymbolWeightBold];
-    //[_pipView setImage:[UIImage systemImageNamed:@"cart" withConfiguration:config] forState:UIControlStateNormal];
+    UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage systemImageNamed:@"cart"]];
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [_pipView addSubview:imageView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [imageView.topAnchor constraintEqualToAnchor:_pipView.topAnchor constant:_pipHeight * 0.25],
+        [imageView.leftAnchor constraintEqualToAnchor:_pipView.leftAnchor constant:16],
+        [imageView.rightAnchor constraintEqualToAnchor:_pipView.rightAnchor],
+        [imageView.bottomAnchor constraintEqualToAnchor:_pipView.bottomAnchor]
+    ]];
 }
 
 - (void)setUpPlaceholderViews{
