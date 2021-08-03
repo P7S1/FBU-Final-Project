@@ -18,7 +18,7 @@
 
 UIViewController* _presentingViewController;
 NSArray<UIView*>* _pipPositionViews;
-UIView* _pipView;
+BasicButton* _pipView;
 
 const CGFloat _pipWidth = 70.0;
 const CGFloat _pipHeight = 70.0;
@@ -109,6 +109,9 @@ UIPanGestureRecognizer* _panRecognizer;
     ]];
     
     [_pipView addGestureRecognizer:_panRecognizer];
+    
+    const UIImageSymbolConfiguration* config = [UIImageSymbolConfiguration configurationWithPointSize:32.0 weight:UIImageSymbolWeightBold];
+    //[_pipView setImage:[UIImage systemImageNamed:@"cart" withConfiguration:config] forState:UIControlStateNormal];
 }
 
 - (void)setUpPlaceholderViews{
