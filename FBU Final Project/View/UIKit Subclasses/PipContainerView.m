@@ -20,11 +20,11 @@ UIViewController* _presentingViewController;
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
-const CGFloat _pipWidth = 50.0;
-const CGFloat _pipHeight = 50.0;
+const CGFloat _pipWidth = 70.0;
+const CGFloat _pipHeight = 70.0;
 
 const CGFloat _horizontalSpacing = 16.0;
-const CGFloat _verticalSpacing = 30.0;
+const CGFloat _verticalSpacing = 38.0;
 
 CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
@@ -94,6 +94,7 @@ UIPanGestureRecognizer* _panRecognizer;
     _panRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pipPannedWithRecognizer:)];
     
     _pipView = [[BasicButton alloc]init];
+    _pipView.layer.cornerRadius = _pipHeight/2;
     _pipView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;

@@ -44,6 +44,11 @@
     [self setUpInitialViewElements];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
     self.navigationItem.title = self.item.name;
+    self.view.layer.cornerRadius = 40;
+    self.view.layer.shadowColor = [UIColor.grayColor CGColor];
+    self.view.layer.shadowOffset = CGSizeZero;
+    self.view.layer.shadowRadius = 12.0;
+    self.view.layer.shadowOpacity = 0.7;
 }
 
 - (void)setUpInitialViewElements{
