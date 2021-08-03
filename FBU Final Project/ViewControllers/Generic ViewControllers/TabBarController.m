@@ -16,6 +16,7 @@
 #import "ViewControllerHelper.h"
 #import "NavigationController.h"
 #import "PipContainerView.h"
+#import "BasicButton.h"
 
 @interface TabBarController () <ButtonsDelegate, UIScrollViewDelegate>
 
@@ -138,7 +139,10 @@
 }
 
 - (void)setUpPipContainerView{
-    self.pipContainerView = [[PipContainerView alloc]initWithViewController:self];
+    BasicButton* pipButton = [[BasicButton alloc]init];
+    [pipButton setImage:[UIImage systemImageNamed:@"cart"] forState:UIControlStateNormal];
+    
+    self.pipContainerView = [[PipContainerView alloc]initWithViewController:self withPipView:pipButton];
     self.pipContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.pipContainerView];

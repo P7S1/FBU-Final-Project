@@ -28,27 +28,12 @@ CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
 
 //MARK:- Init Methods
-- (instancetype)initWithViewController: (UIViewController*)viewController{
+- (instancetype)initWithViewController: (UIViewController*)viewController withPipView: (UIView*)pipView{
     self = [super init];
     if (self){
+        _pipView = pipView;
         [self commonInit];
         [viewController.view addSubview:_pipView];
-    }
-    return self;
-}
-
-- (instancetype)initWithFrame: (CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self){
-        [self commonInit];
-    }
-    return self;
-}
-
-- (instancetype)initWithCoder: (NSCoder *)coder{
-    self = [super initWithCoder:coder];
-    if (self){
-        [self commonInit];
     }
     return self;
 }
@@ -88,8 +73,6 @@ UIPanGestureRecognizer* _panRecognizer;
     
     _panRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pipPannedWithRecognizer:)];
     
-    _pipView = [[UIView alloc]init];
-    _pipView.backgroundColor = UIColor.greenColor;
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
         [_pipView.heightAnchor constraintEqualToConstant:_pipHeight],

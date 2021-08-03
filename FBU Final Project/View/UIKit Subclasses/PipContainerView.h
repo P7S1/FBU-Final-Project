@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PipContainerView : UIView
 
-- (instancetype)initWithViewController: (UIViewController*)viewController;
+- (instancetype)initWithViewController: (UIViewController*)viewController withPipView: (UIView*)pipView;
 
 - (void)resetPipPosition;
 
