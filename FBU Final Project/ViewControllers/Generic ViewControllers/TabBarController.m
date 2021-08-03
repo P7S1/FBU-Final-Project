@@ -69,6 +69,11 @@
     [self setUpPipContainerView];
 }
 
+- (void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [self.pipContainerView resetPipPosition];
+}
+
 - (void)tabBarDidAppear{
     [self animateTabBarItems:NO];
     [self.scrollView setScrollEnabled:YES];

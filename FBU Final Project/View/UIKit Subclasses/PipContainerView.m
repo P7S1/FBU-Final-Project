@@ -18,8 +18,8 @@
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
-const CGFloat _pipWidth = 44.0;
-const CGFloat _pipHeight = 44.0;
+const CGFloat _pipWidth = 50.0;
+const CGFloat _pipHeight = 50.0;
 
 const CGFloat _horizontalSpacing = 16.0;
 const CGFloat _verticalSpacing = 30.0;
@@ -61,15 +61,12 @@ UIPanGestureRecognizer* _panRecognizer;
     [self setUpPlaceholderViews];
 }
 
-//MARK:- Lifecycle Methods
-
-- (void)layoutSubviews{
-    [super layoutSubviews];
+- (void)resetPipPosition{
     if (self.pipPositions.lastObject == nil){
         _pipView.center = CGPointZero;
     }else{
         NSValue* value = self.pipPositions.lastObject;
-        _pipView.center = [value CGPointValue];
+        _pipView.center = [self convertPoint:[value CGPointValue] toView:self.superview];
     }
 }
 

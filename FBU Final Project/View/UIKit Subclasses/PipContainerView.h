@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithViewController: (UIViewController*)viewController;
 
+- (void)resetPipPosition;
+
 @end
 
 NS_ASSUME_NONNULL_END
