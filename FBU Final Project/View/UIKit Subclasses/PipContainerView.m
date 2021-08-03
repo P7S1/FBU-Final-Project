@@ -20,11 +20,13 @@ UIViewController* _presentingViewController;
 NSArray<UIView*>* _pipPositionViews;
 BasicButton* _pipView;
 
+CGPoint _lastPipPosition;
+
 const CGFloat _pipWidth = 70.0;
 const CGFloat _pipHeight = 70.0;
 
 const CGFloat _horizontalSpacing = 16.0;
-const CGFloat _verticalSpacing = 38.0;
+const CGFloat _verticalSpacing = 52.0;
 
 CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
@@ -65,11 +67,15 @@ UIPanGestureRecognizer* _panRecognizer;
 }
 
 - (void)resetPipPosition{
-    if (self.pipPositions.lastObject == nil){
-        _pipView.center = CGPointZero;
+    if (_lastPipPosition.x == 0.0 && _lastPipPosition.y == 0.0){
+        if (self.pipPositions.lastObject == nil){
+            _pipView.center = CGPointZero;
+        }else{
+            NSValue* value = self.pipPositions.lastObject;
+            _pipView.center = [self convertPoint:[value CGPointValue] toView:self.superview];
+        }
     }else{
-        NSValue* value = self.pipPositions.lastObject;
-        _pipView.center = [self convertPoint:[value CGPointValue] toView:self.superview];
+        _pipView.center = _lastPipPosition;
     }
 }
 
@@ -116,9 +122,9 @@ UIPanGestureRecognizer* _panRecognizer;
     
     [NSLayoutConstraint activateConstraints:@[
         [imageView.topAnchor constraintEqualToAnchor:_pipView.topAnchor constant:_pipHeight * 0.25],
-        [imageView.leftAnchor constraintEqualToAnchor:_pipView.leftAnchor constant:16],
-        [imageView.rightAnchor constraintEqualToAnchor:_pipView.rightAnchor],
-        [imageView.bottomAnchor constraintEqualToAnchor:_pipView.bottomAnchor]
+        [imageView.leftAnchor constraintEqualToAnchor:_pipView.leftAnchor constant:_pipWidth * 0.25],
+        [imageView.rightAnchor constraintEqualToAnchor:_pipView.rightAnchor constant:-(_pipHeight * 0.25)],
+        [imageView.bottomAnchor constraintEqualToAnchor:_pipView.bottomAnchor constant:-(_pipWidth * 0.25)]
     ]];
 }
 
@@ -206,6 +212,10 @@ UIPanGestureRecognizer* _panRecognizer;
     const UIViewPropertyAnimator* animatior = [[UIViewPropertyAnimator alloc]initWithDuration:0.0 timingParameters:timingParemeters];
     [animatior addAnimations:^{
         _pipView.center = [self convertPoint:nearestCornerPosition toView:self.superview];
+    }];
+    
+    [animatior addCompletion:^(UIViewAnimatingPosition finalPosition) {
+        _lastPipPosition = [self convertPoint:nearestCornerPosition toView:self.superview];
     }];
     
     [animatior startAnimation];
