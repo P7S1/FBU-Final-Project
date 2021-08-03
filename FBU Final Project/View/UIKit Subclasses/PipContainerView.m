@@ -33,8 +33,6 @@ UIPanGestureRecognizer* _panRecognizer;
     if (self){
         [self commonInit];
         [viewController.view addSubview:_pipView];
-        self.backgroundColor = UIColor.blueColor;
-        self.alpha = 0.5;
     }
     return self;
 }
@@ -123,8 +121,6 @@ UIPanGestureRecognizer* _panRecognizer;
     UIView* pipView = [[UIView alloc]init];
     
     pipView.translatesAutoresizingMaskIntoConstraints = NO;
-    pipView.layer.borderColor = [UIColor.redColor CGColor];
-    pipView.layer.borderWidth = 8;
     
     [NSLayoutConstraint activateConstraints:@[
         [pipView.heightAnchor constraintEqualToConstant:_pipHeight],
