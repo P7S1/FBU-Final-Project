@@ -142,7 +142,7 @@
     BasicButton* pipButton = [[BasicButton alloc]init];
     [pipButton setImage:[UIImage systemImageNamed:@"cart"] forState:UIControlStateNormal];
     
-    self.pipContainerView = [[PipContainerView alloc]initWithViewController:self withPipView:pipButton];
+    self.pipContainerView = [[PipContainerView alloc]initWithViewController:self];
     self.pipContainerView.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self.view addSubview:self.pipContainerView];

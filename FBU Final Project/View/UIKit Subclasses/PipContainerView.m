@@ -6,6 +6,7 @@
 //
 
 #import "PipContainerView.h"
+#import "BasicButton.h"
 
 @interface PipContainerView()
 
@@ -15,6 +16,7 @@
 
 @implementation PipContainerView
 
+UIViewController* _presentingViewController;
 NSArray<UIView*>* _pipPositionViews;
 UIView* _pipView;
 
@@ -28,12 +30,30 @@ CGPoint _initialOffset;
 UIPanGestureRecognizer* _panRecognizer;
 
 //MARK:- Init Methods
-- (instancetype)initWithViewController: (UIViewController*)viewController withPipView: (UIView*)pipView{
+- (instancetype)initWithViewController: (UIViewController*)viewController{
     self = [super init];
     if (self){
-        _pipView = pipView;
+        _presentingViewController = viewController;
         [self commonInit];
         [viewController.view addSubview:_pipView];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+      
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+       
     }
     return self;
 }
@@ -72,6 +92,9 @@ UIPanGestureRecognizer* _panRecognizer;
     _initialOffset = CGPointZero;
     
     _panRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pipPannedWithRecognizer:)];
+    
+    _pipView = [[BasicButton alloc]init];
+    _pipView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
