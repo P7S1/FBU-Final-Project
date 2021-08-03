@@ -95,6 +95,11 @@ UIPanGestureRecognizer* _panRecognizer;
     
     _pipView = [[BasicButton alloc]init];
     _pipView.layer.cornerRadius = _pipHeight/2;
+    _pipView.layer.shadowColor = [UIColor.grayColor CGColor];
+    _pipView.layer.shadowOffset = CGSizeZero;
+    _pipView.layer.shadowRadius = 12.0;
+    _pipView.layer.shadowOpacity = 0.7;
+    
     _pipView.backgroundColor = UIColor.secondarySystemBackgroundColor;
     
     _pipView.translatesAutoresizingMaskIntoConstraints = NO;
