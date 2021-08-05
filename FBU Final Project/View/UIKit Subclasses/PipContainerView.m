@@ -7,6 +7,7 @@
 
 #import "PipContainerView.h"
 #import "BasicButton.h"
+#import "CartViewController.h"
 
 @interface PipContainerView()
 
@@ -18,7 +19,7 @@
 
 UIViewController* _presentingViewController;
 NSArray<UIView*>* _pipPositionViews;
-BasicButton* _pipView;
+BasicButton* _pipButton;
 
 CGPoint _lastPipPosition;
 
@@ -37,7 +38,7 @@ UIPanGestureRecognizer* _panRecognizer;
     if (self){
         _presentingViewController = viewController;
         [self commonInit];
-        [viewController.view addSubview:_pipView];
+        [viewController.view addSubview:_pipButton];
     }
     return self;
 }
@@ -69,13 +70,13 @@ UIPanGestureRecognizer* _panRecognizer;
 - (void)resetPipPosition{
     if (_lastPipPosition.x == 0.0 && _lastPipPosition.y == 0.0){
         if (self.pipPositions.lastObject == nil){
-            _pipView.center = CGPointZero;
+            _pipButton.center = CGPointZero;
         }else{
             NSValue* value = self.pipPositions.lastObject;
-            _pipView.center = [self convertPoint:[value CGPointValue] toView:self.superview];
+            _pipButton.center = [self convertPoint:[value CGPointValue] toView:self.superview];
         }
     }else{
-        _pipView.center = _lastPipPosition;
+        _pipButton.center = _lastPipPosition;
     }
 }
 
@@ -99,32 +100,33 @@ UIPanGestureRecognizer* _panRecognizer;
     
     _panRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(pipPannedWithRecognizer:)];
     
-    _pipView = [[BasicButton alloc]init];
-    _pipView.layer.cornerRadius = _pipHeight/2;
-    _pipView.layer.shadowColor = [UIColor.grayColor CGColor];
-    _pipView.layer.shadowOffset = CGSizeZero;
-    _pipView.layer.shadowRadius = 12.0;
-    _pipView.layer.shadowOpacity = 0.7;
+    _pipButton = [[BasicButton alloc]init];
+    _pipButton.layer.cornerRadius = _pipHeight/2;
+    _pipButton.layer.shadowColor = [UIColor.grayColor CGColor];
+    _pipButton.layer.shadowOffset = CGSizeZero;
+    _pipButton.layer.shadowRadius = 12.0;
+    _pipButton.layer.shadowOpacity = 0.7;
     
-    _pipView.backgroundColor = UIColor.secondarySystemBackgroundColor;
+    _pipButton.backgroundColor = UIColor.secondarySystemBackgroundColor;
     
-    _pipView.translatesAutoresizingMaskIntoConstraints = NO;
+    _pipButton.translatesAutoresizingMaskIntoConstraints = NO;
     [NSLayoutConstraint activateConstraints:@[
-        [_pipView.heightAnchor constraintEqualToConstant:_pipHeight],
-        [_pipView.widthAnchor constraintEqualToConstant:_pipWidth]
+        [_pipButton.heightAnchor constraintEqualToConstant:_pipHeight],
+        [_pipButton.widthAnchor constraintEqualToConstant:_pipWidth]
     ]];
     
-    [_pipView addGestureRecognizer:_panRecognizer];
+    [_pipButton addGestureRecognizer:_panRecognizer];
+    [_pipButton addTarget:self action:@selector(pipButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView* imageView = [[UIImageView alloc]initWithImage:[UIImage systemImageNamed:@"cart"]];
     imageView.translatesAutoresizingMaskIntoConstraints = NO;
-    [_pipView addSubview:imageView];
+    [_pipButton addSubview:imageView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [imageView.topAnchor constraintEqualToAnchor:_pipView.topAnchor constant:_pipHeight * 0.25],
-        [imageView.leftAnchor constraintEqualToAnchor:_pipView.leftAnchor constant:_pipWidth * 0.25],
-        [imageView.rightAnchor constraintEqualToAnchor:_pipView.rightAnchor constant:-(_pipHeight * 0.25)],
-        [imageView.bottomAnchor constraintEqualToAnchor:_pipView.bottomAnchor constant:-(_pipWidth * 0.25)]
+        [imageView.topAnchor constraintEqualToAnchor:_pipButton.topAnchor constant:_pipHeight * 0.25],
+        [imageView.leftAnchor constraintEqualToAnchor:_pipButton.leftAnchor constant:_pipWidth * 0.25],
+        [imageView.rightAnchor constraintEqualToAnchor:_pipButton.rightAnchor constant:-(_pipHeight * 0.25)],
+        [imageView.bottomAnchor constraintEqualToAnchor:_pipButton.bottomAnchor constant:-(_pipWidth * 0.25)]
     ]];
 }
 
@@ -186,32 +188,32 @@ UIPanGestureRecognizer* _panRecognizer;
 
 - (void)handlePanRecognizerStateBegan: (UIPanGestureRecognizer*)recognizer{
     const CGPoint touchPoint = [recognizer locationInView:self];
-    _initialOffset = CGPointMake(touchPoint.x - _pipView.center.x, touchPoint.y - _pipView.center.y);
+    _initialOffset = CGPointMake(touchPoint.x - _pipButton.center.x, touchPoint.y - _pipButton.center.y);
     
 }
 
 - (void)handlePanRecognizerStateChanged: (UIPanGestureRecognizer*)recognizer{
     const CGPoint touchPoint = [recognizer locationInView:self];
-    _pipView.center = CGPointMake(touchPoint.x - _initialOffset.x, touchPoint.y - _initialOffset.y);
+    _pipButton.center = CGPointMake(touchPoint.x - _initialOffset.x, touchPoint.y - _initialOffset.y);
 }
 
 - (void)handlePanRecognizerStateEnded: (UIPanGestureRecognizer*)recognizer{
     const CGFloat decelerationRate = UIScrollViewDecelerationRateNormal;
     const CGPoint velocity = [recognizer velocityInView:self];
     const CGPoint projectedPosition = (CGPoint){
-        _pipView.center.x + [self projectWithInitialVelocity:velocity.x withDecelerationRate:decelerationRate],
-         _pipView.center.y + [self projectWithInitialVelocity:velocity.y withDecelerationRate:decelerationRate]
+        _pipButton.center.x + [self projectWithInitialVelocity:velocity.x withDecelerationRate:decelerationRate],
+         _pipButton.center.y + [self projectWithInitialVelocity:velocity.y withDecelerationRate:decelerationRate]
     };
     const CGPoint nearestCornerPosition = [self nearestCornerToPoint:projectedPosition];
     const CGVector relativeInitalVelocity = (CGVector){
-        [self relativeVelocityForVelocity:velocity.x fromCurrentValue:_pipView.center.x toTargetValue:nearestCornerPosition.x],
-        [self relativeVelocityForVelocity:velocity.y fromCurrentValue:_pipView.center.y toTargetValue:nearestCornerPosition.y]
+        [self relativeVelocityForVelocity:velocity.x fromCurrentValue:_pipButton.center.x toTargetValue:nearestCornerPosition.x],
+        [self relativeVelocityForVelocity:velocity.y fromCurrentValue:_pipButton.center.y toTargetValue:nearestCornerPosition.y]
     };
     
     const UISpringTimingParameters* timingParemeters = [[UISpringTimingParameters alloc]initWithDampingRatio:1.0 initialVelocity:relativeInitalVelocity];
     const UIViewPropertyAnimator* animatior = [[UIViewPropertyAnimator alloc]initWithDuration:0.0 timingParameters:timingParemeters];
     [animatior addAnimations:^{
-        _pipView.center = [self convertPoint:nearestCornerPosition toView:self.superview];
+        _pipButton.center = [self convertPoint:nearestCornerPosition toView:self.superview];
     }];
     
     [animatior addCompletion:^(UIViewAnimatingPosition finalPosition) {
@@ -252,6 +254,14 @@ UIPanGestureRecognizer* _panRecognizer;
 - (CGFloat)relativeVelocityForVelocity: (CGFloat)velocity fromCurrentValue: (CGFloat)currentValue toTargetValue: (CGFloat)targetValue{
     if ((currentValue - targetValue) == 0.0) { return 0.0; }
     return velocity / (targetValue - currentValue);
+}
+
+//MARK:- Pip Button aciton
+
+- (void)pipButtonPressed{
+    CartViewController* vc = [[CartViewController alloc]init];
+    UINavigationController* navController = [[UINavigationController alloc]initWithRootViewController:vc];
+    [_presentingViewController presentViewController:navController animated:YES completion:nil];
 }
 
 @end
