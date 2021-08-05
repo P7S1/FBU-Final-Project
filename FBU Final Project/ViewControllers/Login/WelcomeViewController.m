@@ -40,6 +40,20 @@
     ]];
     
     [continueWithPhoneNumberButton addTarget:self action:@selector(continueWithPhoneNumberButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel* titleLabel = [[UILabel alloc]init];
+    titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    titleLabel.font = [UIFont systemFontOfSize:50 weight:UIFontWeightHeavy];
+    titleLabel.text = @"Cornerstore";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    
+    [self.view addSubview:titleLabel];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [titleLabel.leftAnchor constraintEqualToAnchor:self.view.leftAnchor constant:16.0],
+        [titleLabel.rightAnchor constraintEqualToAnchor:self.view.rightAnchor constant:-16.0],
+        [titleLabel.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor]
+    ]];
 }
 
 - (void)continueWithPhoneNumberButtonPressed{
