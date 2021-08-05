@@ -5,8 +5,10 @@
 //  Created by Keng Fontem on 7/14/21.
 //
 
+#import <Firebase/Firebase.h>
 #import "RootViewController.h"
 #import "CartViewController.h"
+#import "WelcomeViewController.h"
 
 @interface RootViewController ()
 
@@ -16,7 +18,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self setUpCartNavigationItem];
+    [self setUpLogoutNavigationItem];
     self.view.backgroundColor = UIColor.systemBackgroundColor;
 }
 
@@ -38,14 +40,16 @@
     self.navigationController.navigationBar.prefersLargeTitles = NO;
 }
 
-- (void)setUpCartNavigationItem{
-    UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithImage:[UIImage systemImageNamed:@"cart"] style:UIBarButtonItemStyleDone target:self action:@selector(cartButtonPressed)];
+- (void)setUpLogoutNavigationItem{
+    UIBarButtonItem* item = [[UIBarButtonItem alloc]initWithTitle:@"Logout" style:UIBarButtonItemStyleDone target:self action:@selector(logoutButtonPressed)];
     self.navigationItem.rightBarButtonItem = item;
 }
 
-- (void)cartButtonPressed{
-    CartViewController* vc = [[CartViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+- (void)logoutButtonPressed{
+    [[FIRAuth auth] signOut:nil];
+    WelcomeViewController* vc = [[WelcomeViewController alloc]init];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
