@@ -78,11 +78,13 @@
 - (void)tabBarDidAppear{
     [self animateTabBarItems:NO];
     [self.scrollView setScrollEnabled:YES];
+    [self.buttonsContainerView setHidden:NO];
 }
 
 - (void)tabBarWillDisappear{
     [self animateTabBarItems:YES];
     [self.scrollView setScrollEnabled:NO];
+    [self.buttonsContainerView setHidden:YES];
 }
 
 - (void)setUpUI{
