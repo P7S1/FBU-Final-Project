@@ -125,7 +125,7 @@
 
     // Ends
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"endsInNSDate" rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Ends in"];
-    row.value = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
+    row.value = [[NSDate alloc]init];
     [section addFormRow:row];
 
     self.form = form;

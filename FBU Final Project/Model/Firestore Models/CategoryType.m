@@ -11,12 +11,12 @@
 
 + (NSArray<NSString *> *)getAllCategories{
     return @[
-        @"Books",
-        @"Electronics",
-        @"Pencils",
-        @"Calculators",
-        @"Bags",
-        @"Furniture"
+        @"New Arrivals",
+        @"For You",
+        @"Trending right now",
+        @"Only on Cornerstore",
+        @"Best Sellers",
+        @"Trending this month"
     ];
 }
 

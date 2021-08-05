@@ -142,6 +142,7 @@
 
 - (void)setCurrentViewControllerPosition:(PanelButtonPosition)currentViewControllerPosition{
     [self updateCurrentButtonLooksWithCurrentPosition:currentViewControllerPosition];
+    _currentViewControllerPosition = currentViewControllerPosition;
 }
 
 - (void)updateCurrentButtonLooksWithCurrentPosition: (PanelButtonPosition)position{

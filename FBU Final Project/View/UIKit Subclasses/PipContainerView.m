@@ -264,4 +264,8 @@ UIPanGestureRecognizer* _panRecognizer;
     [_presentingViewController presentViewController:navController animated:YES completion:nil];
 }
 
+- (void)setButtonHidden: (bool)hidden{
+    [_pipButton setHidden:hidden];
+}
+
 @end

@@ -78,13 +78,13 @@
 - (void)tabBarDidAppear{
     [self animateTabBarItems:NO];
     [self.scrollView setScrollEnabled:YES];
-    [self.buttonsContainerView setHidden:NO];
+    [self.pipContainerView setButtonHidden:NO];
 }
 
 - (void)tabBarWillDisappear{
     [self animateTabBarItems:YES];
     [self.scrollView setScrollEnabled:NO];
-    [self.buttonsContainerView setHidden:YES];
+    [self.pipContainerView setButtonHidden:YES];
 }
 
 - (void)setUpUI{
@@ -193,7 +193,7 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    if (scrollView.contentOffset.x <= 0){
+    if (scrollView.contentOffset.x < 0){
         self.buttonsController.currentViewControllerPosition = left;
     }else if (scrollView.contentOffset.x <= UIScreen.mainScreen.bounds.size.width){
         self.buttonsController.currentViewControllerPosition = center;

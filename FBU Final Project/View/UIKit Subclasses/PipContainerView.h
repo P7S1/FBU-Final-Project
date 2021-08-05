@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithViewController: (UIViewController*)viewController;
 
 - (void)resetPipPosition;
+- (void)setButtonHidden: (bool)hidden;
 
 @end
 

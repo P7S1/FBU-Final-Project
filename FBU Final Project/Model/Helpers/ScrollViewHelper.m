@@ -57,7 +57,7 @@
     CGFloat const sideButtonHeight = 42;
     
     BasicButton* button = [[BasicButton alloc]init];
-    button.backgroundColor = UIColor.whiteColor;
+    button.backgroundColor = UIColor.secondarySystemBackgroundColor;
     button.tintColor = UIColor.labelColor;
     
     [button.layer setShadowOffset:CGSizeMake(0, 5)];

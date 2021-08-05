@@ -21,7 +21,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.windowScene = (UIWindowScene *)scene;
-    self.window.tintColor = UIColor.systemGreenColor;
+    self.window.tintColor = UIColor.systemPurpleColor;
     if ([FIRAuth auth].currentUser){
         self.window.rootViewController = [[TabBarController alloc]init];
     }else{
